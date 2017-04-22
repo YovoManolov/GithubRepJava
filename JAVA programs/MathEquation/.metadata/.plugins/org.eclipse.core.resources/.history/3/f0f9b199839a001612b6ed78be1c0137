@@ -1,0 +1,34 @@
+package mathEquations;
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
+
+public abstract class Equation implements Solvable{
+  
+ Scanner sc = new Scanner(System.in);
+ 
+   public Double[] getCoefficientsFromConsole(){
+	   Double [] array = new Double [2];
+	  System.out.println("Linear 1 : Quadratic 2 >>> Enter your choice : ");
+	  int choice = sc.nextInt();
+	  try{
+		  if(choice == 1){
+			  //coefficient collecting for linear equation
+			  for(int i = 0 ;i < 2 ;i ++){
+				  array[i] = sc.nextDouble();
+			  }
+		  }else if (choice == 2){
+			  //coefficient collecting for binary equation
+			  for(int i = 0 ;i < 3 ;i ++){
+				  array[i] = sc.nextDouble();
+			  }   
+		  }		  
+	  }catch(InputMismatchException e){
+		  System.out.println("Input mismatch exception was thrown !");	  
+	  }catch(NoSuchElementException e){
+		  System.out.println(" No Such Element Exception was thrown !"); 
+	  } 
+	  return array;
+  }	
+   
+}

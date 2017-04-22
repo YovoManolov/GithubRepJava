@@ -1,0 +1,1 @@
+app.frontEnd.utilities.Delete

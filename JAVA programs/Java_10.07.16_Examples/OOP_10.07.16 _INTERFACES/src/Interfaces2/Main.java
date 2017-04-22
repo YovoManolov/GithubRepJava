@@ -1,0 +1,24 @@
+package Interfaces2;
+
+class Main {
+
+	public static void main(String[] args) {
+		DynamicStack ob = new DynamicStack(5);
+		DynamicStack ob1 = new DynamicStack(8);
+		
+		for(int i = 0; i < 20 ;i ++) ob.push(i+2);
+		for(int i = 0; i < 20; i ++) ob1.push(i+2);
+		
+		
+		 System.out.println("Stack in my stack1:  ");
+		       for(int i = 0; i < 20 ;i ++) {
+				 System.out.println("Stack in my stack1:  " + ob.pop());
+				}
+		 System.out.println("Stack in my stack2:  ");
+		       for(int i = 0; i < 20 ;i ++){
+			      System.out.println("Stack in my stack2:  " + ob1.pop());
+			      }
+
+	}
+
+}

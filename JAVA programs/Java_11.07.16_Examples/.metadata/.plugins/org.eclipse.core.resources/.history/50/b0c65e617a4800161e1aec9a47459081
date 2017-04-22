@@ -1,0 +1,14 @@
+package StatMetInInfc;
+
+class Demo {
+	
+	public static void main(String[] args) {
+    int num = MyIF.getDefaultNumber();
+    System.out.println(" " + num);
+	}
+	  
+	public int getNumber(){
+     return 8;
+	}
+	
+}

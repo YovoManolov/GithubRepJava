@@ -1,0 +1,20 @@
+
+class Duck {
+  private int size ;
+  
+  private static int numOfDucks;
+  int getSize () {
+	  return size;
+  }
+  
+  void SetSize (int size){
+	  this.size = size;
+  }
+  
+  public static void main(String[] args){
+	  Duck ob = new Duck();
+	  ob.SetSize(10);
+	  System.out.println ("Numb of duck is " + numOfDucks);  
+  }
+  
+}

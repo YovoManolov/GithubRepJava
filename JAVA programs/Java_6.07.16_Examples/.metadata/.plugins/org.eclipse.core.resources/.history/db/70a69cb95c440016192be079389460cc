@@ -1,0 +1,49 @@
+import java.util.Scanner; 
+
+public class Homework1 {
+
+	public static void main(String[] args) {
+        int i , j ;  
+        int InitVar , rows;
+       
+        Scanner tempVar = new Scanner(System.in);
+        System.out.println("Enter the rows ! " );
+        rows = tempVar.nextInt();
+        
+        
+		int numbers [][] = new int [rows][];
+		for(i=0; i<rows;i++){
+			for(j = 0 ; j< i ;  j++){
+				numbers[i] = new int [j];
+				continue;
+			}
+		}
+		
+		for(i=0; i<rows;i++){
+			for(j = 0 ; j < i ;  ++j){
+				if(i == 0){
+					InitVar = 1;
+					numbers[0][0] = InitVar;
+				}
+				if(j == 0) {
+					InitVar = numbers[i-1][j] + 0;
+				}
+				InitVar = numbers[i-1][j] + numbers[i-1][j-1];
+				numbers[i][j] = InitVar;
+				continue;
+			}
+		}
+		
+		
+		for(i=0; i<12;i++){
+			for(j = 0 ;j< i ; j++){
+			
+				System.out.print("  " +numbers[i][j] );
+			}
+			System.out.println(" ");
+		}
+		
+		 tempVar.close();
+	}
+
+}

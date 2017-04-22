@@ -1,0 +1,13 @@
+package example3;
+
+class LambdaDemo3 {
+
+	public static void main(String[] args) {
+		NumericTest2 isFactor = (n,d) -> (n + d) == 10;
+		
+		if(isFactor.test(10,0)) System.out.println("The sum is 10");
+		if(isFactor.test(3,7)) System.out.println("The sum is 10");
+        if(!isFactor.test(2,7)) System.out.println("The sum is not 9");
+	}
+
+}

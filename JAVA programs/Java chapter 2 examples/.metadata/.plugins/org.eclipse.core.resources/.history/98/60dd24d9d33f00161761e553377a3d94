@@ -1,0 +1,28 @@
+
+public class manualyAllocated2Darrays {
+
+	public static void main(String[] args) {
+		int Check [][] = new int [3][];
+		int i,j, k = 0 ;
+		
+		Check [0] = new int [5];
+		Check [1] = new int [4];
+		Check [2] = new int [3];
+		
+		
+		for(i = 0 ; i<3 ; i++){
+			for(j = 5 - i; j < 0 ; j--){
+				Check[i][j] = k;
+				k++;
+			}
+		}
+		
+		for(i = 0 ; i<3 ; i++){
+			for(j = 5 - i; j < 3 ; j--){
+				System.out.print("  " +Check[i][j]);
+			}
+			System.out.println();
+		}
+	}
+
+}

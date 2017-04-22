@@ -1,0 +1,5 @@
+package StatMetInInfc;
+
+interface MyIF {
+
+}

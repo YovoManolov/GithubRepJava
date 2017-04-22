@@ -1,0 +1,23 @@
+
+public class NastedClasses2 {
+
+	public static void main(String[] args) {
+		Outer ob1 = new Outer ();
+	    ob1.test();
+	}
+
+}
+
+class Outer  {
+	 int outer_x = 1;
+	 
+	 void test() {	
+		 Inner inner = new Inner () ;
+		 inner.display();
+	 }
+	 class Inner {
+		 void display () {
+			 System.out.println("Display outer_x: " + outer_x);
+		 }
+	 }
+}

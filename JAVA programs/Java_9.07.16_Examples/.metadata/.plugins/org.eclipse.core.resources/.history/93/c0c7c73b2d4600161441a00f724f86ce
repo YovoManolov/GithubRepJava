@@ -1,0 +1,10 @@
+package Interfaces;
+
+public class TestInterfaces implements MyInterface {
+	int p = 3; 
+	
+
+	public void callback(int p){
+		System.out.println("callback called with " + p);
+	}
+}

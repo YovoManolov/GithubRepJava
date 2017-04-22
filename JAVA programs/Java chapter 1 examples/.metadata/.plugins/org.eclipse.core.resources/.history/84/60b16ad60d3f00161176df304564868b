@@ -1,0 +1,14 @@
+
+public class ForTest {
+
+	public static void main(String[] args) {
+		int i, until;
+		
+	    i = 10 ;
+	    until = 100 ;
+	    
+	    for(i ; i<until;i+5 )  System.out.print(" ") + i ;
+	    
+	}
+
+}

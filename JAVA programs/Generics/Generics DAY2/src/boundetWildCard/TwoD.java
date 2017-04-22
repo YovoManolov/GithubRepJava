@@ -1,0 +1,36 @@
+package boundetWildCard;
+
+	
+	class TwoD {
+		int x, y;
+		double x1, y1;
+		TwoD(int a, int b) {
+			x = a;
+			y = b;
+		}
+		TwoD(double a, double b) {
+			x1 = a;
+			y1 = b;
+		}
+	}
+	// Three-dimensional coordinates.
+	class ThreeD extends TwoD {
+		double z;
+		ThreeD(double a, double b,double c) {
+			super(a, b);
+			z1= c;
+		}
+		double z1;
+		ThreeD(int a, int b,int c) {
+			super(a, b);
+			z= c;
+		}
+	}
+	// Four-dimensional coordinates.
+	class FourD extends ThreeD {
+		int t;
+		FourD(int a, int b, int c, int d) {
+		super(a, b, c);
+		  t = d;
+		}
+}

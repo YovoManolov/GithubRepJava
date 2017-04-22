@@ -1,0 +1,5 @@
+package firm;
+
+public interface Buyable {
+
+}

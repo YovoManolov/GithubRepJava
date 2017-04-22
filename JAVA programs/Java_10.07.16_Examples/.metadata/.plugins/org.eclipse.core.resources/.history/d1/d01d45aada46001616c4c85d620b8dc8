@@ -1,0 +1,28 @@
+package Interfaces2;
+
+public class FixedStack implements IntStack{
+	private int Stack[];
+	private int tos;
+	
+	
+	//allocate and inicialize stack
+	public FixedStack (int size){
+		Stack = new int [size];
+		tos = -1;
+	}
+	
+	//Push an item onto the stack
+	public void push (int item){
+	   if(tos == Stack.length-1) System.out.println("Stack is full !");
+	   else {
+		  Stack[++tos] = item;
+	   }
+	}
+    public int pop(){
+    	if(tos < 0){
+    		System.out.println("Stack underflow !");
+    		return 0;
+    	}
+    	else return Stack[tos--] ;
+    }
+}

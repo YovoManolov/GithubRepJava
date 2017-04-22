@@ -1,0 +1,3 @@
+app.frontEnd.views.viewBuilders.CreateChoiceSceneBuilder
+app.frontEnd.views.viewBuilders.CreateChoiceSceneBuilder$2
+app.frontEnd.views.viewBuilders.CreateChoiceSceneBuilder$1

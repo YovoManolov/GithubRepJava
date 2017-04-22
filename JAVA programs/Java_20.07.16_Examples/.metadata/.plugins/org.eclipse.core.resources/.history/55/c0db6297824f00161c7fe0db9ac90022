@@ -1,0 +1,31 @@
+package Annotation;
+
+import java.lang.annotation.*;
+import java.lang.reflect.*;
+
+// A single-member annotation.
+
+@Retention(RetentionPolicy.RUNTIME)
+@interface MySingle {
+int value(); // this variable name must be value
+}
+
+
+class myMeth {
+// Annotate a method using a single-member annotation.
+		@MySingle(100)
+		public static void myMeth1() {
+				myMeth ob = new myMeth();
+				try {
+					Method m = ob.getClass().getMethod("myMeth1");
+					MySingle anno = m.getAnnotation(MySingle.class);
+					System.out.println(anno.value()); // displays 100
+				} catch (NoSuchMethodException exc) {
+				   System.out.println("Method Not Found.");
+				}
+		}
+		
+		public static void main(String args[]) {
+		   myMeth1();
+		}
+}

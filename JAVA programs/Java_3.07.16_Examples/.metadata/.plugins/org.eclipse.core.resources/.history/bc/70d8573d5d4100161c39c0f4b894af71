@@ -1,0 +1,40 @@
+
+public class StackArray {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+
+class Stack {
+	int Stck [] = new int [10] ;  // the name of the array can't be the same 
+	                              //as the name of the class
+	int tos  = -1 ; // top of the stack ;
+	
+	//pop "take out of the stack  " , push "add new  in the stack ", 
+	
+	void pop (){ 
+		if(tos < 0) {
+			System.out.println("Stack underflow");
+			return 0;
+		}
+		else {
+			return Stck[tos--]; 
+		}
+	}
+	
+	//push "add new  in the stack ", 
+	void push (int a){
+		if(tos == 9){
+			System.out.println("Stack is full ");
+			return 0;
+		}
+		else{
+		   Stck[++tos] = a;
+		}
+	}
+	
+}

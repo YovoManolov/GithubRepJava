@@ -1,0 +1,12 @@
+
+class AutoBox {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        Double dOb = 432.54353;
+        double d = dOb;
+        
+        System.out.println(dOb + " "+ d);
+	}
+
+}

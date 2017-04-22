@@ -1,0 +1,18 @@
+package chapter1.examples;
+
+public class Examplef {
+
+	public static void main(String[] args) {
+		
+		int user = 26;
+		
+		if(user <= 18){
+			System.out.println("User is eighteen or younger");
+			}
+		if(user > 18){
+			System.out.println("User is older than eighteen");
+			}
+
+	}
+
+}

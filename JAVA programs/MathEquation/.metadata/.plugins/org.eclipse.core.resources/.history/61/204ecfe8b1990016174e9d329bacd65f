@@ -1,0 +1,6 @@
+package mathEquations;
+
+public interface Solvable {
+   public Double[] solve();
+   public String printSolution(Double [] arr);
+}

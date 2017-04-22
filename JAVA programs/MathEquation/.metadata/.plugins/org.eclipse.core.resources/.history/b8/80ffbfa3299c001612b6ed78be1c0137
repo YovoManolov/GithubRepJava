@@ -1,0 +1,11 @@
+package mathEquations;
+
+@SuppressWarnings("serial")
+public class SolutionException extends Exception {
+	SolutionException(){
+	    super("No solution");
+	  }
+	  SolutionException(String msg){
+	    super(msg);
+	  }
+}

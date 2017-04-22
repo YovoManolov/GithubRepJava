@@ -1,0 +1,23 @@
+
+public class ChainExcDemo {
+    static void demopoc(){
+    	NullPointerException e = new NullPointerException ("top layer ");
+    	
+    	
+    	e.initCause(new ArithmeticException("cause"));
+    	
+    	throw e;
+    }
+	
+	public static void main(String[] args) {
+		try{
+			demopoc();
+		}catch(NullPointerException e){
+			System.out.println("Cought " + e);
+			System.out.println("Original couse " + e.getCause());
+			
+		}
+
+	}
+
+}

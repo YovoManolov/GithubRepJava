@@ -1,0 +1,10 @@
+package StatMetInInfc;
+
+class Demo {
+	
+	public static void main(String[] args) {
+    MyIF.getDefaultNumber();
+
+	}
+
+}

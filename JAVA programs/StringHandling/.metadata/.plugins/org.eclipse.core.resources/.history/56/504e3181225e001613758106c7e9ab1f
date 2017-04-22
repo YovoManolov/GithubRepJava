@@ -1,0 +1,43 @@
+package memoryDemo;
+class MemoryDemo {
+   public static void main (String [] args) {
+	   
+	   //getRuntime > returns the current runtime object. 
+       Runtime r = Runtime.getRuntime();
+	   long mem1 ,mem2;
+	   mem1 = r.freeMemory();
+	   System.out.println("Free mem before allocation of 1000  Int obj's : " + mem1);
+	   
+	   Integer  someints [] = new Integer[1000];
+	   
+	   System.out.println("This is the total memory : " + r.totalMemory()); 
+	   
+	   //freeMemory Returns the approximate number of 
+	   // bytes available in Java  runtime system 
+	   mem1 = r.freeMemory(); 
+	   System.out.println("Initial free memory: " + mem1);
+	   
+	   r.gc();
+	   
+	   mem1 = r.freeMemory();
+	   System.out.println("Free memory afrer garbage collection"  + mem1);
+	   
+	   for(int  i= 0 ; i < 1000 ; i ++ ){
+		   someints[i] = new Integer (i); //allocating Integers
+		   
+	   }
+	   mem2 = r.freeMemory();
+	   System.out.println("Free memory afrer allocation "  + mem2);
+	   System.out.println("Memmory used by allocation " + (mem1 - mem2));
+	   
+	   //discard Integers
+	   
+	   for(int i = 0 ; i <1000; i++ ) {
+		   someints [i] = null;
+	   }
+	   
+	  r.gc() ;
+	  mem2= r.freeMemory();
+	  System.out.println("Free Memory after collecting " + "discard Integers " + mem2);
+   }
+}

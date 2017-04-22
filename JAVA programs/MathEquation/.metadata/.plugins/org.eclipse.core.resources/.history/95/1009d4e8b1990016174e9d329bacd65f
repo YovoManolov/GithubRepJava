@@ -1,0 +1,39 @@
+package mathEquations;
+
+public class QuaraticEquation extends Equation{
+    
+    double root1;
+    double root2;
+    public Double[] solve() {
+    	
+    	Double [] array = getCoefficientsFromConsole();
+    	try{
+    		if (array.length !=3) throw new IllegalArgumentException ("The number of arguments "
+    				+" for quadratic exception is incorrect " );
+    	}catch(IllegalArgumentException e){
+    		e.getMessage();
+    	}
+    	double a = array[0];
+    	double b = array [1];
+        double c = array [2];
+        
+        if(a != 0 && b!= 0 && c != 0){
+        	double discriminant  = Math.sqrt(b * b - 4 * a * c);
+       	 
+            root1 = (-b +  discriminant ) / (2*a) ;
+            root2 = (-b -  discriminant ) / (2*a) ;
+              
+        }else if(a != 0.0 && b!= 0.0 && c == 0.0){
+        	 root1 = 0 ;
+             root2 = -b/a ;
+        }else if(a == 0.0 && b!= 0.0 && c != 0.0){
+         }
+        
+        Double [] result = {root1,root2};
+    	return result ;
+    }
+    @Override
+    public String printSolution(Double [] arr) {
+		return "root1 : " + arr[0] +"root2 :  " + arr[2] ; 
+	} 
+}

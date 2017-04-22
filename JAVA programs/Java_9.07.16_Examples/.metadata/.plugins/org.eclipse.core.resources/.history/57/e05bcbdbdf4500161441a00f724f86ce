@@ -1,0 +1,26 @@
+
+class Duck {
+  private int size ;
+  
+  private static int numOfDucks;
+  int getSize () {
+	  return size;
+  }
+  
+  void SetSize (int size){
+	  this.size = size;
+  }
+  
+  Duck{
+	 numOfDucks++; 
+  }
+  
+  public static void main(String[] args){
+	  for(int i = 0 ; i <10 ; i++){
+		  Duck ob = new Duck();
+	  }
+	
+	  System.out.println ("Numb of duck is " + numOfDucks);  
+  }
+  
+}

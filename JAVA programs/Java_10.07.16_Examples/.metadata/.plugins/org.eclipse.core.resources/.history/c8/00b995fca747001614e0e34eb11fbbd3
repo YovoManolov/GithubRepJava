@@ -1,0 +1,5 @@
+package variablesInInterfaces;
+
+interface SharedConstants {
+
+}

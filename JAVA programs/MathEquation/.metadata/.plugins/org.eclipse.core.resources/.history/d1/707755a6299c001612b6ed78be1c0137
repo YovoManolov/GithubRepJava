@@ -1,0 +1,24 @@
+package mathEquations;
+
+import java.util.InputMismatchException;
+
+public class LinearEquation extends Equation {
+	 LinearEquation() throws InputMismatchException{
+		    super.coefficients = new double[2];
+		    super.getCoefficientsFromConsole();
+		  }
+		  LinearEquation(double[] coefficients) throws InputMismatchException{
+		    super(coefficients);
+		    if(coefficients.length!=2) throw new InputMismatchException("Linear Equation has two coefficients");
+		  }
+		  LinearEquation(double a, double b){
+		    super(a, b);
+		  }
+		  public double[] solve() throws SolutionException{
+		    if(super.coefficients[0]==0){
+		      if(super.coefficients[1]==0) throw new SolutionException("All x are solutions");
+		      else throw new SolutionException();
+		    }
+		    return new double[]{super.coefficients[0]/super.coefficients[1]};
+		  }
+}

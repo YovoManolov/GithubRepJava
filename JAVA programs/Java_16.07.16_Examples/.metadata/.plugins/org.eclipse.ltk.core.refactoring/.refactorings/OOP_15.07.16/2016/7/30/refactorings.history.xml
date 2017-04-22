@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract local variable &apos;q2&apos; from expression &apos;this.q=q&apos;&#x0D;&#x0A;- Original project: &apos;OOP_15.07.16&apos;&#x0D;&#x0A;- Variable name: &apos;q2&apos;&#x0D;&#x0A;- Variable expression: &apos;this.q=q&apos;" description="Extract local variable &apos;q2&apos;" final="false" id="org.eclipse.jdt.ui.extract.temp" input="/16.07.16&lt;JavaWorld{PC2.java" name="q2" replace="false" selection="661 10" stamp="1468925419051" version="1.0"/>
+</session>

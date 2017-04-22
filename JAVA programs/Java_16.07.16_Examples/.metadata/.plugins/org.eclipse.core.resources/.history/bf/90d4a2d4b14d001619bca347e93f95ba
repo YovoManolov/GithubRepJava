@@ -1,0 +1,10 @@
+package Deadlock;
+
+class SuspendResume {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

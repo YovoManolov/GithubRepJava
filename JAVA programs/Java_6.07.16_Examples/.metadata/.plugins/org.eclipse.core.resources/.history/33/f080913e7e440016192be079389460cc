@@ -1,0 +1,27 @@
+
+class superEx {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+       B ob1 = new B(5,4);
+       ob1.show();
+	}
+
+}
+
+class A {
+	int i;
+	
+}
+class B extends A {
+	int i;
+	B(int i,int b ){
+		super.i=i;
+		i=b;
+	}
+	void show(){
+		System.out.println("I form superclass : " + super.i);
+		System.out.println("I form subclass : " + i);
+	}
+	
+}

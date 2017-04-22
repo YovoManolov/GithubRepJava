@@ -1,0 +1,16 @@
+package interfaceExample;
+
+public class BetterProduct extends Product throws RuntimeException e{
+	
+	public BetterProduct(int id,int quantity , String name){
+		super(id,name,quantity);
+		}	
+
+    @Override
+	 public int buy(int quantity){
+          int productId = super.buy(quantity);
+          if(productId == -1){
+        	  throw new RuntimeException("There are no more such items");
+          }else return productId; 
+    }
+} 	

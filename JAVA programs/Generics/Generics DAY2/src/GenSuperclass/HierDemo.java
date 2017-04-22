@@ -1,0 +1,13 @@
+package GenSuperclass;
+
+class HierDemo {
+
+	public static void main(String[] args) {
+		Gen<Double> y = new Gen<Double>(99.9999322);
+		Gen2<String,Double> x = new Gen2<String,Double>("Value is : " , 99.9999322);
+        
+		System.out.println(y.getob());
+		System.out.println( x.getob()  + x.getob2());
+	}
+
+}

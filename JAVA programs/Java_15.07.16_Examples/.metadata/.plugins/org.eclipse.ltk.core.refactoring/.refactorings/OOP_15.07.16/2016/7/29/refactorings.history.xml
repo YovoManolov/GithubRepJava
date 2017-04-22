@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;Downloader.java&apos; to &apos;OOP_15.07.16/src/Threads&apos;&#x0D;&#x0A;- Original project: &apos;OOP_15.07.16&apos;&#x0D;&#x0A;- Destination element: &apos;OOP_15.07.16/src/Threads&apos;&#x0D;&#x0A;- Original element: &apos;Downloader.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;Threads" element1="/src&lt;{Downloader.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1468618982042" units="1" version="1.0"/>
+</session>

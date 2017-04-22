@@ -1,0 +1,13 @@
+package studentArrayListTest;
+
+class Student {
+    long fn;
+    String name ;
+    int age;
+    
+    Student (long fn , String n , int a) {
+    	this.fn = fn;
+    	name = n;
+    	age = a;
+    }
+}

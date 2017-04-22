@@ -1,0 +1,28 @@
+package example5;
+
+class GenericFunctionalInterfaceDemo {
+
+	public static void main(String[] args) {
+		SameFunction <String> reverse = (str) -> {
+			String result = " " ;
+			int i;
+			
+			for(i = str.length() -1; i>= 0; i-- ){
+				result += str.charAt(i);
+			}
+			return result;
+		};
+		
+		System.out.println("Reverse string of \"kakwo\"  " + reverse.function("Kakwo"));
+	    
+		SameFunction <Integer> factorial = (n) -> {
+			int result = 1;
+			for(int i= 1; i <= n; i++)  result *= i;
+			//362880
+			return result;
+			};
+     
+		System.out.println("Fact of 9 is " + factorial.function(9));
+	}
+
+}

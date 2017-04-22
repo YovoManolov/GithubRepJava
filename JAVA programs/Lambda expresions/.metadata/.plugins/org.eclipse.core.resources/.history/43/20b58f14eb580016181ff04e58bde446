@@ -1,0 +1,27 @@
+package example7;
+
+interface DoubleNumericArrayFunc {
+     double func(double [] n) throws EmptyArrayException;
+}
+
+class EmptyArrayException extends Exception {
+	EmptyArrayException(){
+		super("ArrayEmpty");
+	}
+}
+
+class LambdaExceptionDemo {
+	public static void main(String args []) throws EmptyArrayException {
+		double [] values = {1.0,2.0,3.0,4.0};
+		
+		DoubleNumericArrayFunc average = (n) -> {
+			double sum = 0  ;
+			for(int i = 0; i < values.length; i++ ) sum += values[i];
+	        return sum /values.length;
+		};
+	 
+		System.out.println("The average value is " + average.func(values));
+	  //This throws EmptyArrayException
+		System.out.println("Exception " + average.func(new double[0]));
+	}
+}

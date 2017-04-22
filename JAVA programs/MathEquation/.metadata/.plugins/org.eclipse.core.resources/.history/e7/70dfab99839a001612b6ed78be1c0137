@@ -1,0 +1,23 @@
+package mathEquations;
+
+//земеделските парцели се характеризират с Аria : size 
+// type (nasajdeniq ) (Ако не е fruits or vegetables ne e izpylneno throws AreaException)
+// amount (kolichestwo producti);
+//amount >= 0 && amount < size*100;
+// syzdawam Exception Area Exception {Когато 2те условия горе не са изпълнини се хвурля }
+//
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		LinearEquation le = new LinearEquation ();
+		Double[] root = le.solve();
+		System.out.println("The root of linear Equation is " + root[0]);
+		QuaraticEquation qe = new QuaraticEquation();
+         Double [] roots = new Double[2];
+         roots = qe.solve();
+         System.out.println("root1 "+ roots[0] + "root2 " + roots[1]);
+         
+	}
+
+}

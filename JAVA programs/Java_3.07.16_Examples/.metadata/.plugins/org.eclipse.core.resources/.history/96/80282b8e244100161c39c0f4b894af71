@@ -1,0 +1,30 @@
+
+
+class Box {
+   double width;
+   double height;
+   double depth;
+}
+
+class BoxDemo {
+	public static void main(String[] args) {
+		Box myBox = new Box () , myBox2 = new Box() ;
+		double vol , vol2 ; //volume  (obem)
+		
+		
+		myBox.width = 100;
+		myBox.height = 20;
+		myBox.depth = 15;
+		
+		myBox2.width = 10;
+		myBox2.height = 20;
+		myBox2.depth = 5;
+		
+		vol = myBox.width * myBox.height * myBox.depth ;
+		vol2 = myBox2.width * myBox2.height * myBox2.depth ;
+			
+		System.out.println("Volume is : " + vol);
+		System.out.println("Volume is : " + vol2);
+	}
+
+}

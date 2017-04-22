@@ -1,0 +1,18 @@
+package chapter1.examples;
+
+
+public class HelloWorld {
+       public static void main (String[] args){
+    	   
+    	   int firstNumber;
+    	   int secondNumber , answer ;
+    	   
+    	   firstNumber=3;
+    	   secondNumber=20; 
+    	   
+    	   answer = secondNumber % firstNumber;
+    	   
+    	   System.out.println("Total modulus" +  answer);
+    	   
+       }
+}

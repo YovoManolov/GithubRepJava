@@ -1,0 +1,44 @@
+package RACE;
+
+public class Racer implements Runnable {
+   public static String winner;
+   public void race(){
+	  for(int distance = 1 ; distance <= 100 ; distance ++ ){
+		   System.out.println("Distance covered by "+Thread.currentThread().getName()+ "is:" + distance + "meters");
+		   if(distance == 30 && Thread.currentThread().getName() == "Hare"){
+			   try{
+				   System.out.println("The current thread "+Thread.currentThread().getName() +"is sleeping ");
+				   Thread.sleep(1000*10);
+			   }catch(InterruptedException e){
+				   e.printStackTrace();
+			   }
+		   }
+		   boolean isRaceWon = this.isRaceWon(distance);
+		   if(isRaceWon){
+		      break;
+	       }    
+      } 
+}
+
+ private boolean isRaceWon(int totalDistaceCovered){
+	 boolean isRaceWon = false;
+	 if((Racer.winner == null) && (totalDistaceCovered == 100)){
+		 String winnerName = Thread.currentThread().getName();
+		 Racer.winner = winnerName; // seting the winner Name;
+		 System.out.println("Winner is " + winnerName);
+		 isRaceWon = true;	 
+	 }
+		 else if (Racer.winner == null){
+			 isRaceWon = false;
+		 }
+		 else if (Racer.winner != null){
+			 isRaceWon = true;
+		 }
+	 return isRaceWon;
+}
+
+	 public void run(){
+ 
+	 }
+}
+	 

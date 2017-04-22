@@ -1,0 +1,5 @@
+package Interfaces2;
+
+class FixedStack {
+
+}

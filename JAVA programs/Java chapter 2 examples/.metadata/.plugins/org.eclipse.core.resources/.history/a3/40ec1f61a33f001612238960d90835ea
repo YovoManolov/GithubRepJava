@@ -1,0 +1,13 @@
+
+public class ChareExample1 {
+
+	public static void main(String[] args) {
+		
+		char char1, char2 ;
+		
+		char1 = 89 ;
+		char2 = 'B';
+		
+		System.out.println(char1 + " " + char2 " " );
+		
+}

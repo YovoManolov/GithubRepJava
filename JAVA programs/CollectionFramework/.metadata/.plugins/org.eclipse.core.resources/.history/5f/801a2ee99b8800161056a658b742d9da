@@ -1,0 +1,17 @@
+package ComparatatorExample;
+import java.util.*;
+public class Main {
+
+	public static void main(String[] args) {
+		
+		LinkedList <Student> ll =  new LinkedList <Student> ();
+		
+		ll.add(new Student(1234435 ,"student", 23));
+		ll.add(new Student(1234435 ,"atudent2", 22));
+		ll.add(new Student(1234435 ,"btudent3", 21));
+		
+		System.out.println("Comparison by name");
+
+	}
+
+}

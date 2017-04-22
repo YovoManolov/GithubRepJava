@@ -1,0 +1,5 @@
+package childrens;
+
+class AgeComparator implements Comparable<T> {
+
+}

@@ -1,0 +1,12 @@
+package childrens;
+
+import java.util.Comparator;
+
+public class Main implements Comparator<T> {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

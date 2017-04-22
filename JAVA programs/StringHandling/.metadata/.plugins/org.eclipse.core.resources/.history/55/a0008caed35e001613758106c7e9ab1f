@@ -1,0 +1,15 @@
+package execDemo2;
+
+import java.io.IOException;
+
+public class ExecDemo2 {
+	public static void main(String[] args) {
+		try{
+			ProcessBuilder proc = 
+					new ProcessBuilder("notepad.exe","testfile");
+			proc.start();
+		}catch (IOException e) {
+			System.out.println("IOError executing notepad. ");
+		}
+	}
+}

@@ -1,0 +1,13 @@
+package MethodReferencesWithGenerics;
+
+class ConstrRefDemo {
+	public static void main(String[] args) {
+		MyFunc <Integer> myClassCons = MyClass <Integer>::new;	
+		
+		MyClass <Integer> mc = myClassCons.func(100);
+		// Use the instance of MyClass just created.
+		System.out.println("val in mc is " + mc.getVal( ));
+
+	}
+
+}

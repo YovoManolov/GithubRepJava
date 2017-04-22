@@ -1,0 +1,32 @@
+
+class EnumDemo3 {
+
+	public static void main(String[] args) {
+		Apple ap;
+		// Display price of Winesap;
+		
+		System.out.println("Winesap costs" + Apple.WineSap.getPrice() + "cents. \n ");
+		
+        // Display Apples and prices
+		System.out.println("All Apples and prices");
+		
+		for (Apple a: Apple.values()){
+			System.out.println(a + " costs "+ a.getPrice() + "cents ." );
+		}
+	}
+
+}
+
+enum Apple{
+	Johnatan(10),GoldenDel(9),RedDel(12),WineSap(15), Cortland(8);
+	
+	private int price; //price of each apple
+	
+	//Constructor
+	Apple(int p) {
+		price  = p;
+	}
+	int getPrice () {
+		return price;
+	}
+}

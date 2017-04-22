@@ -1,0 +1,25 @@
+
+public class Recursion2 {
+
+	public static void main(String[] args) {
+		 RecTest ob = new ReckTest (10);
+		 ob.printarray(10);
+	}
+
+}
+
+class RecTest {
+	int values [];
+	
+	RecTest (int i){
+		values = new int [i];
+	}
+	
+	// display array recursivly 
+	void printarray (int i){
+		if(i == 0) return ;
+		else printArray(int i);
+		System.out.println("["+ (i-1) + "]"   + values[i - 1]);
+		
+	}
+}

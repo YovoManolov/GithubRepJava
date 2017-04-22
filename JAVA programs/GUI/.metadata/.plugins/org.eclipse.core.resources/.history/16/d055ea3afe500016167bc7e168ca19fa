@@ -1,0 +1,22 @@
+import javax.swing.*;
+
+public class Combo extends JFrame{
+	  Combo(){
+		  
+		  String country [] = {"Bulgaria"," Germany" ,"England ", "Portugal"} ;
+		  
+		  JComboBox cb = new JComboBox(country);
+		  
+		   cb.setBounds(50,50,90,20);
+		   add(cb);
+		   
+		setVisible(true);
+		 setSize(400,500);
+		 setLayout(null);
+	  }
+		
+		public static void main(String[] args) {
+			new Combo();
+		}
+
+}

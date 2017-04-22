@@ -1,0 +1,6 @@
+package MethodReferencesWithGenerics;
+
+interface MyFunc {
+    MyClass func( int n);
+}
+

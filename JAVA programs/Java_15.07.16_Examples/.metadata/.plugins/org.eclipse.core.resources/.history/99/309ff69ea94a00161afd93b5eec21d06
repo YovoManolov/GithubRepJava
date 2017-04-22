@@ -1,0 +1,29 @@
+
+public class NestedTryBlockDemo {
+
+	public static void main(String[] args) {
+		try
+		{
+			try{
+				int a[] = new int [5];
+				a[15] = 4;
+				
+				int b = 30 ;
+					b =	b / 0 ;
+			}catch (ArithmeticException arithmeticException)
+				{
+					arithmeticException.printStackTrace();
+				}
+			    System.out.println("Other statement");
+		}catch (ArrayIndexOutOfBoundsException exception)
+		     {
+			  exception.printStackTrace();
+		     }
+		finally{
+			System.out.println("I get executed every time irrespective of the situation ! ");
+		}
+		
+		System.out.println("normal flow..");
+	}
+
+}

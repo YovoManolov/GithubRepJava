@@ -1,0 +1,33 @@
+package mathEquations;
+
+import java.util.InputMismatchException;
+
+public class QuadraticEquation extends Equation{
+	QuadraticEquation(){
+	    super.coefficients = new double[3];
+	    super.getCoefficientsFromConsole();
+	  }
+	  QuadraticEquation(double[] coefficients) throws InputMismatchException{
+	    super(coefficients);
+	    if(coefficients.length!=3) throw new InputMismatchException("Quadratic Equation has three coefficients");
+	  }
+	  QuadraticEquation(double a, double b, double c){
+	    super(a, b, c);
+	  }
+	  public double[] solve() throws SolutionException{
+	    if(super.coefficients[0]==0){
+	      LinearEquation le = new LinearEquation(super.coefficients[0], super.coefficients[1]);
+	      return le.solve();
+	    }
+	    double discriminant = super.coefficients[1]*super.coefficients[1]-4*super.coefficients[0]*super.coefficients[2];
+	    if(discriminant<0){
+	      throw new SolutionException("No real solutions");
+	    }
+	    else{
+	      double[] solution = new double[2];
+	      solution[0] = (-super.coefficients[1]+Math.sqrt(discriminant))/(2*super.coefficients[0]);
+	      solution[1] = (-super.coefficients[1]-Math.sqrt(discriminant))/(2*super.coefficients[0]);
+	      return solution;
+	    }
+	  }
+}

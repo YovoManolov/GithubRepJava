@@ -1,0 +1,120 @@
+ public void addAppointmentToDocument (Appointment app){
+        try{
+            ++counter;
+            Element Appointment_Element = new Element("AppointmentElement");
+            
+            Element name = new Element("name");
+            name.setAttribute(new Attribute("name",app.getNameOfAppointment()));
+            
+            Element description = new Element("description");
+            description.setAttribute(new Attribute
+                                         ("description",app.getDescription()));
+            Element dateOfEditing = new Element("DateOfEditing");
+            dateOfEditing.setAttribute(new Attribute
+                                      ("dateOfEditing",app.getDateOfEditing()));
+            
+            Element typeOfAppointment= new Element("typeOfAppointment");
+            if(app.getTypeOfAppointment().equals(TypeOfAppointments.meeting)){
+                typeOfAppointment.setAttribute(new Attribute
+                                                ("typeOfEvent","meeting"));
+            }else{
+               typeOfAppointment.setAttribute(new Attribute
+                                                ("typeOfEvent","task"));
+            }
+            
+            Appointment_Element.addContent(name);
+            Appointment_Element.addContent(description);
+            Appointment_Element.addContent(dateOfEditing);
+            Appointment_Element.addContent(typeOfAppointment);
+            
+         /*   
+            if(counter == 1){
+            rootElement.addContent(Appointment_Element);
+            XMLout.output(doc, fw);
+            }else{
+               rootElement = doc.getRootElement();
+               List <Element> Le = rootElement.getChildren();
+               for(int index = 0 ;index < Le.size() ;index++ ){
+                   rootElement.removeContent(Le.get(index));
+               }
+               XMLout.output(doc, fw);
+                
+               Le.add(Appointment_Element);
+               for(int index = 0 ;index < Le.size() ;index++ ){
+                   rootElement.addContent(Le.get(index));
+               }
+              XMLout.output(doc, fw);
+              ______this was under comment_______
+              doc.detachRootElement();
+              rootElement.addContent(Appointment_Element);
+              XMLout.output(rootElement, fw);
+              __________________________________
+            }
+          
+        }cat    ch(IOException e){
+            System.out.println(" " + e.getMessage() );
+        }
+        */
+    }
+    
+   
+    public void deleteAppointmentFromDocument (Appointment app){
+     
+        try{
+            List <Element> appointmentElementsList = new ArrayList <Element>();
+            SAXBuilder builder = new SAXBuilder();
+            Document doc1 = builder.build(new File(file));
+            Element rootElement = doc1.getRootElement();
+            appointmentElementsList = rootElement.getChildren();
+            for(int i=0 ; i < appointmentElementsList.size() ; i++){
+                Element e =  appointmentElementsList.get(i);
+                Attribute name = e.getAttribute("name");
+                if(name.getValue().
+                        equals(app.getNameOfAppointment())){
+                   rootElement.removeChild(appointmentElementsList.get(i)
+                                                                .getName());
+                }
+            }
+        }catch(JDOMException | IOException e){
+            System.out.println(" " + e.getMessage() );
+        }
+    }
+    public Appointment searchForElementByName(String name){
+        Appointment currentApp = null ;  
+            try{
+              String currentName = null, currentDescription = null;
+              String currentDateOfEditing  = null;
+              TypeOfAppointments currentTypeOfAppointment = null;
+
+              List<Element> appointmentElementsList = new ArrayList <Element>();
+              SAXBuilder builder = new SAXBuilder();
+              Document doc1 = builder.build(new File(file));
+              Element rootElement = doc1.getRootElement();
+              appointmentElementsList = rootElement.getChildren();
+              for(int i=0 ; i < appointmentElementsList.size() ; i++){
+                  if(name.equalsIgnoreCase(appointmentElementsList.get(i).
+                                              getChild("name").getValue())){
+
+
+                     currentName = appointmentElementsList.get(i).
+                                              getChild("name").getValue() ;
+                     currentDescription = appointmentElementsList.get(i).
+                                              getChild("description").getValue();
+                     currentDateOfEditing = appointmentElementsList.get(i).
+                                            getChild("dateOfEditing").getValue();
+                     currentTypeOfAppointment = appointmentElementsList.get(i).
+                                         getChild("typeOfAppointment").getValue();
+
+                  }
+              }
+              currentApp = new Appointment(currentName,currentDescription,
+                      currentDateOfEditing,currentTypeOfAppointment);
+
+              return currentApp;
+            }catch(JDOMException | IOException e){
+              System.out.println(" " + e.getMessage() );
+            }
+       return currentApp;
+     }
+	 
+	 wwhm.mapOfAppointments.put(name.get, value)

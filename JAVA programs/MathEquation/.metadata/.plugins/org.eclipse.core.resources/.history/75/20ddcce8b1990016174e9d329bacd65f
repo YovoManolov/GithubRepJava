@@ -1,0 +1,16 @@
+package mathEquations;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		LinearEquation le = new LinearEquation ();
+		Double root = le.solve();
+		System.out.println("The root of linear Equation is " + root);
+		QuaraticEquation qe = new QuaraticEquation();
+         Double [] roots = new Double[2];
+         roots = qe.solve();
+         System.out.println("root1 "+ roots[0] + "root2 " + roots[1]);
+         
+	}
+
+}

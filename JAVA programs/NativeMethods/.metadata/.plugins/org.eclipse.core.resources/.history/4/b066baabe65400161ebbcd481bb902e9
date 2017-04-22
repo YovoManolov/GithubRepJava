@@ -1,0 +1,20 @@
+package generics;
+
+class Gen<T> {
+   T ob;
+   
+   //Pass the constructor a reference to an object  of type T
+   
+    Gen(T o) {
+    	ob = o;
+    }
+    
+    T getob(){
+    	return ob;
+    }
+    
+    //show type of T
+    void  showType(){
+    	System.out.println("The name of T is : " + ob.getClass().getName());
+    }
+}

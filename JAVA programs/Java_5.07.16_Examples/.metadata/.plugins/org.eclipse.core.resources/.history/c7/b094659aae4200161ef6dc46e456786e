@@ -1,0 +1,29 @@
+
+public class Recursion2 {
+
+	public static void main(String[] args) {
+		 RecTest ob = new RecTest(10);
+		 int i;
+		 
+		 for(i= 0 ; i < 10;i ++ ) ob.values[i] = i;
+		 ob.printArray (9);
+	}
+
+}
+
+class RecTest {
+	int values [];
+	
+	//suzdava se masiv ot tolkova elementa , kolkoto sa
+	// poddadeni pri syzdavaneto na klasa
+	RecTest (int i){
+		values = new int [i];
+	}
+	
+	// display array --  recursivly 
+	void printArray (int i){
+		if(i == 0) return ;  // uslovie za kraj na rekursiqta
+		else printArray (i - 1); 
+		System.out.println("["+ (i-1) + "]"  + values[i - 1]);
+	}
+}

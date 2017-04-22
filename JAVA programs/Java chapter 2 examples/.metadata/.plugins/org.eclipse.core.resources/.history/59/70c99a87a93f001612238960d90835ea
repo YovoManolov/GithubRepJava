@@ -1,0 +1,18 @@
+
+public class ChareExample1 {
+
+	public static void main(String[] args) {
+		
+		int i ;
+		char char2;
+		
+		i = 0 ;
+		char2 = 'B';
+		
+		for(i ; i< 10 ; i++){
+			System.out.println("char 2 is   " + char2 );
+			++char2;
+		}
+		
+	}		
+}

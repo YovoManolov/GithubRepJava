@@ -1,0 +1,22 @@
+package comparableInterface;
+
+	class Student implements Comparable <Student> {
+		   
+		   int faculityNumber ;
+		   String name;
+		   int age;
+		   
+		   Student(int faculityNumber, String name , int age){
+			   this.faculityNumber = faculityNumber;
+			   this.age = age;
+			   this.name = name;
+		   }
+			
+			public int compareTo( Student student){
+				if(age == student.age) return 0;
+				if(age > student.age )return -1;
+				else return 1;
+				
+		   }
+
+	}

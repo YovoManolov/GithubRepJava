@@ -1,0 +1,64 @@
+package JavaWorld;
+
+class PC {
+
+	public static void main(String[] args) {
+		Q q = new Q();
+		for(int i = 0 ; i<200 ; i++){
+			new Producer (q);
+			new Consumer (q);
+		}
+		System.out.println("Press Contr - C to STOP !!! ");
+
+	}
+}
+
+class Q {
+	int n ;
+	
+	synchronized int get (){
+		System.out.println("Got: " + n);
+		return n;
+	}
+	synchronized void put (int n){
+		this.n = n;
+		System.out.println("Put: " + n);
+	}
+	
+} 
+
+class Producer implements Runnable {
+	Q q;
+	
+	Producer(Q q){
+		this.q = q;
+		new Thread(this , "Producer").start();    // Runnable target , name ! - THREAD
+	}
+	
+	public void run(){
+		int i = 1;
+		
+		while(true){
+			if(i == 200){
+				return;
+			}
+			q.put(i++);
+		}
+	}
+}
+
+class Consumer implements Runnable {
+	
+	Q q;
+	
+	Consumer (Q q){
+		this.q = q;
+		new Thread (this , "Consumer").start();
+	}
+	
+	public void run (){
+		while(true){
+			q.get();
+		}
+	}
+}

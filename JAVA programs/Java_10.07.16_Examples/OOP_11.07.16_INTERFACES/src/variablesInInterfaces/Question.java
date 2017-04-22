@@ -1,0 +1,20 @@
+
+package variablesInInterfaces;
+
+import java.util.Random;
+
+class Question implements SharedConstants {
+     Random rand = new Random();
+     
+    int ask(){
+    	 int prob = (int) (100 * rand.nextDouble()); 
+    	 //nextDouble comes from // java.util.Random // 
+    	 //it generates double number from 0.0 to 1.0
+    	 if(prob < 30) return NO;   
+    	 else if(prob < 60) return YES;
+    	 else if(prob < 75) return MAYBE;
+    	 else if(prob < 98) return SOON;
+    	 
+    	 else return NEVER; 
+     }
+}

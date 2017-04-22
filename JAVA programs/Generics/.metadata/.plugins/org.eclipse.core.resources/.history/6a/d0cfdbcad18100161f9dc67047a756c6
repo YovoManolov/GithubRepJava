@@ -1,0 +1,33 @@
+package studentArrayListTest;
+import java.util.*;
+class StudentArrayListTest {
+
+	public static void main(String[] args) {
+		
+		Student first  = new Student(123123,"Mitko",19);
+		Student second  = new Student(123129896,"Mitko",21);
+		Student third  = new Student(1276576,"Mitko",22);
+		
+		ArrayList <Student> sal = new ArrayList <Student> ();
+		
+		sal.add(first);
+		sal.add(second);
+		sal.add(third);
+		
+		System.out.println(sal.isEmpty());
+		Iterator <Student> it = sal.iterator();
+		
+		
+		System.out.println("printet with itterator");
+		while(it.hasNext()){
+		 	System.out.println(it.next());
+		}
+		
+		System.out.println("Printed with for-each");
+		for(Student obj : sal){
+			System.out.println(obj);
+		}
+		
+	}
+
+}

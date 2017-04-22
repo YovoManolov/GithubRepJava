@@ -1,0 +1,36 @@
+
+public class Homework1 {
+
+	public static void main(String[] args) {
+        int i , j ;  
+        int k;
+       
+        
+		int numbers [][] = new int [12][];
+		for(i=0; i<12;i++){
+			for(j = 0 ;j< i+1 ;  j++){
+				numbers[i] = new int [j];
+				continue;
+			}
+		}
+		
+		for(i=0; i<12;i++){
+			for(j = 0 ;j< i ;  j++){
+				k = numbers[i-1][j] + numbers[i-1][j-1];
+				numbers[i][j] = k;
+				continue;
+			}
+		}
+		
+		
+		for(i=0; i<12;i++){
+			for(j = 0 ;j< i ; j++){
+			
+				System.out.print("  " +numbers[i][j] );
+			}
+			System.out.println(" ");
+		}
+	   
+	}
+
+}

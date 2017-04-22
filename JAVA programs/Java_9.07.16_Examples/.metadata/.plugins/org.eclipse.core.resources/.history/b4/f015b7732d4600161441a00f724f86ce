@@ -1,0 +1,6 @@
+package Interfaces;
+
+interface MyInterface {
+  
+	void callback(int param);
+}

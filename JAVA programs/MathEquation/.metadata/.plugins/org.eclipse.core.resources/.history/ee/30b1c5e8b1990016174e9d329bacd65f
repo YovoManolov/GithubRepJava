@@ -1,0 +1,31 @@
+package mathEquations;
+
+public class LinearEquation extends Equation {
+  @Override
+	public Double solve() {
+		Double [] array = getCoefficientsFromConsole();
+		try{
+    		if (array.length !=2) throw new IllegalArgumentException ("The number of arguments for"
+    				+ " linear equation is incorrect");
+    	}catch(IllegalArgumentException e){
+    		e.getMessage();
+    	}
+		
+	  	double b = array[0];
+	  	double c = array[1];
+	  	double root1 = 0.0;
+	  	// bx + c = 0;
+	  	if(b != 0 && c != 0){
+	  		root1 = - c/b;
+	  	}else if(b != 0 && c == 0){
+	  		root1 = 0;
+	  	}else{
+	  		System.out.println("There was uncheked situation");
+	  	}
+	  	return root1;
+	}
+    @Override
+    	public String printSolution(Double [] arr) {
+    		return "root1 : " + arr[0] ; 
+    	} 
+}

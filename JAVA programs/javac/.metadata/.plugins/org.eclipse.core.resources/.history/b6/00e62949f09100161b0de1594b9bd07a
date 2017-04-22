@@ -1,0 +1,27 @@
+package interfaceExample;
+
+public class Main {
+	public static void main(String[] args) {
+		Buyable []b = new Buyable [2];
+		try {
+			b[0] = new Product(1234,"product1",30);
+			b[1] = new BetterProduct(12345,32,"product2");
+			
+			for(int i = 0 ;i<2; i++){
+				System.out.println("The names of the products are : " + b[i].getName());
+			}
+			
+			b[0].buy(35);
+			b[1].buy(5);
+			
+		}catch(ArrayIndexOutOfBoundsException e){
+			e.getMessage();
+		}catch(ArithmeticException e){	
+			e.getMessage();
+		}catch(RuntimeException e){
+			e.getMessage();
+		}
+
+	}
+
+}

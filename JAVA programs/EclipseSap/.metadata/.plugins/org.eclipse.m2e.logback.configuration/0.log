@@ -1,0 +1,2 @@
+2017-01-05 21:36:55,331 [Worker-2] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2017-01-05 21:36:56,692 [New I/O client worker #1-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo.maven.apache.org/maven2/BORGCalendar/BORGCalendar/1.8.2/BORGCalendar-1.8.2.pom

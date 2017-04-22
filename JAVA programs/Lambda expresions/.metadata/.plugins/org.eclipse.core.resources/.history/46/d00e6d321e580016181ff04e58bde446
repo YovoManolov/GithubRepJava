@@ -1,0 +1,20 @@
+package example2;
+
+class LambdaDemo2 {
+
+	public static void main(String[] args) {
+		//|| −> can be verbalized as “becomes” or “goes to.”
+		NumericTest isEven = (n) -> (n % 2) == 0; // test returns boolean value 
+        if (isEven.test(10)) System.out.println("10 is even");
+        if (isEven.test(8)) System.out.println("8 is even");
+        
+        //||| −> can be verbalized as “becomes” or “goes to.”
+        
+        NumericTest isNonNeg = (n)->n >= 0;
+        
+        if(isNonNeg.test(9)) System.out.println("9 is non Negative");
+        if(isNonNeg.test(81)) System.out.println("81 is non Negative");
+        if(isNonNeg.test(-1)) System.out.println("-1 is non Negative");
+	}
+
+}

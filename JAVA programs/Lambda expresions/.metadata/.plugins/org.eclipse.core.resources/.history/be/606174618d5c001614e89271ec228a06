@@ -1,0 +1,30 @@
+package StringHandlingBegging;
+import java.util.Scanner;
+class MakeString {
+
+	public static void main(String[] args) {
+		char java [] = {'j','a','v','a'};
+        
+		String s1 = new String (java);
+		String s2 = new String (s1);
+		
+		String meth1 (String ob){
+		    String s = new String();
+		    
+		    Scanner in = new Scanner(System.in);
+		    System.out.println("Enter the index from witch to start ");
+		    int index ,number;
+		    index = in.nextInt();
+		    System.out.println("How many characters to take ? ");
+		    number = in.nextInt();
+		    for(int i = index ; i < (index + number); i++){
+		    	s += ob[i];
+		    }
+		}
+		
+		System.out.println(s1);
+		System.out.println(s2);
+		
+	}
+
+}

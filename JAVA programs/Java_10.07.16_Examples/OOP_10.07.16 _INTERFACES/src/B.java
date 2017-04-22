@@ -1,0 +1,17 @@
+import java.util.*;
+
+class B implements A.NastedIF{
+	Scanner userInputScanner =  new Scanner(System.in);
+	public boolean isNotNegative(int a){
+	
+		return a > 0 ? true :false ;
+	}
+	
+	public int getIntValue(){
+		int b;
+		System.out.println("Enter number a : ");
+		b = userInputScanner.nextInt();
+		
+		return b;
+	}
+}

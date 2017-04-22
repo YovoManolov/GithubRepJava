@@ -1,0 +1,12 @@
+
+class Wrap {
+
+	public static void main(String[] args) {
+	   String sOb = new String("yovo");
+	   int S = sOb.charValue();
+	   
+	   System.out.println(S + "  " + sOb);
+	}
+
+
+}

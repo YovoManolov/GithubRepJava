@@ -1,0 +1,18 @@
+
+public class forEach {
+
+	public static void main(String[] args) {
+		int a[] = new int [4] ,i, sum;
+		
+		for(i = 0 ; i<4  ;i++){
+			a[i] = i;
+		}
+        
+		for(int newArray : a) {
+			sum += newArray ;
+		}
+		
+		System.out.println(" " + sum);
+	}
+
+}

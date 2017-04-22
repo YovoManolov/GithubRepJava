@@ -1,0 +1,31 @@
+package lLaLTest;
+
+import java.util.*;
+class TestArrayLinked {
+
+	public static void main(String[] args) {
+		List<String> al = new ArrayList <String>();
+		List<String> ll = new LinkedList <String>();
+		
+		al.add("Stamat");
+		al.add("Dragan");
+		al.add("Petkan");
+		al.add("Ivan");
+		
+		ll.add("Sofia");
+		ll.add("Plovdiv");
+		ll.add("Blagoevgrad");
+		ll.add("Varna");
+		
+		for(String objll: ll){
+			System.out.println("Printing LinkedList: \n");
+			System.out.println(objll);
+		}
+		
+		for(String objal : al){
+			System.out.println("Printing ArrayList: \n");
+			System.out.println(objal);
+		}
+	}
+
+}

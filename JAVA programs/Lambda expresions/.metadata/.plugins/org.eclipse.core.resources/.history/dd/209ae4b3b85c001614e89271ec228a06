@@ -1,0 +1,33 @@
+package stringReplace;
+
+class StringReplace {
+
+	public static void main(String[] args) {
+		String org = "This is a test . This is, too. ";
+	    String search  = "is";
+		String sub = "was";
+		String result = "" ;
+		int i;
+		
+		do{
+			
+			// The loop check if there is any more 
+			//"is" caracter sequences in the array 
+			//and they are replaced by "was" sequences. 
+			
+			System.out.println(org);// First line 
+			i = org.indexOf(search); // search = "is"
+			
+			System.out.println("place index of 'is' " + i);//First index of is (i) -'2'
+			
+			if(i != -1){
+				//String substring(int startIndex, int endIndex)
+				result = org.substring(0,i);  
+				result = result + sub; //First Th + was = Thwas 
+				result = result +org.substring(i + search.length());
+				org = result;
+			}	
+		}while( i != -1);
+	}
+
+}

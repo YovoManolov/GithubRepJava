@@ -1,0 +1,14 @@
+package stringReplace;
+
+class StringReplace {
+
+	public static void main(String[] args) {
+	    String search  = "is";
+		String sub = "was";
+		String result = "" ;
+	
+		result = sub.concat(search);
+		System.out.println(result);
+	}
+
+}

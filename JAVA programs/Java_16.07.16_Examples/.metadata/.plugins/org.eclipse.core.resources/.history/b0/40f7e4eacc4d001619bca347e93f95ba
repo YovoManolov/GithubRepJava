@@ -1,0 +1,46 @@
+package TestMySelf;
+
+public class RaceDemo {
+
+	public static void main(String[] args) {
+		Racer racer = new Racer();
+		
+		 // (Runnable Arg ,String 1);
+		
+		ThreadGroup tg =  new ThreadGroup("Albania");
+		Thread firstThread = new Thread (tg, racer , "first"); // (ThreadGroup,Runnable Arg ,String 1);
+		Thread secondThread = new Thread (tg, racer ,"second"); // (ThreadGroup,Runable Arg ,String 1);
+		
+		tg =  new ThreadGroup("Algeria");
+		Thread thirdThread = new Thread (tg, racer , "third");
+		Thread fourthThread = new Thread (tg, racer , "fourth");
+		
+		tg =  new ThreadGroup("Argentina");
+		Thread fifthThread = new Thread (tg,racer ,"fifth");
+		Thread sixthThread = new Thread (tg,racer ,"sixth");
+		
+		tg = new ThreadGroup("Armenia");
+		Thread seventhThread = new Thread (tg, racer ,"seventh");
+		Thread eigthThread = new Thread (tg, racer , "eigth");
+		
+		tg = new ThreadGroup("Brazil");
+		Thread ninthThread = new Thread (tg,racer , "ninth");
+		Thread tenthThread = new Thread (tg,racer , "tenth");
+		
+
+		firstThread.start();
+		secondThread.start();
+		thirdThread.start();
+	    fourthThread.start(); 
+		fifthThread.start(); 
+		sixthThread.start(); 
+		seventhThread.start();
+		eigthThread.start(); 
+		ninthThread.start();
+		tenthThread.start();
+	    
+		
+	}   
+	   
+
+}

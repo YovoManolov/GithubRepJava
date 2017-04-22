@@ -1,0 +1,18 @@
+package Recursion;
+
+public class Recursion {
+	public static void main(String [] args){
+		 int number = 5;
+	       int result1 = factorial(number);
+	       System.out.println("The factoriel is " + result1);
+	     }
+		  
+	
+	public static int factorial(int n){
+		int result = 0;
+	    n *= n;
+	    if(n-1 != 0) factorial(n-1);
+	    result = n;
+		return result;
+	  }
+}

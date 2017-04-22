@@ -1,0 +1,31 @@
+import javax.swing.*;
+
+
+public class JTable {
+
+	JFrame f ;
+	
+	JTable(){
+		f = new JFrame();
+		
+		String data[][] = {{"101","Amit","670000"},
+				              {"102","Sachin","700000"},
+				                {"101","Jai","780000"}};
+		String column[] = {"ID","NAME","SELARY"};
+		
+		 JTable jt = new JTable(data,column);  
+		 jt.setBounds(30,40,200,300);
+		
+		JScrollPane sp = new JScrollPane(jt);
+		f.add(sp);
+		
+		f.setVisible(true);
+		f.setSize(300,400);
+		
+	}
+	public static void main(String[] args) {
+		new JTable();
+
+	}
+
+}

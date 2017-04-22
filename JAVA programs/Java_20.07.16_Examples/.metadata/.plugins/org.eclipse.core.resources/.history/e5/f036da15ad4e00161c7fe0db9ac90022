@@ -1,0 +1,18 @@
+
+class AutoBox5 {
+
+	public static void main(String[] args) {
+		Boolean b = true ;
+		if(b){
+			System.out.println("boolean b is true !!!");
+		}
+		
+        Character x  = 'c';
+        
+        char h1 = x;
+        
+        System.out.println("h1 : " + h1);
+		
+	}
+
+}

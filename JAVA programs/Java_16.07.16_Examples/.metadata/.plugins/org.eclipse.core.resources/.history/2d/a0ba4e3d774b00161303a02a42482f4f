@@ -1,0 +1,17 @@
+package YealdMethod;
+
+import java.lang.* ;
+ 
+public class YealdRunnable implements java.lang.Runnable {
+	
+	 @Override
+     public void run(){
+    	 System.out.println("Current thread " + Thread.currentThread().getName()
+    			 +"Priority: " + Thread.currentThread().getPriority());
+    	  
+    	 Thread.yield();
+    	 
+    	 System.out.println("Current thread " + Thread.currentThread().getName()
+    			 +" Priority: " + Thread.currentThread().getPriority()+ "End");
+     }
+}

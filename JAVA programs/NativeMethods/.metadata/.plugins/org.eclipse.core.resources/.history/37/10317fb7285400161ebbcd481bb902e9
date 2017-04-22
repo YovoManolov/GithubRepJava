@@ -1,0 +1,43 @@
+package generics;
+import generics.Gen;
+class GenDemo {	
+
+	public static void main(String[] args) {
+		/*First we creating Gen<Integer>  ob
+		 * Second : initializing the object
+		 * 
+		 * 
+ 		 * 
+		 * 
+		 * */
+		//Creating generic reference for Integers
+		Gen<Integer> iOb ;		
+		// creating a gen<Integer> obj and asign its reference to iOb.
+		// Notice  the use of  autoboxing to encapsulate the value 88 
+		//withid an Integer object.
+		
+		iOb =  new Gen<Integer>(88);
+		
+		// Show the type of data used by iOb.
+		
+		iOb.showType();
+		
+		//Get the value  in iOb . Notice that no cast is needed
+		
+		int v = iOb.getob();
+		System.out.println("Value of v : " + v);
+		System.out.println();
+		
+		Gen<String> sOb;
+		
+		sOb = new Gen<String> ("Yovo");
+		
+		sOb.showType();
+		
+		String str = sOb.getob();
+		 
+		System.out.println("Value of str is : " + str);
+		 
+	}
+
+}

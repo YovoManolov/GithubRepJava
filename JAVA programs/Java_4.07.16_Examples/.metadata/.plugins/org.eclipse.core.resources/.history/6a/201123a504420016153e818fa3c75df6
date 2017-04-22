@@ -1,0 +1,29 @@
+
+public class PassingObjectToMethod {
+
+	public static void main(String[] args) {
+	 Test ob1 = new Test (15, 12);
+	 
+	 System.out.println("a =  " + ob1.a + " b =  " + ob1.b);
+	 
+	 ob1.result(ob1);
+	 System.out.println("a =  " + ob1.a + " b =  " + ob1.b);
+
+	}
+
+}
+
+
+class Test {
+	int a ,b ;
+	
+	Test(int i, int j){
+		a = i;
+		b = j;
+	}
+	
+	void result(Test o) {
+		o.a /= 2;
+		o.b *= 2;
+	}
+}

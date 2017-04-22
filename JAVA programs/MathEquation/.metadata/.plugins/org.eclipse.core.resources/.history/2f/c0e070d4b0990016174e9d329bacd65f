@@ -1,0 +1,5 @@
+package landParcels;
+
+public class AreaException {
+
+}

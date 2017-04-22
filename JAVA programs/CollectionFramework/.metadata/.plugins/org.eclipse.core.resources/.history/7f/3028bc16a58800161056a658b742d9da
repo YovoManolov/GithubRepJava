@@ -1,0 +1,7 @@
+package childrens;
+
+import java.util.Comparator;
+
+class ParentComparator implements Comparator<T> {
+
+}

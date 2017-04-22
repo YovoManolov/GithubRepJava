@@ -1,0 +1,29 @@
+package ExceptionHandling;
+
+import java.util.Random;
+
+class HandleError {
+
+	public static void main(String[] args) {
+		Random r = new Random;
+		int a, b, c;
+		int result ;
+		int a  = 12345;
+		 
+		for(int i = 0 ; i < 50000 ;i++){
+			try{
+				 b = r.nextInt();
+				 c = r.nextInt();
+		        
+		        result = a / (b/c);
+			}
+			 catch(ArithmeticException e){
+				 System.out.println("Division by zero is not allowed");
+				 a = 0;
+			 }
+			System.out.println("a: " + a);
+		}
+
+	}
+
+}

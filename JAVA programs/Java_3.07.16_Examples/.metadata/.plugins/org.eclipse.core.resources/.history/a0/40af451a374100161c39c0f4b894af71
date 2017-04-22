@@ -1,0 +1,33 @@
+
+
+class Box {
+   double width;
+   double height;
+   double depth;
+   
+   void setDim (double w,double h , double d) {
+	   width = w;
+	   height = h;
+	   depth = d;
+   }
+   
+   double velume () {
+	   
+	   return  width * height * depth;
+	     
+   }
+}
+
+class BoxDemo {
+	public static void main(String[] args) {
+		Box myBox = new Box () , myBox2 = new Box() ;
+		
+		myBox.setDim(100 ,20, 13);
+		myBox2.setDim(10 ,20, 5);
+		
+		System.out.println("The velume is : " + myBox.velume());
+		System.out.println("The velume 2 is : " + myBox2.velume());
+			
+	}
+
+}

@@ -1,0 +1,35 @@
+
+
+class Box {
+   double width;
+   double height;
+   double depth;
+   
+   double velume () {
+	   double velume;
+	     velume =  width * height * depth;
+	     return velume ;
+	     
+   }
+}
+
+class BoxDemo {
+	public static void main(String[] args) {
+		Box myBox = new Box () , myBox2 = new Box() ;
+		double Velume;
+		
+		myBox.width = 100;
+		myBox.height = 20;
+		myBox.depth = 15;
+		
+		myBox2.width = 10;
+		myBox2.height = 20;
+		myBox2.depth = 5;
+		
+		Velume = myBox.velume();
+		System.out.println("The velume is : " + Velume);
+		Velume = myBox2.velume("The velume 2 is : " + Velume);
+			
+	}
+
+}

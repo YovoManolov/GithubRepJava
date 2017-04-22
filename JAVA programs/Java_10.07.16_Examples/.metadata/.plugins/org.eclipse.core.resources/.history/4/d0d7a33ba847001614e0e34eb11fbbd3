@@ -1,0 +1,14 @@
+package variablesInInterfaces;
+import variablesInInterfaces.AskMe;
+
+class Main {
+	public static void main(String[] args) {
+		Question ob = new Question();
+		answer(ob.ask());
+		answer(ob.ask());
+		answer(ob.ask());
+		answer(ob.ask());
+
+	}
+
+}

@@ -1,0 +1,10 @@
+package Ex8;
+import example4.*;
+class MethodRefDemo {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

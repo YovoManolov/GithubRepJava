@@ -1,0 +1,39 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class JColorChooserExample extends JFrame implements ActionListener{
+	
+JButton b ;
+Container c;
+
+	JColorChooserExample(){
+		  c = getContentPane();
+		  
+		  //A flow layout arranges components in a directional flow, 
+		  //much like lines of text in a paragraph.
+		  //A flow layout lets each component assume its natural
+		  //(preferred) size.
+		  c.setLayout(new FlowLayout());
+		  
+		  b =  new JButton("color");
+		  b.addActionListener(this);
+		  
+		  c.add(b);
+		  
+	}
+  
+	public void ActionPreformed(){
+		Color initialColor = Color.RED;
+		Color color = JColorChooser.showDialog(this,"Select a color",initialColor);  
+		c.setBackground(color);  
+	}
+	
+	public static void main(String[] args) {
+    	JColorChooserExample ch = new JColorChooserExample();
+	   	ch.setSize(400,400);
+	   	ch.setVisible(true);
+	   	ch.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+
+}

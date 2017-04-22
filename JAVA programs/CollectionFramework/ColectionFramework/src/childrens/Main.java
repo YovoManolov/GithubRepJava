@@ -1,0 +1,42 @@
+package childrens;
+import java.util.*;
+
+public class Main{
+
+	public static void main(String[] args) {
+		LinkedList <Children1> lls  = new LinkedList <Children1>();
+		
+		lls.add(new Children1(10,"Anastas",2006));
+		lls.add(new Children1(9,"Borko",2007));
+		lls.add(new Children1(8,"Caterina",2005));
+		
+		System.out.println("Sorting by age : ");
+		
+		Collections.sort(lls , new AgeComparator());
+		
+		for( Children1 ch : lls){
+			  System.out.println("BirthYear :  " + ch.birthYear + " ParentName :    "
+		                          + ch.Parent + " Age:    "  + ch.age );
+		}
+		
+        System.out.println("Sorting by BirthYear  : ");
+		Collections.sort(lls , new BithYearComparator());
+		
+		for( Children1 ch : lls){
+			  System.out.println("BirthYear :  " + ch.birthYear + " ParentName :    "
+		                          + ch.Parent + " Age:    "  + ch.age );
+		}
+        
+        
+		System.out.println("Sorting by ParentName : ");
+		
+		Collections.sort(lls , new ParentComparator());
+		
+		for( Children1 ch1 : lls){
+			  System.out.println("BirthDate :  " + ch1.birthYear + " ParentName :    "
+		                          + ch1.Parent + " Age:    "  + ch1.age );
+		}
+		
+	}
+
+}

@@ -1,0 +1,17 @@
+package Recursion;
+
+public class Recursion {
+	public static void main(String [] args){
+		 int number = 5;
+		  Recursion r = new Recursion();
+	       int result = r.numberOfEars(number);
+	       System.out.println("The numberOfEars is " + result);
+	     }
+	static int counter = 0;
+	public int numberOfEars(int n){
+		if (n == 0) return counter;
+		if((n%2)!= 0 ) return (counter += 3);
+		else counter += 2;
+		return counter += numberOfEars(n-1);
+	}
+}

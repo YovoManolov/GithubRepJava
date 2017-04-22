@@ -1,0 +1,38 @@
+package linkedHashMapEx;
+import java.util.*;
+import java.util.Map.Entry;
+
+class LinkedHashMapExercise {
+
+	public static void main(String[] args) {
+		LinkedHashMap <String, Double> lhm = new LinkedHashMap <String,Double>();
+		
+		lhm.put("Person1", 1000.00);
+		lhm.put("Person2", 2000.00);
+		lhm.put("Person3", 3000.00);
+		lhm.put("Person4", 4000.00);
+		
+		Set<Entry<String, Double>> sv = lhm.entrySet();
+			
+		Iterator<Entry<String, Double>> i = sv.iterator();
+		
+		  while(i.hasNext()) {
+		         Map.Entry<String,Double> me = (Map.Entry<String, Double>)i.next();
+		         System.out.println(me.getKey() + ": " + me.getValue());
+		      }
+		      System.out.println(); 
+		      
+		      
+	   System.out.println(" After Making change into Person 3's account ... \n");  
+		     double p3Value =  ((Double)lhm.get("Person3")).doubleValue();   
+		     p3Value += 1500;
+		     
+		     lhm.put("Person3",p3Value);
+		     
+             System.out.println("Person3 bance is : " + lhm.get("Person3").doubleValue());
+		     System.out.println(); 	     
+     
+	      
+	}
+
+}

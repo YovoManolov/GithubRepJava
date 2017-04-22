@@ -1,0 +1,21 @@
+
+class AutoBox3 {
+
+	public static void main(String[] args) {
+		Integer  iOb1 ,iOb2 ;
+		
+		iOb1 = 100;
+		System.out.println("Original value of iOb1 : " + iOb1);
+
+		++iOb1;
+		System.out.println("Value of iOb1 after incrementation : " + iOb1);
+		
+		iOb2 = iOb1 +(iOb1 / 3); 
+		System.out.println("iOb2 after the expression " + iOb2);
+		
+		int i = iOb1 + (iOb1 / 3); // the result is not reboxed (automaticli encapsulated)
+		
+		System.out.println("Value of i after the expressio : " + i);
+	}
+
+}
