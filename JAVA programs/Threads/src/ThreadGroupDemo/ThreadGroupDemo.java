@@ -6,7 +6,6 @@ class ThreadGroupDemo {
 		ThreadGroup A = new ThreadGroup("Group A"); 
 		ThreadGroup B = new ThreadGroup("Group B");
 		
-		
 		///NewThread(String threadName , ThreadGroup tgob) ;
 		
 	    NewThread ob1 = new NewThread("One" ,A);

@@ -1,0 +1,137 @@
+///XML//
+
+Grammer :
+	Structurre-> DTD (Document Type Definition);
+	ContentGrammer-> Schema
+
+
+	XML DOM : Xml Document object model 
+		represents the doc as tree structure 
+
+	w3c world wide web consortium
+
+	XPath used to find info in XML doc contains standard 
+		functions . Xpath is the major element in XSLT
+		(eXtensible Stylesheet Language Transformations)
+
+	ATTRIBUTE - provides more or additional information 
+		about an el than otherwise.
+	
+
+	EMPTY TAGS 
+	<person></person>
+	<person/>
+
+
+	Advantages of XMLDOM
+
+		traversable / modifiable  structure
+
+
+	TAG NAMES CANNOT CONTAIN SPACES
+	ATTRIBUTE VALUE SHOULD APPEAR WITHIN QUOTES
+	WHITE SPACE IS PRESERVED
+
+	Elements contains ;
+		another el 
+		attribute
+		text
+
+<!-- 	<![CDATA[" here is the data that cannot 
+				be parsed by XML parser"]]>	 -->
+
+
+	Comments : <!--  comment 
+				-->
+
+
+	namespace
+<h:table xmlns:h="http://www.w3.org/TR/html4/">
+	<h:tr>
+		<h:td>Apples</h:td>
+		<h:td>Bananas</h:td>
+	</h:tr>
+</h:table>
+
+XMLParser - convert XMl doc into an XML DOM object which can be written in JS
+
+XSL - expressing style sheets as CSS 
+
+SGML - Standard Generalized markup Language 
+
+< , > & special characters in XML 
+
+graphics can be included in XML by using XLink and XPointer
+specifications (IF, JPG, TIFF, PNG, CGM, EPS and SVG.)
+
+conditional statement in XML 
+
+<foo if{DB} = "A">bar</foo>
+
+this can be done by using DTD *Document Type Definition 
+
+<xsl:if test = "@foo = 'bar'">
+<xsl:text> Hello, world! </xsl:text>
+</xsl:if>
+
+
+XSLT extensible StyleSheete language transofmation
+transform XML to HTML before it is displayed to the browser
+
+Xlink XPointer 
+
+standart way of creating HYPERLINKS in XML files
+Xpointer which allows those hyperlinks to point to more 
+specific parts of the XML file or document
+
+When XML file is validated against the Document Type Def (DTD), then it is called valid XML
+
+simple el in XML
+ 	- no attr
+ 	- doesn't contain other el's 
+ 	- It cannot be empty 
+
+complex el in XML
+ 	- it has empty el's
+ 	- contains other el's 
+ 	- contain only text 
+ 	- contain both other el's and text 
+
+XML uses DTD to describe data using data tree 
+
+Three parts of XSL : 
+  XSLT - transform XML docs
+  XPath - naviagation in XML doc
+  XSL-FO - Used for formatting XML document
+
+
+
+
+
+Types of XML parsers 
+non-validating
+validating 
+
+
+XML signiture 
+	digital signiture for XML documents
+	if the signiture is outside the doc , it is called
+	detachted signiture
+	if it is inside the XML doc , then it is called Envelopeing
+	 signiture
+
+Data island 
+ XML Data island is XML embeded into HTML page
+ This works only with the internet
+
+
+DiffGram in XML 
+	DiffGram - XML format whitch is used to find current and 
+				original version of XML doc 
+
+SAX -- interface processing XMl documents using events
+
+
+
+ Defining XML version 
+ <?xml version="1.0"/>

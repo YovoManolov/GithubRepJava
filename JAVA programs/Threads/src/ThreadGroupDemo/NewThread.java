@@ -19,15 +19,15 @@ class NewThread  extends Thread {
 			   synchronized(this){
 				   while(suspendFlag)
 				   {
-					  System.out.println("Thread " + getName() +" is waiting");
+				   	  System.out.println("Thread " + getName() +" is waiting");
 					  wait();
 				   }
 		       }
-		   } 
+		   }
 	   }catch(Exception e) {
 		  System.out.println("Exception in " + getName());
 	   }
-	   System.out.println(getName() + " exiting");	   
+	   System.out.println(getName() + " exiting");
     }
 	   
 	 synchronized void mysuspend(){
