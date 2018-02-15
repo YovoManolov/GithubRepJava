@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="7b9d7d48-7c21-46e8-bd2a-670563d363df" activeEnvironment="Default" name="ProductCatalogSOAPServiceTest" resourceRoot="" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="b3e31cd0-4024-4b92-ab03-6208f1df42ce" wsaVersion="NONE" name="ProductCatalogServiceImplSoapBinding" type="wsdl" bindingName="{http://services.pegaxchange.com}ProductCatalogServiceImplSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ProductCatalogSOAPService/services/ProductCatalogServiceImpl?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ProductCatalogSOAPService/services/ProductCatalogServiceImpl?wsdl"><con:part><con:url>http://localhost:8080/ProductCatalogSOAPService/services/ProductCatalogServiceImpl?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://services.pegaxchange.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.pegaxchange.com" xmlns:intf="http://services.pegaxchange.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://services.pegaxchange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="searchById">
+        <complexType>
+          <sequence>
+            <element name="id" type="xsd:int"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="searchByIdResponse">
+        <complexType>
+          <sequence>
+            <element name="searchByIdReturn" type="impl:Product"/>
+          </sequence>
+        </complexType>
+      </element>
+      <complexType name="Product">
+        <sequence>
+          <element name="category" nillable="true" type="xsd:string"/>
+          <element name="id" type="xsd:int"/>
+          <element name="name" nillable="true" type="xsd:string"/>
+          <element name="unitPrice" type="xsd:double"/>
+        </sequence>
+      </complexType>
+      <element name="getAllProducts">
+        <complexType/>
+      </element>
+      <element name="getAllProductsResponse">
+        <complexType>
+          <sequence>
+            <element maxOccurs="unbounded" name="getAllProductsReturn" type="impl:Product"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="insertProduct">
+        <complexType>
+          <sequence>
+            <element name="product" type="impl:Product"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="insertProductResponse">
+        <complexType/>
+      </element>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="insertProductResponse">
+    <wsdl:part element="impl:insertProductResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchByIdRequest">
+    <wsdl:part element="impl:searchById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchByIdResponse">
+    <wsdl:part element="impl:searchByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllProductsResponse">
+    <wsdl:part element="impl:getAllProductsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllProductsRequest">
+    <wsdl:part element="impl:getAllProducts" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertProductRequest">
+    <wsdl:part element="impl:insertProduct" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ProductCatalogServiceImpl">
+    <wsdl:operation name="searchById">
+      <wsdl:input message="impl:searchByIdRequest" name="searchByIdRequest"></wsdl:input>
+      <wsdl:output message="impl:searchByIdResponse" name="searchByIdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllProducts">
+      <wsdl:input message="impl:getAllProductsRequest" name="getAllProductsRequest"></wsdl:input>
+      <wsdl:output message="impl:getAllProductsResponse" name="getAllProductsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertProduct">
+      <wsdl:input message="impl:insertProductRequest" name="insertProductRequest"></wsdl:input>
+      <wsdl:output message="impl:insertProductResponse" name="insertProductResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProductCatalogServiceImplSoapBinding" type="impl:ProductCatalogServiceImpl">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="searchById">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="searchByIdRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchByIdResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllProducts">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getAllProductsRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllProductsResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertProduct">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="insertProductRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="insertProductResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProductCatalogServiceImplService">
+    <wsdl:port binding="impl:ProductCatalogServiceImplSoapBinding" name="ProductCatalogServiceImpl">
+      <wsdlsoap:address location="http://localhost:8080/ProductCatalogSOAPService/services/ProductCatalogServiceImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ProductCatalogSOAPService/services/ProductCatalogServiceImpl</con:endpoint></con:endpoints><con:operation id="b78e53bf-c333-4d2d-93ec-95b840c8a194" isOneWay="false" action="" name="getAllProducts" bindingOperationName="getAllProducts" type="Request-Response" outputName="getAllProductsResponse" inputName="getAllProductsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9610cab3-dc7a-414f-be06-3fbc8f2ff174" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ProductCatalogSOAPService/services/ProductCatalogServiceImpl</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.pegaxchange.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:getAllProducts/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://services.pegaxchange.com/ProductCatalogServiceImpl/getAllProductsRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="9ccfc3d5-dc58-4320-9ff7-3041994f681e" isOneWay="false" action="" name="insertProduct" bindingOperationName="insertProduct" type="Request-Response" outputName="insertProductResponse" inputName="insertProductRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="52e61898-b68a-460b-a989-eaa0cf1bf274" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ProductCatalogSOAPService/services/ProductCatalogServiceImpl</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.pegaxchange.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:insertProduct>\r
+         <ser:product>\r
+            <ser:category>art</ser:category>\r
+            <ser:id>18</ser:id>\r
+            <ser:name>someName</ser:name>\r
+            <ser:unitPrice>54.00</ser:unitPrice>\r
+         </ser:product>\r
+      </ser:insertProduct>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://services.pegaxchange.com/ProductCatalogServiceImpl/insertProductRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="399bd56e-f7eb-45af-b507-d7c0d7f39c6e" isOneWay="false" action="" name="searchById" bindingOperationName="searchById" type="Request-Response" outputName="searchByIdResponse" inputName="searchByIdRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="22d4a97c-c77d-4828-bc18-c660c8e00341" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ProductCatalogSOAPService/services/ProductCatalogServiceImpl</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.pegaxchange.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:searchById>\r
+         <ser:id>18</ser:id>\r
+      </ser:searchById>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://services.pegaxchange.com/ProductCatalogServiceImpl/searchByIdRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

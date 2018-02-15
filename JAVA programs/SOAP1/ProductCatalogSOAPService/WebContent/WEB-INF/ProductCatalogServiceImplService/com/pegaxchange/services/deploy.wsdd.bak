@@ -1,0 +1,42 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ProductCatalogServiceImplService WSDL service -->
+
+  <service name="ProductCatalogServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://services.pegaxchange.com"/>
+      <parameter name="wsdlServiceElement" value="ProductCatalogServiceImplService"/>
+      <parameter name="schemaQualified" value="http://services.pegaxchange.com"/>
+      <parameter name="wsdlServicePort" value="ProductCatalogServiceImpl"/>
+      <parameter name="className" value="com.pegaxchange.services.ProductCatalogServiceImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ProductCatalogServiceImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="searchById" qname="operNS:searchById" xmlns:operNS="http://services.pegaxchange.com" returnQName="retNS:searchByIdReturn" xmlns:retNS="http://services.pegaxchange.com" returnType="rtns:Product" xmlns:rtns="http://services.pegaxchange.com" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://services.pegaxchange.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getAllProducts" qname="operNS:getAllProducts" xmlns:operNS="http://services.pegaxchange.com" returnQName="retNS:getAllProductsReturn" xmlns:retNS="http://services.pegaxchange.com" returnType="rtns:Product" xmlns:rtns="http://services.pegaxchange.com" soapAction="" >
+      </operation>
+      <operation name="insertProduct" qname="operNS:insertProduct" xmlns:operNS="http://services.pegaxchange.com" soapAction="" >
+        <parameter qname="pns:product" xmlns:pns="http://services.pegaxchange.com" type="tns:Product" xmlns:tns="http://services.pegaxchange.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="getAllProducts searchById insertProduct"/>
+
+      <typeMapping
+        xmlns:ns="http://services.pegaxchange.com"
+        qname="ns:Product"
+        type="java:com.pegaxchange.services.Product"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>
