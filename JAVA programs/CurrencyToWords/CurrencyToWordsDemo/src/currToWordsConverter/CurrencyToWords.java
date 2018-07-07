@@ -64,17 +64,22 @@ public class CurrencyToWords {
       number /= 100;
     }
     else {
+     // девет милиона хиляда петдесет и
+      //54,67,78
       soFar = numNames[number % 10];
       number /= 10;
-
-      soFar = tensNames[number % 10] + " и" + soFar;
+      
+      if((number % 10) > 0) {
+    	  soFar = tensNames[number % 10]+ " и "+ soFar;
+      }else {
+          soFar = tensNames[number % 10] + soFar;
+      }
       number /= 10;
     }
-    if (number == 0) return soFar;
     if(soFar.isEmpty()) {
     	return hundredsNames[number];
     }else {
-    	if (numberAtEntrace % 100 < 21) {
+    	if (numberAtEntrace % 100 < 21 && numberAtEntrace % 100 > 0) {
             return hundredsNames[number] + " и" + soFar;
     	}else {
             return hundredsNames[number] + soFar;
@@ -119,7 +124,7 @@ public class CurrencyToWords {
       if(billions == 2) {
     	  tradBillions = "два";
       }else {
-          tradBillions =tradBillions+ convertLessThanOneThousand(billions);
+          tradBillions = tradBillions + convertLessThanOneThousand(billions);
       }
       tradBillions = tradBillions + " милиарда ";
     }
@@ -151,15 +156,22 @@ public class CurrencyToWords {
     String tradHundredThousands;
     switch (hundredThousands) {
     case 0:
-      if((!tradMillions.isEmpty()) &&
-    		  	(!convertLessThanOneThousand(thousands).isEmpty()) ) {
+      if( ( (!tradMillions.isEmpty()) || (!tradBillions.isEmpty()) )
+    		  	&&  (!convertLessThanOneThousand(thousands).isEmpty())) {
     	  tradHundredThousands = "и ";
       }else {
           tradHundredThousands = "";
       }
       break;
     case 1 :
-      tradHundredThousands = "хиляда ";
+       if( ( (!tradMillions.isEmpty()) || (!tradBillions.isEmpty()) )
+     		  	&&  (!convertLessThanOneThousand(thousands).isEmpty())) {
+     	  tradHundredThousands = "и ";
+       }else {
+           tradHundredThousands = "";
+       }	
+       tradHundredThousands =tradHundredThousands + "хиляда ";
+      
       break;
     default :
       tradHundredThousands = convertLessThanOneThousand(hundredThousands)
@@ -183,45 +195,27 @@ public class CurrencyToWords {
     System.out.println("*** " + CurrencyToWords.convert(0));
     System.out.println("*** " + CurrencyToWords.convert(1));
     System.out.println("*** " + CurrencyToWords.convert(16));
+    System.out.println("*** " + CurrencyToWords.convert(52));
     System.out.println("*** " + CurrencyToWords.convert(100));
     System.out.println("*** " + CurrencyToWords.convert(118));
     System.out.println("*** " + CurrencyToWords.convert(200));
     System.out.println("*** " + CurrencyToWords.convert(219));
     System.out.println("*** " + CurrencyToWords.convert(800));
     System.out.println("*** " + CurrencyToWords.convert(801));
+    System.out.println("*** " + CurrencyToWords.convert(1001));
+    System.out.println("*** " + CurrencyToWords.convert(1060));
     System.out.println("*** " + CurrencyToWords.convert(1316));
     System.out.println("*** " + CurrencyToWords.convert(1000000));
     System.out.println("*** " + CurrencyToWords.convert(2000000));
     System.out.println("*** " + CurrencyToWords.convert(3000200));
+    System.out.println("*** " + CurrencyToWords.convert(3000010));
     System.out.println("*** " + CurrencyToWords.convert(700000));
     System.out.println("*** " + CurrencyToWords.convert(9000000));
     System.out.println("*** " + CurrencyToWords.convert(9001000));
+    System.out.println("*** " + CurrencyToWords.convert(9001050));
     System.out.println("*** " + CurrencyToWords.convert(123456789));
     System.out.println("*** " + CurrencyToWords.convert(2147483647));
     System.out.println("*** " + CurrencyToWords.convert(3000000010L));
 
-    /*
-     *** zero
-     *** one
-     *** sixteen
-     *** one hundred
-     *** one hundred eighteen
-     *** two hundred
-     *** two hundred nineteen
-     *** eight hundred
-     *** eight hundred one
-     *** one thousand three hundred sixteen
-     *** one million
-     *** two millions
-     *** three millions two hundred
-     *** seven hundred thousand
-     *** nine millions
-     *** nine millions one thousand
-     *** one hundred twenty three millions four hundred
-     **      fifty six thousand seven hundred eighty nine
-     *** two billion one hundred forty seven millions
-     **      four hundred eighty three thousand six hundred forty seven
-     *** three billion ten
-     **/
   }
 }
