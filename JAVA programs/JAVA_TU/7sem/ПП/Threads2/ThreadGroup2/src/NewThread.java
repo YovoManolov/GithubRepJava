@@ -1,0 +1,37 @@
+//Demostrate ThreadGroups
+class NewThread extends Thread {
+boolean suspendFlag;
+
+	NewThread(String threadname, ThreadGroup tgOb) {
+		super(tgOb, threadname);
+		System.out.println("New thread: " + this);
+		suspendFlag = false;
+		start(); // Start the thread
+	}
+	
+// This is the entry point for thread.
+	public void run() {
+		try {
+			for(int i = 5; i > 0; i--) {
+				System.out.println(getName() + ": " + i);
+				Thread.sleep(1000);
+				synchronized(this) {
+					//when the tread is suspend , the flag turned to true
+					while(suspendFlag) {
+					wait();
+					}
+				}
+			}
+		} catch (Exception e) {
+		System.out.println("Exception in " + getName());
+		}
+		System.out.println(getName() + " exiting.");
+	}
+	synchronized void mysuspend() {
+		suspendFlag = true;
+	}
+	synchronized void myresume() {
+		suspendFlag = false;
+		notify();
+	}
+}
