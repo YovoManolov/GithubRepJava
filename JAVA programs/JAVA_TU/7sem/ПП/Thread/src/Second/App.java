@@ -18,6 +18,7 @@ public class App {
 			for (int i=0;i<10000;i++){
 				
 				increment();
+				System.out.println("T1: "+counter);
 			}
 		}	
 		});
@@ -28,6 +29,7 @@ public class App {
 				for (int i=0;i<10000;i++){
 					
 					increment();
+					System.out.println("T2: "+counter);
 				}
 			}	
 			});			

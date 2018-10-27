@@ -37,8 +37,9 @@ public class App {
 		t2.start();
 		try {
 			t1.join();
-			System.out.println("Thread1: Counter is "+counter);
-			t2.join();
+			/*System.out.println("Thread1: Counter is "+counter);
+			Thread.sleep(500);
+			t2.join();*/
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,6 +54,7 @@ public class App {
 		counter++;
 		}}
 		finally{
+			System.out.println("Counter is "+counter);
 		lock.unlock();
 		}
 	}

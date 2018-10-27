@@ -21,7 +21,7 @@ public static int count2=0;
 
 
 	}
-	public  synchronized static void incrementCount1(){
+	public synchronized static void incrementCount1(){
 		for(int i=0;i<1000;i++){
 		count1++;
 		System.out.println("Count1= "+ count1);

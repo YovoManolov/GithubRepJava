@@ -31,14 +31,20 @@ class Processor implements Callable<String>{
 }
 
 public class App {
-	
 
 	public static void main(String[] args) {
 		ExecutorService executorService = Executors.newFixedThreadPool(2);
-		List<Future<String>>list = new ArrayList();
+		List<Future<String>> list = new ArrayList();
+		
 		for(int i=0;i<5;i++ ){
-			Future<String> future=executorService.submit(new Processor(i+1));
-			list.add(future);
+			Future<String> future  = null;
+			
+			future = executorService.submit(new Processor(i+1));
+			
+			if(future != null) {
+				list.add(future);
+			}
+			
 		}
 		for (Future<String>future:list){
 			try {

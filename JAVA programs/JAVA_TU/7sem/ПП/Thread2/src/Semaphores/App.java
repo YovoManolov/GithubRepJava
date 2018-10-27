@@ -13,6 +13,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
+import javax.management.timer.Timer;
+
 public class App {
 
 	enum Downloader {
@@ -32,9 +34,21 @@ public class App {
 		}
 
 		private void download() {
-			System.out.println("Downloading data from the web.....");
+			int i = 5;
+			do {
+				Thread t = Thread.currentThread();
+				System.out.println("Downloading: Current thread " + t.getName() + "Thread n: " + t.getId());
+				try {
+					Thread.sleep(200);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				i--;
+			}while(i>0);
+			
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -50,8 +64,6 @@ public class App {
 			executorService.execute(new Runnable() {
 				public void run() {
 					Downloader.INSTANCE.downloadData();
-					Thread t = Thread.currentThread();
-					System.out.println("Current thread " + t.getName());
 				}
 			});
 		}
