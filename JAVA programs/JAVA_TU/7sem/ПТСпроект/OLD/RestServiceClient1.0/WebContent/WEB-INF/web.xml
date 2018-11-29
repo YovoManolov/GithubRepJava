@@ -11,13 +11,11 @@
   </welcome-file-list>
   
 	<servlet>
-	 	<discription></discription>
 	 	<display-name>ClientServlet</display-name>
 		<servlet-name>ClientServlet</servlet-name>
-		<jsp-file>/client.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ClientServlet</servlet-name>
-		<url-pattern>/client.jsp</url-pattern>
+		<url-pattern>/ClientServlet</url-pattern>
 	</servlet-mapping>
 </web-app>

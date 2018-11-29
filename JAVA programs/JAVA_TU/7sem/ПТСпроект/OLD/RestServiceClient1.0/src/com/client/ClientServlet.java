@@ -15,7 +15,7 @@ import com.sun.jersey.api.client.WebResource;
 /**
  * Servlet implementation class ClientServlet
  */
-@WebServlet("/ ClientServlet")
+@WebServlet("/ClientServlet")
 public class ClientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       
@@ -54,9 +54,9 @@ public class ClientServlet extends HttpServlet {
 		}
 			
 		request.setAttribute("numberToWordsString", numberToWordsString);
-		request.getRequestDispatcher("/client.jsp").forward(request, response);
+		request.getRequestDispatcher("client.jsp").forward(request, response);
 		
-		//doGet(request, response);
+		doGet(request, response);
 	}
 	
 	
