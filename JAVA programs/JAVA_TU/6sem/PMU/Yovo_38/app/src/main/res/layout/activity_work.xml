@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ceco.yovo_38.WorkActivity">
+
+    <Button
+        android:id="@+id/ShowAllUsersBUT"
+        android:layout_width="141dp"
+        android:layout_height="49dp"
+        android:text="SHOW ALL USERS"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="40dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/AddUserBUT"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:text="ADD USER"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/ShowAllUsersBUT"
+        tools:layout_constraintBaseline_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toRightOf="@+id/DeleteUserBUT" />
+
+    <Button
+        android:id="@+id/DeleteUserBUT"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="DELETE USER"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/ShowAllUsersBUT"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button4"
+        tools:layout_constraintBaseline_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/ShowAllUsersBUT" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="SEARCH"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/AddUserBUT"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/AddUserBUT"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/AddUserBUT" />
+
+    <Button
+        android:id="@+id/LogOutBUT"
+        android:layout_width="158dp"
+        android:layout_height="48dp"
+        android:text="LOGOUT"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="11dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView"
+        android:layout_width="0dp"
+        android:layout_height="245dp"
+        android:text="AutoCompleteTextView"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/LogOutBUT"
+        android:layout_marginStart="41dp"
+        android:layout_marginEnd="41dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="11dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+</android.support.constraint.ConstraintLayout>
