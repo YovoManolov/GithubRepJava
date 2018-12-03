@@ -1,5 +1,8 @@
 package com.restClient.restClientdemo;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,12 +27,27 @@ public class NumberToWordsController {
 	    	
 	    	String numberToConvert = numberToWordsModel.getNumberFromInputField();
 	    	
-	    	Client client = Client.create();
-			WebResource webResource = client.resource("http://localhost:8080/NumberToEnglishWords/convertNumberToWords/convert/"+numberToConvert);
-			String numberToWordsString = webResource.accept("text/plain").get(String.class);
-		
-	    	numberToWordsModel.setNumberToString(numberToWordsString);
-	    	
-	        return "result";
-	    }
+	    	if(isValidNumber(numberToConvert)) {
+	    		
+	    		Client client = Client.create();
+				WebResource webResource = client.resource("http://localhost:8080/NumberToEnglishWords/convertNumberToWords/convert/"+numberToConvert);
+				String numberToWordsString = webResource.accept("text/plain").get(String.class);
+		    	numberToWordsModel.setNumberToString(numberToWordsString);
+		    	
+		    	return "result";
+			}else {
+				numberToWordsModel.setErrorMessage("You have used invalid input."+"\n"+
+							"Please use integer value!");
+				return "getNumber";
+			}
+	  }
+	    
+	  private boolean isValidNumber(String integerNumber) {
+		  
+		  String regex = "(?<=\\s|^)\\d+(?=\\s|$)";
+		  Pattern pattern = Pattern.compile(regex);
+		  Matcher matcher = pattern.matcher(integerNumber);
+		  
+		  return matcher.matches();
+	  }
 }
