@@ -33,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Bundle bundle = getIntent().getExtras();
+        TextView textView = (TextView)findViewById(R.id.inputNumberToConvert);
+        if( bundle != null &&((String)bundle.get("fromHomeActivity")).equals("true")){
+            textView.setText("");
+        }
+
         // Find Email Edit View control by ID
         inputNumberToConvert = (EditText)findViewById(R.id.inputNumberToConvert);
         // Instantiate Progress Dialog object
