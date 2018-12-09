@@ -8,7 +8,7 @@ public class Utility {
     private static Matcher matcher;
     //Email Pattern
     private static final String INT_NUMBER_PATTERN =
-            "^(?<=\\s|^)[-+]?\\d+(?=\\s|$)$";
+            "^(\\s+|^)[+]?\\d+(\\s+|$)$";
 
 
     /**

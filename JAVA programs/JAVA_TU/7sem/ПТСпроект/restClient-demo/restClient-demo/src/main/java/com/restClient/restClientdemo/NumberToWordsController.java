@@ -28,7 +28,7 @@ public class NumberToWordsController {
 	    	String numberToConvert = numberToWordsModel.getNumberFromInputField();
 	    	
 	    	if(isValidNumber(numberToConvert)) {
-	    		
+	    		numberToConvert = numberToConvert.trim();
 	    		Client client = Client.create();
 				WebResource webResource = client.resource("http://localhost:8080/NumberToEnglishWords/convertNumberToWords/convert/"+numberToConvert);
 				String numberToWordsString = webResource.accept("text/plain").get(String.class);
@@ -37,14 +37,14 @@ public class NumberToWordsController {
 		    	return "result";
 			}else {
 				numberToWordsModel.setErrorMessage("You have used invalid input."+"\n"+
-							"Please use integer value!");
+							"Please use positive integer value!");
 				return "getNumber";
 			}
 	  }
 	    
 	  private boolean isValidNumber(String integerNumber) {
 		  
-		  String regex = "(?<=\\s|^)\\d+(?=\\s|$)";
+		  String regex = "^(\\s+|^)[+]?\\d+(\\s+|$)$";
 		  Pattern pattern = Pattern.compile(regex);
 		  Matcher matcher = pattern.matcher(integerNumber);
 		  

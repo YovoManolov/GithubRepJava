@@ -57,12 +57,14 @@ public class MainActivity extends AppCompatActivity {
             if(Utility.isNotNull(numberToConvert)){
     // Когато въведеният Email е валиден
                 if(Utility.validate(numberToConvert)){
+                    numberToConvert = numberToConvert.trim();
                     invokeWS(numberToConvert);
                 }
     // При невалиден Email
                 else{
                         Toast.makeText(getApplicationContext(),
-                          "Please enter valid number", Toast.LENGTH_LONG).show();
+                          "Your input is invalid. Please enter positive integer!",
+                                Toast.LENGTH_LONG).show();
                 }
 
         // При празно поле
@@ -80,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         // Осъществяване на RESTful webservice извикване чрез използване на AsyncHttpClient обект
         AsyncHttpClient client = new AsyncHttpClient();
 
-        client.get("http://192.168.0.106:8080/NumberToEnglishWords/convertNumberToWords/convert/"+ numberToConvert,
+        client.get("http://192.168.56.1:8080/NumberToEnglishWords/convertNumberToWords/convert/"+ numberToConvert,
                 null,new AsyncHttpResponseHandler() {
         @Override
         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
