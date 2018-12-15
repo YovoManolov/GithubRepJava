@@ -75,37 +75,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     public void invokeWS(String numberToConvert){
         // Показване на Progress Dialog
         prgDialog.show();
         // Осъществяване на RESTful webservice извикване чрез използване на AsyncHttpClient обект
         AsyncHttpClient client = new AsyncHttpClient();
-
-        client.get("http://192.168.56.1:8080/NumberToEnglishWords/convertNumberToWords/convert/"+ numberToConvert,
+        client.get("http://10.0.2.2:8080/NumberToEnglishWords/convertNumberToWords/convert/"+ numberToConvert,
                 null,new AsyncHttpResponseHandler() {
         @Override
         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
         // Скриване на Progress Dialog
             prgDialog.hide();
-        // JSON обект
                 Log.d("\n Server say: ",new   String(responseBody));
                 String convertedNumberToWords = new   String(responseBody);
-
-                    navigatetoHomeActivity(convertedNumberToWords);
-        // в Else секцията визуализира  съобщение за грешка !
-//            else {
-//                    errorMsg.setText(obj.getString("error_msg"));
-//                    Toast.makeText(getApplicationContext(),
-//                            obj.getString("error_msg"), Toast.LENGTH_LONG).show();
-//                }
-//            } catch (JSONException e) {
-//                // TODO Auto-generated catch block
-//                Toast.makeText(getApplicationContext(), "Error Occured[Server's " +
-//                                                                "JSON response might be invalid]!",
-//                Toast.LENGTH_LONG).show();
-//                e.printStackTrace();
-//            }
+                navigatetoHomeActivity(convertedNumberToWords);
         }
 
         @Override
@@ -150,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString("convertedNumberToWords", convertedNumberToWords);
         //Add the bundle to the intent
         homeIntent.putExtras(bundle);
-
         startActivity(homeIntent);
     }
 
