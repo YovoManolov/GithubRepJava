@@ -3,6 +3,7 @@ package com.restClient.restClientdemo;
 public class NumberToWordsModel {
 	private String numberFromInputField;
 	private String numberToString;
+	private Integer errorFlag;
 	private String errorMessage;
 	
 	public String getErrorMessage() {
@@ -25,5 +26,11 @@ public class NumberToWordsModel {
 		this.numberToString = numberToString;
 	}
 	
+	public Integer getErrorFlag() {
+		return errorFlag;
+	}
+	public void setErrorFlag(Integer errorFlag) {
+		this.errorFlag = errorFlag;
+	}
 	
 }
