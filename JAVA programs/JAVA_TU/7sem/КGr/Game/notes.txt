@@ -1,0 +1,11 @@
+Link to the images:
+
+avatar (Space Ship): https://i.stack.imgur.com/ELxFZ.png
+station (Station - Mine): http://upload.wikimedia.org/wikipedia/commons/c/cf/Soyuz_TMA-7_white_background.png
+portal (Portal - Treasuer): http://i.imgur.com/pMLmJ.png
+lives (Lives - Heart): http://25.media.tumblr.com/tumblr_mcimzwkgPY1qis66io1_400.png
+
+Known issues: 
+1) No sound provided
+2) No mouse handling is provided
+3) No main menu
