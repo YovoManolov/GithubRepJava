@@ -1,15 +1,18 @@
 package seqDimSonigramApp;
 public class LogEntity {
+	
 	private String eventContext;
 	private String component;
 	private String eventName;
 	private String description;
+	private String ip;
 
-	public LogEntity(String eventContext, String component, String eventName, String description) {
+	public LogEntity(String eventContext, String component, String eventName, String description,String ip) {
 		this.eventContext = eventContext;
 		this.component = component;
 		this.eventName = eventName;
 		this.description = description;
+		this.ip = ip;
 	}
 
 	public LogEntity(LogEntity logEntity) {
@@ -17,6 +20,7 @@ public class LogEntity {
 		this.component = logEntity.component;
 		this.eventName = logEntity.eventName;
 		this.description = logEntity.description;
+		this.ip = logEntity.ip;
 	}
 
 	public LogEntity() {
@@ -38,7 +42,7 @@ public class LogEntity {
 		}
 		return -1;
 	}
-
+	
 	public String getEventContext() {
 		return eventContext;
 	}
@@ -55,6 +59,10 @@ public class LogEntity {
 		return description;
 	}
 	
+	public String getIp() {
+		return ip;
+	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}

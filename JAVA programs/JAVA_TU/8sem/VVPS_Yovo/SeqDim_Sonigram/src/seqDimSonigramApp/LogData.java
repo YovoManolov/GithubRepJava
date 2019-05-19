@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class LogData {
 
+public class LogData {
 	private static List<LogEntity> fullLogData;
 	private static List<String> logComponents;
 	private static List<String> logEvents;

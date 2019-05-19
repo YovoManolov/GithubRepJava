@@ -26,7 +26,15 @@ public class LogFileReader {
 			//from a log record
 			while ((line = br.readLine()) != null) {
 				logElements = line.split(COMMA_SEPARATOR);
-				records.add(new LogEntity(logElements[2], logElements[3], logElements[4], logElements[5]));
+				records.add(
+							
+							new LogEntity(logElements[2] //eventContext
+										, logElements[3] //component
+										, logElements[4] //eventName
+										, logElements[5] //description
+										, logElements[7] //ip
+										)
+						 );
 			}
 			return records;
 

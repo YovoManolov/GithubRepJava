@@ -96,7 +96,7 @@ public class MDSequenceDatabase {
 				
 				// split the MDsequence into tokens 
 				// and process this MDsequence
-				processMDSequence(thisLine.split(","));	
+				processMDSequence(thisLine.split(" "));	
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

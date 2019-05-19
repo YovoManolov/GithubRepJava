@@ -19,7 +19,5 @@ public final class StringConstants {
 	 public static final String MENU_CHOICE = "Please choose an option from the menu!\n";
 	 public static final String NO_DATA_FOUND_FOR_USER_WITH_ID =  
 			 			"\nNo data found for user with ID: ";
-	
-	 
-	 
+		 
 }

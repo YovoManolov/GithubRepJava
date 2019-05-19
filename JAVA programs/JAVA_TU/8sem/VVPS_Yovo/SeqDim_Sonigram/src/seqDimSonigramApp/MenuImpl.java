@@ -31,12 +31,12 @@ public class MenuImpl {
 				case 1:
 					findEventContextsByUserId(userId);
 					break;
-				case 2:
+				/*case 2:
 					findComponentsByUserId(userId);
 					break;
 				case 3:
 					findEventsByUserId(userId);
-					break;
+					break;*/
 				
 				default: break;
 			}
@@ -46,13 +46,26 @@ public class MenuImpl {
 	}
 
 	private static int takeInputChoice(Scanner sc) {
-		System.out.println(StringConstants.MENU_CHOICE);
+		
+		System.out.println("Find most frequent IPs by Event context, component and eventName.");
+		
+		
 		if(sc == null) {
 			sc = new Scanner(System.in);
 		} 
 		
 		try {
-			int choice = Integer.parseInt(sc.nextLine());
+			
+			
+			System.out.println("Please enter event context: ");
+			listAllEventContexts();
+			String eventContext = sc.nextLine().trim();
+			System.out.println("Please enter component: ");
+			listAllComponents();
+			String component = sc.nextLine().trim();
+			System.out.println("Please enter event name: ");
+			String eventName = sc.nextLine().trim();
+			
 			if(choice < 1 || choice > 4) {
 				System.out.println(StringConstants.MENU_CHOICE);
 				return takeInputChoice(sc);
@@ -87,7 +100,10 @@ public class MenuImpl {
 		System.out.println(StringConstants.MENU);
 	}
 	
-	private static void findEventContextsByUserId(Integer userId) {
+	
+private static void findEventContextsByUserId(Integer userId) {
+		
+		//found contexts for chosen user
 		List<String> foundResults = LogData.getFullLogData().stream()
 				.filter(el -> el.getUserIdFromDescription() == userId)
 				.map(LogEntity::getEventContext)
@@ -115,6 +131,36 @@ public class MenuImpl {
 		}
 	}
 
+	/*private static void findEventContextsByUserId(Integer userId) {
+		
+		//found contexts for chosen user
+		List<String> foundResults = LogData.getFullLogData().stream()
+				.filter(el -> el.getUserIdFromDescription() == userId)
+				.map(LogEntity::getEventContext)
+				.collect(Collectors.toList());
+
+		if (foundResults.size() > 0) {
+			try {
+				AlgoInputFileWriter algoInput = new AlgoInputFileWriter();
+				algoInput.writeList(foundResults, LogData.getLogEventContexts());
+
+				executeAlgorithms();
+
+				AlgoOutputFileReader outputAlgo = new AlgoOutputFileReader();
+				List<String> clusters = outputAlgo.getClusters(LogData.getLogEventContexts());
+				for(String cluster : clusters) {
+					System.out.println(cluster);
+				}
+				
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			noDataFoundForSearchedUser(userId);
+		}
+	}
+	
 	private static void findComponentsByUserId(Integer userId) {
 		List<String> foundResults = LogData.getFullLogData().stream()
 				.filter(el -> el.getUserIdFromDescription() == userId)
@@ -169,7 +215,7 @@ public class MenuImpl {
 		} else {
 			noDataFoundForSearchedUser(userId);
 		}
-	}
+	}*/
 	
 	private static void noDataFoundForSearchedUser(Integer userId) {
 		System.out.println(StringConstants.NO_DATA_FOUND_FOR_USER_WITH_ID 
