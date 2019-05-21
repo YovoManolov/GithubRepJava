@@ -11,59 +11,78 @@ public class DropDownSelectionListsImpl {
 	private List<String> allEventContexts;
 	private List<String> allComponents;
 	
-	public DropDownSelectionListsImpl(
-					LinkedList<String> allEventNames, 
-					LinkedList<String> allEventContexts,
-					LinkedList<String> allComponents 
-			) {
+	public DropDownSelectionListsImpl() {
 		super();
 		loadAllComponents();
 		loadAllEventContexts();
 		loadAllEventNames();
 	}
 	
+	
+	public String makeAChoiceForComponents(Scanner sc) {
+		
+		listAllComponents();
+		return getSelectedComponent(sc);
+	}
+	
+	public String makeAChoiceForEventNames(Scanner sc) {
+		
+		listAllEventNames();
+		return getSelectedEventNames(sc);
+	}
+	
+	public String makeAChoiceForEventContexts(Scanner sc) {
+		
+		listAllEventContexts();
+		return getSelectedEventContexts(sc);
+	}
+	
 	//	========================================================
 	// Components
 	//	========================================================
-	public void listAllComponents() {
+	private void listAllComponents() {
 		//found contexts for chosen user
-		System.out.println();
+		System.out.println("\n List of all components: ");
 		for(int i = 0;i< allComponents.size(); i++) {
 			System.out.println( (i+1) + ": " + allComponents.get(i));
 		}
 	}
 
-	public String getSelectedComponent(Scanner sc) {
+	private String getSelectedComponent(Scanner sc) {
+		System.out.println("\nPlease enter the number of the selected component:  ");
 		return allComponents.get( sc.nextInt() - 1);
 	}
 	
 	//	========================================================
 	// EventContexts
 	//	========================================================
-	public void listAllEventNames() {
+	private void listAllEventNames() {
 		//found contexts for chosen user
-		System.out.println();
+		System.out.println("\n List of all event names: ");
 		for(int i = 0;i< allEventNames.size(); i++) {
 			System.out.println( (i+1) + ": " + allEventNames.get(i));
 		}
 	}
 
-	public String getSelectedEventNames(Scanner sc) {
+	private String getSelectedEventNames(Scanner sc) {
+		System.out.println("\nPlease enter the number of the selected event name:  ");
 		return allEventContexts.get( sc.nextInt() - 1);
 	}
+	
 	
 	//	========================================================
 	// EventContexts
 	//	========================================================
-	public void listAllEventContexts() {
+	private void listAllEventContexts() {
 		//found contexts for chosen user
-		System.out.println();
+		System.out.println("\n List of all event contexts: ");
 		for(int i = 0;i< allEventContexts.size(); i++) {
 			System.out.println( (i+1) + ": " + allEventContexts.get(i));
 		}
 	}
 
-	public String getSelectedEventContexts(Scanner sc) {
+	private String getSelectedEventContexts(Scanner sc) {
+		System.out.println("\nPlease enter the number of the selected event context:  ");
 		return allEventContexts.get(sc.nextInt() - 1);
 	}
 	

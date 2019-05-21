@@ -15,14 +15,24 @@ public class MenuImpl {
 	private static int USER_ID_MIN = 1;
 	private static int USER_ID_MAX = 7397;
 	private static int EXIT = 4;
+	private static int SIZE_OF_MDS = 4; //multi-dimensional sequences
 	
-	public static void startMenu() {
+	private String[] chosenComponent = new String[4];
+	private String[] chosenEventContext= new String[4];
+	private String[] chosenEventName = new String[4];
+	
+	public void startMenu() {
 		int choice = 0;
 		int userId = 0;
+
+		
 		Scanner sc = new Scanner(System.in);
 		do {
 			printMenu();
-			choice = takeInputChoice(sc);
+			for(int currentIndex = 0; currentIndex< SIZE_OF_MDS; currentIndex++) {
+				 takeInputChoice(sc,currentIndex);
+				 choice = 1;
+			}
 			if(choice != EXIT) {
 				userId = takeInputUserId(sc);
 			}
@@ -45,35 +55,24 @@ public class MenuImpl {
 		sc.close();
 	}
 
-	private static int takeInputChoice(Scanner sc) {
+	private void takeInputChoice(Scanner sc,Integer currentArrayIndex) {
 		
 		System.out.println("Find most frequent IPs by Event context, component and eventName.");
-		
 		
 		if(sc == null) {
 			sc = new Scanner(System.in);
 		} 
 		
 		try {
+			DropDownSelectionListsImpl downSelectionListsImpl = new DropDownSelectionListsImpl();
+			chosenComponent[currentArrayIndex] = downSelectionListsImpl.makeAChoiceForComponents(sc);
+			chosenEventContext[currentArrayIndex] = downSelectionListsImpl.makeAChoiceForEventContexts(sc);
+			chosenEventName[currentArrayIndex] = downSelectionListsImpl.makeAChoiceForEventNames(sc);
 			
-			
-			System.out.println("Please enter event context: ");
-			listAllEventContexts();
-			String eventContext = sc.nextLine().trim();
-			System.out.println("Please enter component: ");
-			listAllComponents();
-			String component = sc.nextLine().trim();
-			System.out.println("Please enter event name: ");
-			String eventName = sc.nextLine().trim();
-			
-			if(choice < 1 || choice > 4) {
-				System.out.println(StringConstants.MENU_CHOICE);
-				return takeInputChoice(sc);
-			}
-			return choice;
+			return ;
 		} catch (NumberFormatException e) {
 			System.out.println(StringConstants.MENU_CHOICE);
-			return takeInputChoice(sc);
+			return ;
 		}
 	}
 	
@@ -101,7 +100,7 @@ public class MenuImpl {
 	}
 	
 	
-private static void findEventContextsByUserId(Integer userId) {
+    private static void findEventContextsByUserId(Integer userId) {
 		
 		//found contexts for chosen user
 		List<String> foundResults = LogData.getFullLogData().stream()
