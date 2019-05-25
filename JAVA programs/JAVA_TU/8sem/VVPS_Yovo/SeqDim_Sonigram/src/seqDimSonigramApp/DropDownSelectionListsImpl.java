@@ -1,9 +1,9 @@
 package seqDimSonigramApp;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
+
+import seqDimSonigramApp.dataModels.LogData;
 
 public class DropDownSelectionListsImpl {
 	
@@ -13,9 +13,9 @@ public class DropDownSelectionListsImpl {
 	
 	public DropDownSelectionListsImpl() {
 		super();
-		loadAllComponents();
-		loadAllEventContexts();
-		loadAllEventNames();
+		allEventNames = LogData.getLogEventNames();
+		allEventContexts = LogData.getLogEventContexts();
+		allComponents = LogData.getLogComponents();
 	}
 	
 	
@@ -86,25 +86,5 @@ public class DropDownSelectionListsImpl {
 		return allEventContexts.get(sc.nextInt() - 1);
 	}
 	
-	//	========================================================
-	private void loadAllEventContexts() {
-		// TODO Auto-generated method stub
-		allEventContexts = LogData.getFullLogData().stream()
-				.map(LogEntity::getEventContext).distinct()
-				.collect(Collectors.toList());
-	}
 	
-	private void loadAllComponents() {
-		// TODO Auto-generated method stub
-		allComponents = LogData.getFullLogData().stream()
-				.map(LogEntity::getComponent).distinct()
-				.collect(Collectors.toList());
-	}
-	
-	private void loadAllEventNames() {
-		// TODO Auto-generated method stub
-		allComponents = LogData.getFullLogData().stream()
-				.map(LogEntity::getEventName).distinct()
-				.collect(Collectors.toList());
-	}
 }

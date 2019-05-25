@@ -1,5 +1,6 @@
 package seqDimSonigramApp;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -9,45 +10,36 @@ import ca.pfv.spmf.test.MainTestMultiDimSequentialPatternMining;
 import ca.pfv.spmf.test.MainTestMultiDimSequentialPatternMiningClosed;
 import ca.pfv.spmf.test.MainTestOPTICS_extractClusterOrdering_saveToFile;
 import ca.pfv.spmf.test.MainTestOPTICS_extractDBScan_saveToFile;
+import seqDimSonigramApp.dataModels.LogData;
+import seqDimSonigramApp.dataModels.LogEntity;
+import seqDimSonigramApp.dataModels.UserFilterInputData;
+import seqDimSonigramApp.fileHandling.AlgoInputFileWriter;
+import seqDimSonigramApp.fileHandling.AlgoOutputFileReader;
+import seqDimSonigramApp.utils.StringConstants;
 
 public class MenuImpl {
 	
 	private static int USER_ID_MIN = 1;
 	private static int USER_ID_MAX = 7397;
 	private static int EXIT = 4;
-	private static int SIZE_OF_MDS = 4; //multi-dimensional sequences
 	
-	private String[] chosenComponent = new String[4];
-	private String[] chosenEventContext= new String[4];
-	private String[] chosenEventName = new String[4];
+	UserFilterInputData userFilterInputData = new UserFilterInputData();
 	
 	public void startMenu() {
 		int choice = 0;
-		int userId = 0;
-
 		
 		Scanner sc = new Scanner(System.in);
 		do {
 			printMenu();
-			for(int currentIndex = 0; currentIndex< SIZE_OF_MDS; currentIndex++) {
-				 takeInputChoice(sc,currentIndex);
-				 choice = 1;
-			}
-			if(choice != EXIT) {
-				userId = takeInputUserId(sc);
+			for(int currentIndex = 0; currentIndex < UserFilterInputData.SIZE_OF_MDS; currentIndex++) {
+				userFilterInputData.takeInputChoice(sc,currentIndex);
+				choice = 1;
 			}
 			
 			switch(choice) {
 				case 1:
-					findEventContextsByUserId(userId);
+					findEventContextsByUserId(userFilterInputData);
 					break;
-				/*case 2:
-					findComponentsByUserId(userId);
-					break;
-				case 3:
-					findEventsByUserId(userId);
-					break;*/
-				
 				default: break;
 			}
 		} while(choice != EXIT);
@@ -55,27 +47,7 @@ public class MenuImpl {
 		sc.close();
 	}
 
-	private void takeInputChoice(Scanner sc,Integer currentArrayIndex) {
 		
-		System.out.println("Find most frequent IPs by Event context, component and eventName.");
-		
-		if(sc == null) {
-			sc = new Scanner(System.in);
-		} 
-		
-		try {
-			DropDownSelectionListsImpl downSelectionListsImpl = new DropDownSelectionListsImpl();
-			chosenComponent[currentArrayIndex] = downSelectionListsImpl.makeAChoiceForComponents(sc);
-			chosenEventContext[currentArrayIndex] = downSelectionListsImpl.makeAChoiceForEventContexts(sc);
-			chosenEventName[currentArrayIndex] = downSelectionListsImpl.makeAChoiceForEventNames(sc);
-			
-			return ;
-		} catch (NumberFormatException e) {
-			System.out.println(StringConstants.MENU_CHOICE);
-			return ;
-		}
-	}
-	
 	private static int takeInputUserId(Scanner sc) {
 		System.out.println("Enter user id:");
 		if(sc == null) {
@@ -100,18 +72,49 @@ public class MenuImpl {
 	}
 	
 	
-    private static void findEventContextsByUserId(Integer userId) {
+    private static void findEventContextsByUserId(UserFilterInputData userFilterInputData) {
 		
+    	ArrayList<List<LogEntity>> findResultsForEachRow = new ArrayList<List<LogEntity>>();
 		//found contexts for chosen user
-		List<String> foundResults = LogData.getFullLogData().stream()
-				.filter(el -> el.getUserIdFromDescription() == userId)
-				.map(LogEntity::getEventContext)
-				.collect(Collectors.toList());
-
-		if (foundResults.size() > 0) {
-			try {
+    	findResultsForEachRow.add(
+        		LogData.getFullLogData().stream()
+    			.filter(el -> 
+    					el.getEventContext().equals( userFilterInputData.getChosenEventContexts().get(0) )
+    					&& el.getComponent().equals( userFilterInputData.getChosenComponents().get(0) )
+    					&& el.getEventName().equals( userFilterInputData.getChosenEventNames().get(0) )
+    			).collect(Collectors.toList())
+    	);
+    	
+    	findResultsForEachRow.add(
+        		LogData.getFullLogData().stream()
+    			.filter(el -> 
+    					el.getEventContext().equals( userFilterInputData.getChosenEventContexts().get(1) )
+    					&& el.getComponent().equals( userFilterInputData.getChosenComponents().get(1) )
+    					&& el.getEventName().equals( userFilterInputData.getChosenEventNames().get(1) )
+    			).collect(Collectors.toList())
+    	);
+    	
+    	findResultsForEachRow.add(
+        		LogData.getFullLogData().stream()
+    			.filter(el -> 
+    					el.getEventContext().equals( userFilterInputData.getChosenEventContexts().get(2) )
+    					&& el.getComponent().equals( userFilterInputData.getChosenComponents().get(2) )
+    					&& el.getEventName().equals( userFilterInputData.getChosenEventNames().get(2) )
+    			).collect(Collectors.toList())
+    	);
+    	
+    	findResultsForEachRow.add(
+        		LogData.getFullLogData().stream()
+    			.filter(el -> 
+    					el.getEventContext().equals( userFilterInputData.getChosenEventContexts().get(3) )
+    					&& el.getComponent().equals( userFilterInputData.getChosenComponents().get(3) )
+    					&& el.getEventName().equals( userFilterInputData.getChosenEventNames().get(3) )
+    			).collect(Collectors.toList())
+    	);
+    	
+    	try {
 				AlgoInputFileWriter algoInput = new AlgoInputFileWriter();
-				algoInput.writeList(foundResults, LogData.getLogEventContexts());
+				algoInput.writeList(findResultsForEachRow);
 
 				executeAlgorithms();
 
@@ -120,107 +123,13 @@ public class MenuImpl {
 				for(String cluster : clusters) {
 					System.out.println(cluster);
 				}
-				
 
-			} catch (IOException e) {
+		} catch (IOException e) {
 				e.printStackTrace();
-			}
-		} else {
-			noDataFoundForSearchedUser(userId);
 		}
-	}
-
-	/*private static void findEventContextsByUserId(Integer userId) {
 		
-		//found contexts for chosen user
-		List<String> foundResults = LogData.getFullLogData().stream()
-				.filter(el -> el.getUserIdFromDescription() == userId)
-				.map(LogEntity::getEventContext)
-				.collect(Collectors.toList());
-
-		if (foundResults.size() > 0) {
-			try {
-				AlgoInputFileWriter algoInput = new AlgoInputFileWriter();
-				algoInput.writeList(foundResults, LogData.getLogEventContexts());
-
-				executeAlgorithms();
-
-				AlgoOutputFileReader outputAlgo = new AlgoOutputFileReader();
-				List<String> clusters = outputAlgo.getClusters(LogData.getLogEventContexts());
-				for(String cluster : clusters) {
-					System.out.println(cluster);
-				}
-				
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} else {
-			noDataFoundForSearchedUser(userId);
-		}
-	}
-	
-	private static void findComponentsByUserId(Integer userId) {
-		List<String> foundResults = LogData.getFullLogData().stream()
-				.filter(el -> el.getUserIdFromDescription() == userId)
-				.map(LogEntity::getComponent)
-				.collect(Collectors.toList());
-
-		if (foundResults.size() > 0) {
-			try {
-				AlgoInputFileWriter inputAlgo = new AlgoInputFileWriter();
-				inputAlgo.writeList(foundResults, LogData.getLogComponents());
-
-				executeAlgorithms();
-
-				AlgoOutputFileReader outputAlgo = new AlgoOutputFileReader();
-				List<String> clusters = outputAlgo.getClusters(LogData.getLogComponents());
-				for(String cluster : clusters) {
-					System.out.println(cluster);
-				}
-				System.out.println();
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} else {
-			noDataFoundForSearchedUser(userId);
-		}
 	}
 
-	private static void findEventsByUserId(Integer userId) {
-		List<String> foundResults = LogData.getFullLogData().stream()
-				.filter(el -> el.getUserIdFromDescription() == userId)
-				.map(LogEntity::getEventName)
-				.collect(Collectors.toList());
-
-		if (foundResults.size() > 0) {
-			try {
-				AlgoInputFileWriter algoInput = new AlgoInputFileWriter();
-				algoInput.writeList(foundResults, LogData.getLogEvents());
-
-				executeAlgorithms();
-
-				AlgoOutputFileReader outputAlgo = new AlgoOutputFileReader();
-				List<String> clusters = outputAlgo.getClusters(LogData.getLogEvents());
-				for(String cluster : clusters) {
-					System.out.println(cluster);
-				}
-				System.out.println();
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} else {
-			noDataFoundForSearchedUser(userId);
-		}
-	}*/
-	
-	private static void noDataFoundForSearchedUser(Integer userId) {
-		System.out.println(StringConstants.NO_DATA_FOUND_FOR_USER_WITH_ID 
-				+ userId + " !");
-	}
-	
 	private static void executeAlgorithms() throws NumberFormatException, IOException {
 		MainTestMultiDimSequentialPatternMiningClosed.main(null);
 	}

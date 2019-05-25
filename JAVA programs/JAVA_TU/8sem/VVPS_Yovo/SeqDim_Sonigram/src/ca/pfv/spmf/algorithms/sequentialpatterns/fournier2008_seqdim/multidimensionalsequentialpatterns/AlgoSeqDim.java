@@ -85,7 +85,7 @@ public class AlgoSeqDim {
 		// reset the utility for memory usage logging
 		MemoryLogger.getInstance().reset();
 		// reset number of pattern found
-		patternCount =0;
+		patternCount = 0;
 		// save start time
 		startTime = System.currentTimeMillis();
 		// prepare object to write output file
@@ -274,8 +274,7 @@ public class AlgoSeqDim {
 		r.append(patternCount);
 		System.out.println(r.toString());
 //		sequences.printFrequentSequences(objectsCount);
-		System.out
-				.println("===================================================");
+		System.out.println("===================================================");
 	}
 
 	/**
