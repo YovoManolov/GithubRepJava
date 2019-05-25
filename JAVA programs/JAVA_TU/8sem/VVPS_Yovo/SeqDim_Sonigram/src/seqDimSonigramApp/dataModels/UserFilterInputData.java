@@ -39,9 +39,7 @@ public class UserFilterInputData {
 		this.chosenEventNames = chosenEventNames;
 	}
 
-	public void takeInputChoice(Scanner sc,Integer currentArrayIndex) {
-		
-		System.out.println("Find most frequent IPs by Event context, component and eventName.");
+	public void takeInputChoice(Scanner sc) {	
 		
 		if(sc == null) {
 			sc = new Scanner(System.in);
@@ -54,10 +52,35 @@ public class UserFilterInputData {
 			}else {
 				DropDownSelectionListsImpl downSelectionListsImpl = new DropDownSelectionListsImpl();
 				
+				int[] componentsChoices = new int[SIZE_OF_MDS];
+				int[] eventContextChoices = new int[SIZE_OF_MDS];
+				int[] eventNamesChoices = new int[SIZE_OF_MDS];
+				
+				downSelectionListsImpl.listAllComponents();
+				System.out.println("\nPlease enter the numbers of the selected components:  ");
 				for(int i = 0 ; i < SIZE_OF_MDS ;i++) {
-					chosenComponents.add(downSelectionListsImpl.makeAChoiceForComponents(sc));
-					chosenEventContexts.add(downSelectionListsImpl.makeAChoiceForEventContexts(sc));
-					chosenEventNames.add(downSelectionListsImpl.makeAChoiceForEventNames(sc));
+					System.out.println();
+					componentsChoices[i] = sc.nextInt();
+				}
+				
+				downSelectionListsImpl.listAllEventContexts();
+				System.out.println("\nPlease enter the number of the selected event context:  ");
+				for(int i = 0 ; i < SIZE_OF_MDS ;i++) {
+					System.out.println();
+					eventContextChoices[i] = sc.nextInt();
+				}
+				
+				downSelectionListsImpl.listAllEventNames();
+				System.out.println("\nPlease enter the number of the selected event name:  ");
+				for(int i = 0 ; i < SIZE_OF_MDS ;i++) {
+					System.out.println();
+					eventNamesChoices[i] = sc.nextInt();
+				}
+				
+				for(int i = 0 ; i < SIZE_OF_MDS ;i++) {
+					chosenComponents.add(downSelectionListsImpl.getSelectedComponent(componentsChoices[i]));
+					chosenEventContexts.add(downSelectionListsImpl.getSelectedEventContexts(eventContextChoices[i]));
+					chosenEventNames.add(downSelectionListsImpl.getSelectedEventNames(eventNamesChoices[i]));
 				}
 				return;
 			}
