@@ -96,7 +96,7 @@ public class MDSequenceDatabase {
 				
 				// split the MDsequence into tokens 
 				// and process this MDsequence
-				processMDSequence(thisLine.split(" "));	
+				processMDSequence(thisLine.split(","));	
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -125,9 +125,10 @@ public class MDSequenceDatabase {
 				break;
 			// if "*" , it is a wildcard
 			}else if(tokens[i].equals("*")){
-				mdpattern.addInteger(MDPattern.WILDCARD);
+				mdpattern.addString(String.valueOf(MDPattern.WILDCARD));
 			}else{ // otherwise, it is a dimension value
-				mdpattern.addInteger(Integer.valueOf(tokens[i]));
+				//mdpattern.addInteger(Integer.valueOf(tokens[i]));
+				mdpattern.addString(tokens[i]);
 			}
 		}
 		// (2) Now that the mdpattern has been read, the next step
@@ -180,7 +181,7 @@ public class MDSequenceDatabase {
 				}else{
 					// otherwise, it is just a simple item so
 					// we extract the item ID and create a new item
-					ItemSimple item = new ItemSimple(Integer.parseInt(tokens[i]));
+					ItemSimple item = new ItemSimple(tokens[i]);
 					// we add the item to the current itemset
 					itemset.addItem(item);
 				}

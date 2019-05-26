@@ -277,9 +277,11 @@ public class AlgoBIDEPlus extends AbstractAlgoPrefixSpan {
 				// NEW march 20 2010 : check if I is after current position in current itemset
 				for(int j=0; j < period.getSizeOfItemsetAt(i); j++){
 					ItemSimple item = period.getItemAtInItemsetAt(j, i);
-					if(item.getId() == itemI.getId()){
+					if(item.getId().equals(itemI.getId())){
 						sawI = true; 
-					}else if (item.getId() > itemI.getId()){
+						//item.getId() > itemI.getId()
+						//}else if(){
+					}else {
 						break;
 					}
 				}
@@ -360,7 +362,7 @@ public class AlgoBIDEPlus extends AbstractAlgoPrefixSpan {
 
 	private Map<ItemSimple, Set<Integer>> findSequencesContainingItems(SequenceDatabase database) {
 		// the following set is to remember if an item was already seen for a sequence
-		Set<Integer> alreadyCounted = new HashSet<Integer>(); 
+		Set<String> alreadyCounted = new HashSet<String>(); 
 		// The latest sequence that was scanned
 		Sequence lastSequence = null;
 		// We use a map to store the sequence IDs where an item appear

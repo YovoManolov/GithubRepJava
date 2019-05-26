@@ -83,9 +83,9 @@ public class AlgoDim{
 	// where val is a dimension value for the i-th dimension.
 	
 	// Key: item id     Value:  mdpattern identifier
-	private Map<Integer, String> mapItemIdIdentifier = new HashMap<Integer,String>();
+	private Map<String, String> mapItemIdIdentifier = new HashMap<String,String>();
 	// Value: item id     key:  mdpattern identifier
-	private Map<String, Integer> mapIdentifierItemId = new HashMap<String, Integer>();
+	private Map<String, String> mapIdentifierItemId = new HashMap<String, String>();
 	
 	// the largest Item id  that was used when converting from a mdpattern
 	// to an itemset
@@ -224,12 +224,12 @@ public class AlgoDim{
 	 * @param itemID an item ID
 	 * @return the dimension value  corresponding to this item ID
 	 */
-	private Integer getValueForItemId(int itemID){
+	private String getValueForItemId(int itemID){
 		// convert to an identifier
 		String identifier = mapItemIdIdentifier.get(itemID);
 		int index = identifier.indexOf("-");
 		// return only the part before the "-"
-		return Integer.valueOf(identifier.substring(0, index));
+		return String.valueOf(identifier.substring(0, index));
 	}
 	
 	/**
@@ -252,13 +252,13 @@ public class AlgoDim{
 	 * @param value the value for the dimension
 	 * @return the item ID
 	 */
-	private int convertDimensionValueToItemId(int indexDimension, Integer value){
+	private String convertDimensionValueToItemId(int indexDimension, String value){
 		// get the item ID by using the map
-		Integer itemId = mapIdentifierItemId.get("" + value + "-" + indexDimension);
+		String itemId = mapIdentifierItemId.get("" + value + "-" + indexDimension);
 		// if there is no item ID for this dimension value yet
 		if(itemId == null){
 			// we create a new item ID
-			itemId = lastUniqueItemIdGiven++;
+			itemId = String.valueOf(lastUniqueItemIdGiven++);
 			// we create the corresponding identifier for the 
 			// dimension value
 			StringBuilder identifier = new StringBuilder();
@@ -278,9 +278,9 @@ public class AlgoDim{
 	 * @param pattern an MD-pattern
 	 * @return  an itemset as a list of integers
 	 */
-	private List<Integer> convertPatternToItemset(MDPattern pattern) {
+	private List<String> convertPatternToItemset(MDPattern pattern) {
 		// create the itemset
-		List<Integer> itemset = new ArrayList<Integer>();
+		List<String> itemset = new ArrayList<String>();
 		// for each dimension value in the pattern
 		for(int i=0; i < pattern.values.size(); i++){
 			// convert to an item ID and add it to the itemset
@@ -305,11 +305,11 @@ public class AlgoDim{
 				// get the dimension corresponding to the item ID
 				int dimension = getDimensionForItemId(itemset.get(j));
 				// get the dimension value corresponding to the item ID
-				int value = getValueForItemId(itemset.get(j));
+				String value = getValueForItemId(itemset.get(j));
 				// if it is the dimension i
 				if(dimension == i){
 					// add the dimension value to the MD pattern
-					mdpattern.addInteger(value);
+					mdpattern.addString(value);
 				}
 			}
 			// if the dimension value was not found,
@@ -343,11 +343,11 @@ public class AlgoDim{
 				// get the dimension corresponding to the item ID
 				int dimension = getDimensionForItemId(objects[j]);
 				// get the dimension value corresponding to the item ID
-				int value = getValueForItemId(objects[j]);
+				String value = getValueForItemId(objects[j]);
 				if(dimension == i){
 					// if it is the dimension i
 					// add the dimension value to the MD pattern
-					mdpattern.addInteger(value);
+					mdpattern.addString(value);
 				}
 			}
 			// if the dimension value was not found,

@@ -30,13 +30,13 @@ import ca.pfv.spmf.algorithms.sequentialpatterns.fournier2008_seqdim.multidimens
 public class ItemSimple{
 	
 	// an item as an ID
-	private final int id;
+	private final String id;
 	
 	/**
 	 * Constructor
 	 * @param id the ID of the item
 	 */
-	public ItemSimple(int id){
+	public ItemSimple(String id){
 		this.id = id;
 	}
 	
@@ -44,7 +44,7 @@ public class ItemSimple{
 	 * Get the ID of this item.
 	 * @return the ID.
 	 */
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -63,7 +63,7 @@ public class ItemSimple{
 	 */
 	public boolean equals(Object object){
 		ItemSimple item = (ItemSimple) object;
-		if((item.getId() == this.getId())){
+		if((item.getId().equals(this.getId()))){
 			return true;
 		}
 		return false;

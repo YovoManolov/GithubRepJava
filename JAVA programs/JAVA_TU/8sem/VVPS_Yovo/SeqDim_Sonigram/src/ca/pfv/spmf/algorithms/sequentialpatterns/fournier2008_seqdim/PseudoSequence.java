@@ -298,10 +298,10 @@ class PseudoSequence {
 	 * @param idItem  the item that is searched for
 	 * @return  the position or -1 if the item does not appear in the itemset
 	 */
-	public int indexOf(int indexItemset, int idItem) {
+	public int indexOf(int indexItemset, String idItem) {
 		for(int i=0; i < getSizeOfItemsetAt(indexItemset); i++){
 			// if the item is found, then return the position
-			if(getItemAtInItemsetAt(i, indexItemset).getId() == idItem){
+			if(getItemAtInItemsetAt(i, indexItemset).getId().equals(idItem)){
 				return i;
 			}
 		}

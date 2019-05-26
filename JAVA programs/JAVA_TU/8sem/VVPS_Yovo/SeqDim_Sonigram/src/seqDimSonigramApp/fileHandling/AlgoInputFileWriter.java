@@ -17,7 +17,7 @@ public class AlgoInputFileWriter {
 
 	public boolean writeList(ArrayList<List<LogEntity>> findResultsForEachRow)
 									throws IOException {
-		Integer index;
+		Integer index = null;
 		String outputFilePath = MainTestMultiDimSequentialPatternMiningClosed
 								.fileToPath(INPUT_ALGOFILE_NAME);	
 		BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath));
@@ -35,11 +35,12 @@ public class AlgoInputFileWriter {
 				return false;
 			}
 			/*index = listForMapping.indexOf(logEntity);*/
-			String singleLineToWrite = ""+eventContext+" "+component+ " "+eventName+" -3 " ;
+			String singleLineToWrite = ""+eventContext+", "+component+ ", "+eventName+",-3," ;
 			for(LogEntity le:logEntities) {
-				singleLineToWrite += (le.getIp()+" -1 ") ;
+				singleLineToWrite += (le.getIp()+",-1,") ;
 			}
-			singleLineToWrite.substring(0, singleLineToWrite.length()-5);		
+			singleLineToWrite +="-2";
+			singleLineToWrite = singleLineToWrite.substring(0, singleLineToWrite.length()-5);		
 			writer.write(singleLineToWrite);
 			writer.newLine();
 		}

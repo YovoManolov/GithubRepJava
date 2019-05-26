@@ -52,31 +52,31 @@ public class UserFilterInputData {
 			}else {
 				DropDownSelectionListsImpl downSelectionListsImpl = new DropDownSelectionListsImpl();
 				
-				int[] componentsChoices = new int[SIZE_OF_MDS];
+				/*int[] componentsChoices = new int[SIZE_OF_MDS];
 				int[] eventContextChoices = new int[SIZE_OF_MDS];
-				int[] eventNamesChoices = new int[SIZE_OF_MDS];
-				
+				int[] eventNamesChoices = new int[SIZE_OF_MDS];*/
+				int[] componentsChoices = new int[] {6,8,8,8};
+				int[] eventContextChoices = new int[] {38,2,34,42};
+				int[] eventNamesChoices = new int[] {20,26,26,26};
+			
+				/*
 				downSelectionListsImpl.listAllComponents();
 				System.out.println("\nPlease enter the numbers of the selected components:  ");
 				for(int i = 0 ; i < SIZE_OF_MDS ;i++) {
-					System.out.println();
 					componentsChoices[i] = sc.nextInt();
 				}
 				
 				downSelectionListsImpl.listAllEventContexts();
 				System.out.println("\nPlease enter the number of the selected event context:  ");
 				for(int i = 0 ; i < SIZE_OF_MDS ;i++) {
-					System.out.println();
 					eventContextChoices[i] = sc.nextInt();
 				}
 				
 				downSelectionListsImpl.listAllEventNames();
 				System.out.println("\nPlease enter the number of the selected event name:  ");
-				for(int i = 0 ; i < SIZE_OF_MDS ;i++) {
-					System.out.println();
+					for(int i = 0 ; i < SIZE_OF_MDS ;i++) {
 					eventNamesChoices[i] = sc.nextInt();
-				}
-				
+				}*/
 				for(int i = 0 ; i < SIZE_OF_MDS ;i++) {
 					chosenComponents.add(downSelectionListsImpl.getSelectedComponent(componentsChoices[i]));
 					chosenEventContexts.add(downSelectionListsImpl.getSelectedEventContexts(eventContextChoices[i]));

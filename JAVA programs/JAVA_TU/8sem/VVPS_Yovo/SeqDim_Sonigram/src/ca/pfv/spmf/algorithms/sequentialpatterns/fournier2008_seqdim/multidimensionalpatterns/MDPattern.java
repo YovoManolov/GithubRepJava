@@ -32,11 +32,11 @@ import java.util.Set;
 public class MDPattern {
 	
 	/** the list of values in this MDPattern*/
-	List<Integer> values = new ArrayList<Integer>();
+	List<String> values = new ArrayList<String>();
 	
 	/** a code representing the special value "*" that can be
 	 found in md-patterns*/
-	public final static int WILDCARD = 9999;
+	public final static String WILDCARD = "9999";
 	
 	/** a unique id corresponding to this MD-Pattern*/
 	private int id; 
@@ -73,7 +73,7 @@ public class MDPattern {
 	 * @param index  the position i.
 	 * @return the value.
 	 */
-	public int getValue(int index){
+	public String getValue(int index){
 		return values.get(index);
 	}
 	
@@ -82,7 +82,7 @@ public class MDPattern {
 	 * @param index  the position i.
 	 * @return the value.
 	 */
-	public Integer get(int index){
+	public String get(int index){
 		return values.get(index);
 	}
 	
@@ -90,7 +90,7 @@ public class MDPattern {
 	 * Add a dimension value to this pattern.
 	 * @param value  the dimension value (integer)
 	 */
-	public void addInteger(int value){
+	public void addString(String value){
 		values.add(value);
 	}
 	
@@ -98,14 +98,14 @@ public class MDPattern {
 	 * Add a wildcard as dimension value to this md-pattern.
 	 */
 	public void addWildCard(){
-		values.add(WILDCARD);
+		values.add(String.valueOf(WILDCARD));
 	}
 	
 	/**
 	 * Add a dimension value to this pattern in first position.
 	 * @param value  the dimension value (int)
 	 */
-	public void addIntegerFirstPosition(int value){
+	public void addStringFirstPosition(String value){
 		values.add(0, value);
 	}
 	
@@ -275,7 +275,7 @@ public class MDPattern {
 	 * @param indexDimension the position of the dimension.
 	 * @param newValue the new value
 	 */
-	public void set(int indexDimension, int newValue) {
+	public void set(int indexDimension, String newValue) {
 		// delete the old value
 		values.remove(indexDimension);
 		// add the new value

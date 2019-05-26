@@ -25,7 +25,7 @@ public class MainTestMultiDimSequentialPatternMiningClosed {
 		// Load a sequence database
 		MDSequenceDatabase contextMDDatabase  = new MDSequenceDatabase(); //
 		contextMDDatabase.loadFile(input);
-//		contextMDDatabase.printContext();
+		//		contextMDDatabase.printContext();
 		
 		// If the second boolean is true, the algorithm will use
 		// CHARM instead of AprioriClose for mining frequent closed itemsets.

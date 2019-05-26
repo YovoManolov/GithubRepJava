@@ -49,7 +49,7 @@ public class DropDownSelectionListsImpl {
 
 	public String getSelectedEventNames(int choice) {
 		
-		return allEventContexts.get(choice - 1);
+		return allEventNames.get(choice - 1);
 	}
 	
 
