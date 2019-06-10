@@ -185,7 +185,6 @@ public class AlgoSeqDim {
 					mdsequence.setSupport(pattern.getAbsoluteSupport()); 
 					
 				}
-
 				// finally we save the mdsequential pattern
 				savePattern(sequence, mdsequence);
 			}
@@ -274,7 +273,8 @@ public class AlgoSeqDim {
 		r.append(patternCount);
 		System.out.println(r.toString());
 //		sequences.printFrequentSequences(objectsCount);
-		System.out.println("===================================================");
+		System.out
+				.println("===================================================");
 	}
 
 	/**

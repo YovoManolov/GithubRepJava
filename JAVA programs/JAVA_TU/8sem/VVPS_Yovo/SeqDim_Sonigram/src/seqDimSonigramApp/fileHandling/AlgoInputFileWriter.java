@@ -9,6 +9,7 @@ import java.util.List;
 import ca.pfv.spmf.test.MainTestMultiDimSequentialPatternMining;
 import ca.pfv.spmf.test.MainTestMultiDimSequentialPatternMiningClosed;
 import ca.pfv.spmf.test.MainTestOPTICS_extractClusterOrdering_saveToFile;
+import seqDimSonigramApp.dataModels.LogData;
 import seqDimSonigramApp.dataModels.LogEntity;
 
 public class AlgoInputFileWriter {
@@ -30,21 +31,28 @@ public class AlgoInputFileWriter {
 			String eventContext = logEntities.get(0).getEventContext();
 			String component = logEntities.get(0).getComponent();
 			String eventName = logEntities.get(0).getEventName();
+			String IP = logEntities.get(0).getIp();
+			
+			Integer eventContextIndex =  LogData.getLogEventContexts().indexOf(eventContext);
+			Integer componentIndex =  LogData.getLogComponents().indexOf(component);
+			Integer eventNameIndex =  LogData.getLogEventNames().indexOf(eventName);
+			
 			if(logEntities.isEmpty()) {
 				System.out.println("writeList's parameter is null or empty!\n");
 				return false;
 			}
 			/*index = listForMapping.indexOf(logEntity);*/
-			String singleLineToWrite = ""+eventContext+", "+component+ ", "+eventName+",-3," ;
+			String singleLineToWrite = ""+eventContextIndex+", "+componentIndex+ ", "+eventNameIndex+",-3," ;
 			for(LogEntity le:logEntities) {
-				singleLineToWrite += (le.getIp()+",-1,") ;
+				singleLineToWrite += (LogData.getLogIPs().indexOf(le.getIp())+",-1,") ;
 			}
 			singleLineToWrite +="-2";
-			singleLineToWrite = singleLineToWrite.substring(0, singleLineToWrite.length()-5);		
+			singleLineToWrite = singleLineToWrite.substring(0, singleLineToWrite.length());		
 			writer.write(singleLineToWrite);
 			writer.newLine();
 		}
 		writer.close();
 		return true;
 	}
+	
 }

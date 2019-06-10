@@ -15,17 +15,17 @@ import ca.pfv.spmf.algorithms.sequentialpatterns.fournier2008_seqdim.multidimens
  * @author Philippe Fournier-Viger
  */
 public class MainTestMultiDimSequentialPatternMiningClosed {
-
 	public static void main(String [] arg) throws IOException{    
+
 		// Minimum absolute support = 50 %
 		double minsupp = 0.50;
 		String input = fileToPath("ContextMDSequenceNoTime.txt");
-		String output = "output.txt";
+		String output = ".//output1.txt";
 		
 		// Load a sequence database
 		MDSequenceDatabase contextMDDatabase  = new MDSequenceDatabase(); //
 		contextMDDatabase.loadFile(input);
-		//		contextMDDatabase.printContext();
+//		contextMDDatabase.printContext();
 		
 		// If the second boolean is true, the algorithm will use
 		// CHARM instead of AprioriClose for mining frequent closed itemsets.

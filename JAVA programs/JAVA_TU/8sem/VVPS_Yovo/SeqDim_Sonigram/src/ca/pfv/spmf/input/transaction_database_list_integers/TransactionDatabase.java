@@ -36,15 +36,15 @@ import java.util.Set;
 public class TransactionDatabase {
 
 	// The list of items in this database
-	private final Set<String> items = new HashSet<String>();
+	private final Set<Integer> items = new HashSet<Integer>();
 	// the list of transactions
-	private final List<List<String>> transactions = new ArrayList<List<String>>();
+	private final List<List<Integer>> transactions = new ArrayList<List<Integer>>();
 
 	/**
 	 * Method to add a new transaction to this database.
 	 * @param transaction  the transaction to be added
 	 */
-	public void addTransaction(List<String> transaction) {
+	public void addTransaction(List<Integer> transaction) {
 		transactions.add(transaction);
 		items.addAll(transaction);
 	}
@@ -87,11 +87,11 @@ public class TransactionDatabase {
 	 */
 	private void addTransaction(String itemsString[]) {
 		// create an empty transaction
-		List<String> itemset = new ArrayList<String>();
+		List<Integer> itemset = new ArrayList<Integer>();
 		// for each item in this line
 		for (String attribute : itemsString) {
 			// convert from string to int
-			String item = String.valueOf(attribute);
+			int item = Integer.parseInt(attribute);
 			// add the item to the current transaction
 			itemset.add(item); 
 			// add the item to the set of all items in this database
@@ -109,7 +109,7 @@ public class TransactionDatabase {
 				.println("===================  TRANSACTION DATABASE ===================");
 		int count = 0; 
 		// for each transaction
-		for (List<String> itemset : transactions) { // pour chaque objet
+		for (List<Integer> itemset : transactions) { // pour chaque objet
 			System.out.print(count + ":  ");
 			print(itemset); // print the transaction 
 			count++;
@@ -120,10 +120,10 @@ public class TransactionDatabase {
 	 * Method to print a transaction to System.out.
 	 * @param itemset a transaction
 	 */
-	private void print(List<String> itemset){
+	private void print(List<Integer> itemset){
 		StringBuilder r = new StringBuilder();
 		// for each item in this transaction
-		for (String item : itemset) {
+		for (Integer item : itemset) {
 			// append the item to the StringBuilder
 			r.append(item.toString());
 			r.append(' ');
@@ -143,7 +143,7 @@ public class TransactionDatabase {
 	 * Get the list of transactions in this database
 	 * @return A list of transactions (a transaction is a list of Integer).
 	 */
-	public List<List<String>> getTransactions() {
+	public List<List<Integer>> getTransactions() {
 		return transactions;
 	}
 
@@ -151,7 +151,7 @@ public class TransactionDatabase {
 	 * Get the set of items contained in this database.
 	 * @return The set of items.
 	 */
-	public Set<String> getItems() {
+	public Set<Integer> getItems() {
 		return items;
 	}
 }

@@ -298,10 +298,10 @@ class PseudoSequence {
 	 * @param idItem  the item that is searched for
 	 * @return  the position or -1 if the item does not appear in the itemset
 	 */
-	public int indexOf(int indexItemset, String idItem) {
+	public int indexOf(int indexItemset, int idItem) {
 		for(int i=0; i < getSizeOfItemsetAt(indexItemset); i++){
 			// if the item is found, then return the position
-			if(getItemAtInItemsetAt(i, indexItemset).getId().equals(idItem)){
+			if(getItemAtInItemsetAt(i, indexItemset).getId() == idItem){
 				return i;
 			}
 		}
@@ -517,9 +517,11 @@ class PseudoSequence {
 	/**
 	 * Get the ith maximum period of a prefix sequence for this sequence S.
 	 * The ith maximum period of the prefix Sp in S is : 
-	 *  * if 0 < i <= n, it is the piece of sequence between the end of the first instance of prefix e1... ei-1 in S 
+	 *  * if 0 < i <= n, it is the piece of sequence between the end of the 
+	 *  first instance of prefix e1... ei-1 in S 
 	 *    and the ith last-in-last appearance with respect to prefix Sp
-	 *  * if i = 0, it is the piece of sequence in S located before the first last-in-last appearance with respect to prefix Sp.
+	 *  * if i = 0, it is the piece of sequence in S located before the 
+	 *  first last-in-last appearance with respect to prefix Sp.
 	 *   Example1:  if S = ABCB  and Sp = AB
 	 *   	the 1th semi-period of Sp in S is empty
 	 *      the 2th semi-period of Sp in S is BC

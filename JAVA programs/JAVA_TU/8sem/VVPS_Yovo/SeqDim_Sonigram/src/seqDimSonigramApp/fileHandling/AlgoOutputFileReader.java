@@ -19,8 +19,7 @@ public class AlgoOutputFileReader {
 			return new ArrayList<>();
 		}
 		// Process output file
-		BufferedReader reader = new BufferedReader(
-									new FileReader(OUTPUT_ALGOFILE_NAME));
+		BufferedReader reader = new BufferedReader(new FileReader(OUTPUT_ALGOFILE_NAME));
 		String line;
 		long clusterLength;
 		int clusterId;
