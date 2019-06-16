@@ -43,19 +43,19 @@ public class DropDownSelectionListsImpl {
 	
 	public String getSelectedComponent(int choice) {
 		
-		return allComponents.get( choice - 1);
+		return allComponents.get(choice);
 	}
 	
 
 	public String getSelectedEventNames(int choice) {
 		
-		return allEventNames.get(choice - 1);
+		return allEventNames.get(choice);
 	}
 	
 
 	public String getSelectedEventContexts(int choice) {
 		
-		return allEventContexts.get(choice - 1);
+		return allEventContexts.get(choice);
 	}
 	
 	

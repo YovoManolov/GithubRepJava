@@ -34,7 +34,7 @@ import ca.pfv.spmf.algorithms.sequentialpatterns.fournier2008_seqdim.multidimens
  * @see Sequence
  * @see AlgoSeqDim
  * @see AlgoFournierViger08
-* @author Philippe Fournier-Viger
+ * @author Philippe Fournier-Viger
  */
 public class MDSequence {
 	

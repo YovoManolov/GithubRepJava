@@ -232,7 +232,6 @@ public class AlgoSeqDim {
 		writer.newLine();
 	}
 	
-	
 	/**
 	 * Create a projected MD-pattern. database by keeping only the 
 	 * MDPatterns corresponding to a set of sequence IDs.
@@ -273,8 +272,7 @@ public class AlgoSeqDim {
 		r.append(patternCount);
 		System.out.println(r.toString());
 //		sequences.printFrequentSequences(objectsCount);
-		System.out
-				.println("===================================================");
+		System.out.println("===================================================");
 	}
 
 	/**

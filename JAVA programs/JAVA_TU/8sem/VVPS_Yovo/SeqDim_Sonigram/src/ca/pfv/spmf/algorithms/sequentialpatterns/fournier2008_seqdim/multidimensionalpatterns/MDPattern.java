@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import seqDimSonigramApp.dataModels.LogData;
+
 /**
  * Implementation of an MD-Pattern as used by the DIM algorithm proposed by Helen Pinto et al. (2001).
  *
@@ -209,7 +211,13 @@ public class MDPattern {
 				r.append("* ");
 			}else{
 				// otherwise, just print the value
-				r.append(values.get(i));
+				if(i == 1) {
+					r.append(LogData.getLogComponents().get(values.get(i)));
+				}else if(i==2) {
+					r.append(LogData.getLogEventNames().get(values.get(i)));
+				}else {
+					r.append(values.get(i));
+				}
 				r.append(' ');
 			}
 		}

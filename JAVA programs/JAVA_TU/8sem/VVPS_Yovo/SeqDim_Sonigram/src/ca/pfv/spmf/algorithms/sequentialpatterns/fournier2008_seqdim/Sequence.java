@@ -23,6 +23,7 @@ import java.util.Map;
 import java.util.Set;
 
 import ca.pfv.spmf.algorithms.sequentialpatterns.fournier2008_seqdim.multidimensionalsequentialpatterns.AlgoSeqDim;
+import seqDimSonigramApp.dataModels.LogData;
 
 
 /**
@@ -154,7 +155,7 @@ public class Sequence{
 			r.append(", ");
 			// append all items in that itemset
 			for(ItemSimple item : itemset.getItems()){
-				String string = item.toString();
+				String string = LogData.getLogIPs().get(item.getId());
 				r.append(string);
 				r.append(' ');
 			}

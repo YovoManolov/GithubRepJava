@@ -52,14 +52,15 @@ public class UserFilterInputData {
 			}else {
 				DropDownSelectionListsImpl downSelectionListsImpl = new DropDownSelectionListsImpl();
 				
-				/*int[] componentsChoices = new int[SIZE_OF_MDS];
+				int[] componentsChoices = new int[SIZE_OF_MDS];
 				int[] eventContextChoices = new int[SIZE_OF_MDS];
-				int[] eventNamesChoices = new int[SIZE_OF_MDS];*/
-				int[] componentsChoices = new int[] {6,8,8,8};
-				int[] eventContextChoices = new int[] {38,2,34,42};
-				int[] eventNamesChoices = new int[] {20,26,26,26};
+				int[] eventNamesChoices = new int[SIZE_OF_MDS];
+				
+				/*int[] eventContextChoices = new int[] {7,35,10,41};
+				int[] componentsChoices = new int[] {8,8,8,8};
+				int[] eventNamesChoices = new int[] {23,23,23,23};*/
 			
-				/*
+				
 				downSelectionListsImpl.listAllComponents();
 				System.out.println("\nPlease enter the numbers of the selected components:  ");
 				for(int i = 0 ; i < SIZE_OF_MDS ;i++) {
@@ -76,10 +77,11 @@ public class UserFilterInputData {
 				System.out.println("\nPlease enter the number of the selected event name:  ");
 					for(int i = 0 ; i < SIZE_OF_MDS ;i++) {
 					eventNamesChoices[i] = sc.nextInt();
-				}*/
+				}
+					
 				for(int i = 0 ; i < SIZE_OF_MDS ;i++) {
-					chosenComponents.add(downSelectionListsImpl.getSelectedComponent(componentsChoices[i]));
 					chosenEventContexts.add(downSelectionListsImpl.getSelectedEventContexts(eventContextChoices[i]));
+					chosenComponents.add(downSelectionListsImpl.getSelectedComponent(componentsChoices[i]));
 					chosenEventNames.add(downSelectionListsImpl.getSelectedEventNames(eventNamesChoices[i]));
 				}
 				return;

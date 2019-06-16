@@ -31,7 +31,6 @@ public class AlgoInputFileWriter {
 			String eventContext = logEntities.get(0).getEventContext();
 			String component = logEntities.get(0).getComponent();
 			String eventName = logEntities.get(0).getEventName();
-			String IP = logEntities.get(0).getIp();
 			
 			Integer eventContextIndex =  LogData.getLogEventContexts().indexOf(eventContext);
 			Integer componentIndex =  LogData.getLogComponents().indexOf(component);
@@ -47,7 +46,6 @@ public class AlgoInputFileWriter {
 				singleLineToWrite += (LogData.getLogIPs().indexOf(le.getIp())+",-1,") ;
 			}
 			singleLineToWrite +="-2";
-			singleLineToWrite = singleLineToWrite.substring(0, singleLineToWrite.length());		
 			writer.write(singleLineToWrite);
 			writer.newLine();
 		}
