@@ -10,14 +10,11 @@ import seqDimSonigramApp.dataModels.LogData;
 import seqDimSonigramApp.dataModels.LogEntity;
 import seqDimSonigramApp.dataModels.UserFilterInputData;
 import seqDimSonigramApp.fileHandling.AlgoInputFileWriter;
-import seqDimSonigramApp.fileHandling.AlgoOutputFileReader;
 import seqDimSonigramApp.utils.StringConstants;
 
 public class MenuImpl {
 	
-	private static int USER_ID_MIN = 1;
-	private static int USER_ID_MAX = 7397;
-	private static int EXIT = 4;
+	private static int EXIT = 2;
 	
 	private UserFilterInputData userFilterInputData = new UserFilterInputData();
 	
@@ -27,47 +24,26 @@ public class MenuImpl {
 		Scanner sc = new Scanner(System.in);
 		do {
 			printMenu();
-			userFilterInputData.takeInputChoice(sc);
-			choice = 1;
-			
+			choice = userFilterInputData.takeInputChoice(sc);
 			
 			switch(choice) {
 				case 1:
-					findEventContextsByUserId(userFilterInputData);
+					execSeqDim_SongramAlg(userFilterInputData);
 					break;
-				default: break;
+				case 2: break;
+				
+				default: System.out.println(StringConstants.INVALID_MENU_CHOICE);
 			}
 		} while(choice != EXIT);
 		System.out.println(StringConstants.EXIT_APPLICATION);
 		sc.close();
 	}
 
-		
-	private static int takeInputUserId(Scanner sc) {
-		System.out.println("Enter user id:");
-		if(sc == null) {
-			sc = new Scanner(System.in);
-		} 
-		
-		try {
-			int userId = Integer.parseInt(sc.nextLine());
-			if(userId < USER_ID_MIN || userId > USER_ID_MAX) {
-				System.out.println(StringConstants.ENTER_VALID_USER_ID);
-				return takeInputUserId(sc);
-			}
-			return userId;
-		} catch (NumberFormatException e) {
-			System.out.println(StringConstants.ENTER_VALID_USER_ID);
-			return takeInputUserId(sc);
-		}
-	}
-	
 	private static void printMenu() {
 		System.out.println(StringConstants.MENU);
 	}
 	
-	
-    private void findEventContextsByUserId(UserFilterInputData userFilterInputData) {
+    private void execSeqDim_SongramAlg(UserFilterInputData userFilterInputData) {
     	
     	ArrayList<List<LogEntity>> findResultsForEachRow = new ArrayList<List<LogEntity>>();
     	
@@ -82,12 +58,6 @@ public class MenuImpl {
 					algoInput.writeList(findResultsForEachRow);
 
 					executeAlgorithms();
-
-					AlgoOutputFileReader outputAlgo = new AlgoOutputFileReader();
-					List<String> clusters = outputAlgo.getClusters(LogData.getLogEventContexts());
-					for(String cluster : clusters) {
-						System.out.println(cluster);
-					}
 				}
 
 		} catch (IOException e) {
@@ -137,9 +107,8 @@ public class MenuImpl {
 		        	findResultsForEachRow.add(singleLogEntityList);
 		    	}
 		    	
-		   return ;
+		   return;
 	}
-
 
 	private static void executeAlgorithms() throws NumberFormatException, IOException {
 		MainTestMultiDimSequentialPatternMiningClosed.main(null);
