@@ -24,7 +24,6 @@ public class AlgoInputFileWriter {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath));
 		
 		//writing singleLine in input file
-		
 		for (List<LogEntity> logEntities : findResultsForEachRow) {
 			
 			//those values are the same for each List<LogEntity>
