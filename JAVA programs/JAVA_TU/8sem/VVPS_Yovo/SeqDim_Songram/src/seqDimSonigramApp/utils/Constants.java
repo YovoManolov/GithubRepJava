@@ -1,7 +1,7 @@
 package seqDimSonigramApp.utils;
 
-public final class StringConstants {
-	 private StringConstants() {
+public final class Constants {
+	 private Constants() {
          // restrict instantiation
 	 }
 	 
@@ -16,7 +16,8 @@ public final class StringConstants {
 	 public static final String EXIT_APPLICATION = "\nApplication terminated by user! Bye-bye.";
 	 public static final String MENU_CHOICE = "Please choose an option from the menu!\n";
 
-	 public static final String INVALID_MENU_CHOICE = "Please choose a valid option from the menu!\n";
+	 public static final String INVALID_MENU_CHOICE = "Please choose a valid option from the menu!";
+	 public static final String INVALID_MD_PATTERN_CHOICE = "Please choose a valid value from the listed ones!";
 	 public static final String MD_PATTERN_TYPE_CHOICE = "Please enter the number of the selected ";
 	 
 	 public static final String NO_DATA_FOUND_FOR_USER_CHOICE =  
@@ -25,4 +26,6 @@ public final class StringConstants {
 	 public static final String MD_PATTERN_TYPE_CONTEXTS ="event context";
 	 public static final String MD_PATTERN_TYPE_COMPONENTS ="component";
 	 public static final String MD_PATTERN_TYPE_EVENT_NAMES ="event name";
+
+	public static final int SIZE_OF_MDS = 4;
 }

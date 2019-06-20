@@ -26,7 +26,6 @@ public class AlgoInputFileWriter {
 		//writing singleLine in input file
 		for (List<LogEntity> logEntities : findResultsForEachRow) {
 			
-			//those values are the same for each List<LogEntity>
 			String eventContext = logEntities.get(0).getEventContext();
 			String component = logEntities.get(0).getComponent();
 			String eventName = logEntities.get(0).getEventName();
@@ -39,7 +38,7 @@ public class AlgoInputFileWriter {
 				System.out.println("writeList's parameter is null or empty!\n");
 				return false;
 			}
-			/*index = listForMapping.indexOf(logEntity);*/
+			
 			String singleLineToWrite = ""+eventContextIndex+", "+componentIndex+ ", "+eventNameIndex+",-3," ;
 			for(LogEntity le:logEntities) {
 				singleLineToWrite += (LogData.getLogIPs().indexOf(le.getIp())+",-1,") ;

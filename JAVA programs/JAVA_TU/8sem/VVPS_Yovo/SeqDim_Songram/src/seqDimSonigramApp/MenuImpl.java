@@ -10,7 +10,7 @@ import seqDimSonigramApp.dataModels.LogData;
 import seqDimSonigramApp.dataModels.LogEntity;
 import seqDimSonigramApp.dataModels.UserFilterInputData;
 import seqDimSonigramApp.fileHandling.AlgoInputFileWriter;
-import seqDimSonigramApp.utils.StringConstants;
+import seqDimSonigramApp.utils.Constants;
 
 public class MenuImpl {
 	
@@ -32,15 +32,15 @@ public class MenuImpl {
 					break;
 				case 2: break;
 				
-				default: System.out.println(StringConstants.INVALID_MENU_CHOICE);
+				default: System.out.println(Constants.INVALID_MENU_CHOICE);
 			}
 		} while(choice != EXIT);
-		System.out.println(StringConstants.EXIT_APPLICATION);
+		System.out.println(Constants.EXIT_APPLICATION);
 		sc.close();
 	}
 
 	private static void printMenu() {
-		System.out.println(StringConstants.MENU);
+		System.out.println(Constants.MENU);
 	}
 	
     private void execSeqDim_SongramAlg(UserFilterInputData userFilterInputData) {
