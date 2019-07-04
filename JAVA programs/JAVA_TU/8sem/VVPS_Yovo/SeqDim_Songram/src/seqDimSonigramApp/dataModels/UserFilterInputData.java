@@ -7,9 +7,7 @@ import seqDimSonigramApp.DropDownSelectionListsImpl;
 import seqDimSonigramApp.utils.Constants;
 
 public class UserFilterInputData {
-	
 
-	
 	private ArrayList<String> chosenComponents = new ArrayList<>() ;
 	private ArrayList<String> chosenEventContexts = new ArrayList<>() ;
 	private ArrayList<String>  chosenEventNames = new ArrayList<>() ;
@@ -43,7 +41,7 @@ public class UserFilterInputData {
 		this.chosenEventNames = chosenEventNames;
 	}
 
-	public int takeInputChoice(Scanner sc) {	
+	public Integer takeInputChoice(Scanner sc) {	
 		
 		if(sc == null) {
 			sc = new Scanner(System.in);
@@ -52,7 +50,7 @@ public class UserFilterInputData {
 		try {
 			String menuChoice  = sc.next();
 			
-			int intMenuChoice =  Integer.parseInt(menuChoice);
+			Integer intMenuChoice =  Integer.parseInt(menuChoice);
 			if(intMenuChoice != 1) {
 				return intMenuChoice;
 			}else {
@@ -84,6 +82,61 @@ public class UserFilterInputData {
 			return 0;
 		}
 	}
+	
+	public Integer takeInputChoiceUnit(String choice) {	
+		Integer intMenuChoice;
+		String menuChoice  = choice;
+		
+		try {
+			
+		intMenuChoice =  Integer.parseInt(menuChoice);
+		}catch (NumberFormatException e) {
+			return -1;
+		}
+			
+			if(intMenuChoice == 1) {
+				return intMenuChoice;
+			}else {
+				return -1;
+			}
+			
+	}
+	
+	
+		//This method is modified, so it can be run independently
+		//from the rest of the logic in the application
+		public int getChoiceUnit(String choice,MDPatternType mdPatternType) {
+			
+			String mdPatternChoice  = choice;
+			int mdPatternChoiceInt;
+			try {
+				mdPatternChoiceInt =  Integer.parseInt(mdPatternChoice);
+			}catch(NumberFormatException e) {
+				return  -1;
+			}
+			
+			switch(mdPatternType) {
+				case COMPONENTS :
+						if(mdPatternChoiceInt > 10 ||  mdPatternChoiceInt < 0) {
+							return -1;
+						}
+					break;
+				case EVENT_CONTEXTS :
+						if(mdPatternChoiceInt > 43 || mdPatternChoiceInt < 0) {
+							return -1;
+						}
+					break; 
+				case EVENT_NAMES: 
+						if(mdPatternChoiceInt > 31 || mdPatternChoiceInt < 0) {
+							return -1;
+						}
+					break;
+				default:
+					break;
+			}
+			return mdPatternChoiceInt;
+		}
+
 	
 	private void loadSelectedMDPatterns(String MD_PatternType,MdPatternChoices mdPatternChoices, Scanner sc){
 		
@@ -134,4 +187,6 @@ public class UserFilterInputData {
 		}
 		return mdPatternChoiceInt;
 	}
+	
+	
 }
