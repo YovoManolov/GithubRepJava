@@ -25,6 +25,10 @@ public class PeriferialDevice {
 	 private Date dateCreated;
 	 private Boolean status;
 	 
+	@ManyToOne
+	@JoinColumn(name="gateway_id", nullable=false)
+	private Gateway gateway; 
+	 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public long getId() {

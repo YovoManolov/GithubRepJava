@@ -22,7 +22,7 @@ import com.restApi.gatewayRestApi.repository.GatewayRepository;
 
 
 @RestController
-@RequestMapping("/getways")
+@RequestMapping("/gateways")
 public class GatewayController {
 	@Autowired
     private GatewayRepository GatewayRepository;
