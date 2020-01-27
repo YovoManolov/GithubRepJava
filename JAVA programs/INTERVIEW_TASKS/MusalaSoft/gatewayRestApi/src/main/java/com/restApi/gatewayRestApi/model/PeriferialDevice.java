@@ -26,7 +26,7 @@ public class PeriferialDevice {
 	 private Boolean status;
 	 
 	@ManyToOne
-	@JoinColumn(name="gateway_id", nullable=false)
+	@JoinColumn(name="gateway_id",nullable=false)
 	private Gateway gateway; 
 	 
 	@Id

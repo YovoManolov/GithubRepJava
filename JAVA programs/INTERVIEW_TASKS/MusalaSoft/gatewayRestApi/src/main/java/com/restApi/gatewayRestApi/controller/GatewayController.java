@@ -20,7 +20,6 @@ import com.restApi.gatewayRestApi.exception.ResourceNotFoundException;
 import com.restApi.gatewayRestApi.model.Gateway;
 import com.restApi.gatewayRestApi.repository.GatewayRepository;
 
-
 @RestController
 @RequestMapping("/gateways")
 public class GatewayController {
