@@ -3,6 +3,7 @@ package com.restApi.gatewayRestApi.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -23,12 +24,13 @@ import com.restApi.gatewayRestApi.repository.GatewayRepository;
 @RestController
 @RequestMapping("/gateways")
 public class GatewayController {
+	
 	@Autowired
-    private GatewayRepository GatewayRepository;
+    private GatewayRepository gatewayRepository;
 
     @GetMapping("/getAll")
     public List<Gateway> getAllGateways() {
-        return GatewayRepository.findAll();
+        return (List<Gateway>) gatewayRepository.findAll();//findAllWithPerifDevices();
     }
 
     @GetMapping("/getOneById/{id}")
@@ -36,14 +38,16 @@ public class GatewayController {
     	getGatewayById(
     				@PathVariable(value = "id") Long gatewayId
     			) throws ResourceNotFoundException {
-        Gateway gateway = GatewayRepository.findById(gatewayId)
-        .orElseThrow(() -> new ResourceNotFoundException("Gateway not found on :: "+ gatewayId));
-        return ResponseEntity.ok().body(gateway);
+        Optional<Gateway> gateway =  gatewayRepository.findById(gatewayId);//findAllWithPerifDevicesByGatewayId(gatewayId);
+        if(gateway.get() == null) {
+        	throw new ResourceNotFoundException("Gateway not found on :: "+ gatewayId);
+        }
+        return ResponseEntity.ok().body(gateway.get());
     }
 
     @PostMapping("/create")
     public Gateway createGateway(@Valid @RequestBody Gateway gateway) {
-        return GatewayRepository.save(gateway);
+        return gatewayRepository.save(gateway);
     }
 
    @DeleteMapping("/deleteById/{id}")
@@ -51,10 +55,10 @@ public class GatewayController {
 		   					@PathVariable(value = "id") Long gatewayId
 		   											) throws Exception {
 	   
-       Gateway Gateway = GatewayRepository.findById(gatewayId)
+       Gateway Gateway = gatewayRepository.findById(gatewayId)
           .orElseThrow(() -> new ResourceNotFoundException("Gateway not found on :: "+ gatewayId));
 
-       GatewayRepository.delete(Gateway);
+       gatewayRepository.delete(Gateway);
        Map<String, Boolean> response = new HashMap<>();
        response.put("deleted", Boolean.TRUE);
        return response;
