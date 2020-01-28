@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "ccde461a-da46-4eda-bad6-8f9bfa0655d2",
+		"name": "perifDevices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"date_created\":\"2018-09-25T20:04:11.000Z\",\n\t\"status\": 1,\n\t\"vendor\":\"Vendor Test\",\n\t\"gateway\":{\n\t\t\"gateway_id\":\"3\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/periferialDevices/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"periferialDevices",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/gateways/getAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gateways",
+						"getAll"
+					]
+				},
+				"description": "get all gateways"
+			},
+			"response": []
+		},
+		{
+			"name": "getGatewayById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/gateways/getOneById/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gateways",
+						"getOneById",
+						"1"
+					]
+				},
+				"description": "displaying information about signle gateway by given id"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteGatewayById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
