@@ -32,21 +32,22 @@ public class Gateway implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
 	@NotBlank
 	@Column(name = "serial_number")
 	private String serialNumber;
+	
 	@NotBlank
 	@Column(name = "name")
 	private String name;
+	
 	@NotBlank
 	@Column(name = "IPv4")
 	private String IPv4;
 	 
-	@JsonBackReference 
 	@Fetch(FetchMode.JOIN) 
-	@JsonMerge
 	@OneToMany(mappedBy="gateway", targetEntity=PeriferialDevice.class, cascade = CascadeType.ALL)
 	List<PeriferialDevice> periferialDevices = new LinkedList<>();
 

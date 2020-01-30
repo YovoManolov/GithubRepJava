@@ -17,6 +17,8 @@ import javax.validation.constraints.NotBlank;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_perif_device")
 @EntityListeners(AuditingEntityListener.class)
@@ -25,24 +27,22 @@ public class PeriferialDevice implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	@NotBlank
 	@Column(name="vendor", length=100)
 	private String vendor;
 	
-	@NotBlank
 	@CreatedDate
 	@Column(name="date_created")
 	private Date dateCreated;
 	
-	@NotBlank
 	@Column(name="status")
 	private Boolean status;
 	
-	@NotBlank
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="gateway_id", referencedColumnName="id")
 	private Gateway gateway;
 
