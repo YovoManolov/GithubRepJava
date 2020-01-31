@@ -13,11 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "tb_perif_device")
@@ -35,6 +36,7 @@ public class PeriferialDevice implements Serializable {
 	private String vendor;
 	
 	@CreatedDate
+	@NotNull
 	@Column(name="date_created")
 	private Date dateCreated;
 	
@@ -42,10 +44,10 @@ public class PeriferialDevice implements Serializable {
 	private Boolean status;
 	
 	@ManyToOne
-	@JsonIgnore
-	@JoinColumn(name="gateway_id", referencedColumnName="id")
+	@JsonBackReference
+	@JoinColumn(name="gateway_id", nullable = false)
 	private Gateway gateway;
-
+	
 	public long getId() {
 		return id;
 	}

@@ -5,7 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,16 +21,24 @@ public class PeriferialDeviceController {
 	@Autowired
 	PeriferialDeviceServiceImpl periferialDeviceServiceImpl;
 
-	@PostMapping("/createOrUpdate")
-	public ResponseEntity<PeriferialDevice> createOrUpdateGateway(PeriferialDevice periferialDevice)
+	@PutMapping("/create")
+	public ResponseEntity<PeriferialDevice> createPeriferialDevice(
+			@RequestBody PeriferialDevice newPeriferialDevice)
 			throws RecordNotFoundException {
-		PeriferialDevice updated = periferialDeviceServiceImpl.createOrUpdatePeriferialDevice(periferialDevice);
+		PeriferialDevice updated = periferialDeviceServiceImpl.createPeriferialDevice(newPeriferialDevice);
 		return new ResponseEntity<PeriferialDevice>(updated, HttpStatus.OK);
 	}
-
+	
+	@PutMapping("/update/{id}")
+	public ResponseEntity<PeriferialDevice> updatePeriferialDevice(
+			@RequestBody PeriferialDevice newPeriferialDevice, @PathVariable Long id )
+			throws RecordNotFoundException {
+		PeriferialDevice updated = periferialDeviceServiceImpl.updatePeriferialDevice(newPeriferialDevice,id);
+		return new ResponseEntity<PeriferialDevice>(updated, HttpStatus.OK);
+	}
+	
 	@DeleteMapping("deleteById/{id}")
-	public HttpStatus deletePeriferialDeviceById(@PathVariable("id") Long periferialDeviceId) throws RecordNotFoundException {
-		periferialDeviceServiceImpl.deletePeriferialDeviceById(periferialDeviceId);
-		return HttpStatus.FORBIDDEN;
+	public ResponseEntity<Object> deletePeriferialDeviceById(@PathVariable("id") Long periferialDeviceId) throws RecordNotFoundException {
+		return  periferialDeviceServiceImpl.deletePeriferialDeviceById(periferialDeviceId);
 	}
 }

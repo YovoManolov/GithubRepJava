@@ -2,8 +2,6 @@ package com.restApi.gatewayRestApi.model;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -20,9 +18,6 @@ import javax.validation.constraints.NotBlank;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonMerge;
 
 @Entity
 @Table(name = "tb_gateway")
@@ -48,9 +43,11 @@ public class Gateway implements Serializable {
 	private String IPv4;
 	 
 	@Fetch(FetchMode.JOIN) 
-	@OneToMany(mappedBy="gateway", targetEntity=PeriferialDevice.class, cascade = CascadeType.ALL)
-	List<PeriferialDevice> periferialDevices = new LinkedList<>();
-
+	@OneToMany(mappedBy="gateway",
+				targetEntity=PeriferialDevice.class, 
+				cascade = CascadeType.DETACH)
+	Set<PeriferialDevice> periferialDevices = new HashSet<>();
+	
 	public long getId() {
 		return id;
 	}
@@ -83,11 +80,11 @@ public class Gateway implements Serializable {
 		IPv4 = iPv4;
 	}
 
-	public List<PeriferialDevice> getPeriferialDevices() {
+	public Set<PeriferialDevice> getPeriferialDevices() {
 		return periferialDevices;
 	}
 
-	public void setPeriferialDevices(List<PeriferialDevice> periferialDevices) {
+	public void setPeriferialDevices(Set<PeriferialDevice> periferialDevices) {
 		this.periferialDevices = periferialDevices;
 	}
 

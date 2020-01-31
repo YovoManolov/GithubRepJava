@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.restApi.gatewayRestApi.exception.RecordNotFoundException;
 import com.restApi.gatewayRestApi.model.Gateway;
+import com.restApi.gatewayRestApi.model.PeriferialDevice;
 import com.restApi.gatewayRestApi.repository.GatewayRepository;
 import com.restApi.gatewayRestApi.services.GatewayServiceI;
 
@@ -43,28 +44,27 @@ public class GatewayServiceImpl implements GatewayServiceI {
 	}
 
 	@Override
-	public Gateway createOrUpdateGateway(Gateway gateway) throws RecordNotFoundException {
-		 
-	       Optional<Gateway> gatewayOptional = gatewayRepository.findById(gateway.getId());
-	         
-	        if(gatewayOptional.isPresent()) 
-	        {
-	            Gateway gatewayUpdated = gatewayOptional.get();
-	            gatewayUpdated.setId(gateway.getId()); 
-	            gatewayUpdated.setIPv4(gateway.getIPv4());
-	            gatewayUpdated.setName(gateway.getName());
-	            gatewayUpdated.setPeriferialDevices(gateway.getPeriferialDevices());
-	            gatewayUpdated.setSerialNumber(gateway.getSerialNumber());
-	 
-	            gatewayUpdated = gatewayRepository.save(gatewayUpdated);
-	             
-	            return gatewayUpdated;
-	        } else {
-	        	gateway = gatewayRepository.save(gateway);
-	             
-	            return gateway;
-	        }      
-		 
+	public Gateway createGateway( Gateway newGateway) 
+							throws RecordNotFoundException {
+	     return gatewayRepository.save(newGateway);
+	}
+
+	@Override
+	public Gateway updateGateway(Gateway newGateway, Long id ) throws RecordNotFoundException {
+	
+		Optional<Object> updatedGateway = gatewayRepository.findById(id)
+														.map(gatewayUpdated -> {
+
+			gatewayUpdated.setId(newGateway.getId());
+			gatewayUpdated.setIPv4(newGateway.getIPv4());
+			gatewayUpdated.setName(newGateway.getName());
+			gatewayUpdated.setPeriferialDevices(newGateway.getPeriferialDevices());
+			gatewayUpdated.setSerialNumber(newGateway.getSerialNumber());
+
+			return gatewayRepository.save(gatewayUpdated);
+		});
+
+		return (Gateway) updatedGateway.get();
 	}
 
 	@Override

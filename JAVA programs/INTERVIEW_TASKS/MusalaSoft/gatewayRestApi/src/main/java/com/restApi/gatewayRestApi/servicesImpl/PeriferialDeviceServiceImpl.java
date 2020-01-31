@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.restApi.gatewayRestApi.exception.RecordNotFoundException;
@@ -19,6 +23,9 @@ public class PeriferialDeviceServiceImpl implements PeriferialDeviceServiceI {
 	
 	@Autowired
 	PeriferialDeviceRepository periferialDeviceRepository;
+	
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	@Override
 	public List<PeriferialDevice> getAllPeriferialDevices() {
@@ -43,35 +50,35 @@ public class PeriferialDeviceServiceImpl implements PeriferialDeviceServiceI {
             throw new RecordNotFoundException("No periferialDevice record exist for given id");
         }
 	}
-
+	
 	@Override
-	public PeriferialDevice createOrUpdatePeriferialDevice(PeriferialDevice periferialDevice) throws RecordNotFoundException {
-		 
-	        Optional<PeriferialDevice> periferialDeviceOptional =
-	        				periferialDeviceRepository.findById(periferialDevice.getId());
-	         
-	        if(periferialDeviceOptional.isPresent()) 
-	        {
-	            PeriferialDevice periferialDeviceUpdated = periferialDeviceOptional.get();
-	            periferialDeviceUpdated.setId(periferialDevice.getId()); 
-	            periferialDeviceUpdated.setDateCreated(periferialDevice.getDateCreated()); 
-	            periferialDeviceUpdated.setGateway(periferialDevice.getGateway()); 
-	            periferialDeviceUpdated.setStatus(periferialDevice.getStatus()); 
-	            
-	            periferialDeviceUpdated = periferialDeviceRepository.save(periferialDeviceUpdated);
-	             
-	            return periferialDeviceUpdated;
-	        } else {
-	        	periferialDevice = periferialDeviceRepository.save(periferialDevice);
-	        	
-	            return periferialDevice;
-	        }
+	public PeriferialDevice createPeriferialDevice( PeriferialDevice newPeriferialDevice) 
+							throws RecordNotFoundException {
+	         return periferialDeviceRepository.save(newPeriferialDevice);
 	}
 
 	@Override
-	public void deletePeriferialDeviceById(Long periferialDeviceId) throws RecordNotFoundException {
+	public PeriferialDevice updatePeriferialDevice(PeriferialDevice newPeriferialDevice, Long id )
+						throws RecordNotFoundException {
+	
+		  Optional<Object> updatedPeriferialDevice = 
+				  periferialDeviceRepository.findById(id).map(periferialDevice -> {
+			  periferialDevice.setVendor(newPeriferialDevice.getVendor());
+			  periferialDevice.setDateCreated(newPeriferialDevice.getDateCreated()); 
+			  periferialDevice.setGateway(newPeriferialDevice.getGateway()); 
+			  periferialDevice.setStatus(newPeriferialDevice.getStatus()); 
+			  return  periferialDeviceRepository.save(periferialDevice);
+	       });
+		  
+		  return (PeriferialDevice) updatedPeriferialDevice.get();
+	}
+	
+	@Override
+	public ResponseEntity<Object> deletePeriferialDeviceById(Long periferialDeviceId)
+													throws RecordNotFoundException {
 			
-		Optional<PeriferialDevice> periferialDevice = periferialDeviceRepository.findById(periferialDeviceId);
+		Optional<PeriferialDevice> periferialDevice = periferialDeviceRepository
+				.findById(periferialDeviceId);
 		
 		if(periferialDevice.isPresent()) {
 			periferialDeviceRepository.deleteById(periferialDeviceId);
@@ -80,5 +87,8 @@ public class PeriferialDeviceServiceImpl implements PeriferialDeviceServiceI {
 	            "No periferialDevice record exist for given id:: " + periferialDeviceId
 	        );
 	    }
+		
+		return ResponseEntity.ok().build();
+		
 	}
 }
