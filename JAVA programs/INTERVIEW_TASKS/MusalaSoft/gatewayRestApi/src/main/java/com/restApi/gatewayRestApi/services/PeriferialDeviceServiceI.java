@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.restApi.gatewayRestApi.exception.RecordNotFoundException;
+import com.restApi.gatewayRestApi.exception.ToManyPerifDevicesException;
 import com.restApi.gatewayRestApi.model.PeriferialDevice;
 
 public interface PeriferialDeviceServiceI {
@@ -16,11 +17,14 @@ public interface PeriferialDeviceServiceI {
 			throws RecordNotFoundException;
 
 	public PeriferialDevice createPeriferialDevice(PeriferialDevice newPeriferialDevice) 
-			throws RecordNotFoundException;
+			throws ToManyPerifDevicesException ;
 
 	public PeriferialDevice updatePeriferialDevice(PeriferialDevice newPeriferialDevice, Long id)
 			throws RecordNotFoundException;
 
 	public ResponseEntity<Object> deletePeriferialDeviceById(Long periferialDeviceId) 
 			throws RecordNotFoundException;
+	
+	public Integer getCountOfPerifDForGatwayWithId(long gatewayId);
+	
 }

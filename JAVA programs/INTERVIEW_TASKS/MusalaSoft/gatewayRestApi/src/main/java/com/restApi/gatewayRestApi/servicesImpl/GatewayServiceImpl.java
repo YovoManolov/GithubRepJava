@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.restApi.gatewayRestApi.exception.RecordNotFoundException;
 import com.restApi.gatewayRestApi.model.Gateway;
-import com.restApi.gatewayRestApi.model.PeriferialDevice;
 import com.restApi.gatewayRestApi.repository.GatewayRepository;
 import com.restApi.gatewayRestApi.services.GatewayServiceI;
 

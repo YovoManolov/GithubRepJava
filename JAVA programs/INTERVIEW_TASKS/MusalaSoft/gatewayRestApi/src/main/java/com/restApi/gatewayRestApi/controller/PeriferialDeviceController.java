@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.restApi.gatewayRestApi.exception.RecordNotFoundException;
+import com.restApi.gatewayRestApi.exception.ToManyPerifDevicesException;
 import com.restApi.gatewayRestApi.model.PeriferialDevice;
 import com.restApi.gatewayRestApi.servicesImpl.PeriferialDeviceServiceImpl;
 
@@ -24,9 +25,9 @@ public class PeriferialDeviceController {
 	@PutMapping("/create")
 	public ResponseEntity<PeriferialDevice> createPeriferialDevice(
 			@RequestBody PeriferialDevice newPeriferialDevice)
-			throws RecordNotFoundException {
-		PeriferialDevice updated = periferialDeviceServiceImpl.createPeriferialDevice(newPeriferialDevice);
-		return new ResponseEntity<PeriferialDevice>(updated, HttpStatus.OK);
+			throws ToManyPerifDevicesException {
+		PeriferialDevice created = periferialDeviceServiceImpl.createPeriferialDevice(newPeriferialDevice);
+		return new ResponseEntity<PeriferialDevice>(created, HttpStatus.OK);
 	}
 	
 	@PutMapping("/update/{id}")

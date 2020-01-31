@@ -12,11 +12,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.restApi.gatewayRestApi.exception.RecordNotFoundException;
+import com.restApi.gatewayRestApi.exception.ToManyPerifDevicesException;
 import com.restApi.gatewayRestApi.model.PeriferialDevice;
 import com.restApi.gatewayRestApi.repository.PeriferialDeviceRepository;
 import com.restApi.gatewayRestApi.services.PeriferialDeviceServiceI;
-
-
 
 @Service
 public class PeriferialDeviceServiceImpl implements PeriferialDeviceServiceI {
@@ -27,6 +26,11 @@ public class PeriferialDeviceServiceImpl implements PeriferialDeviceServiceI {
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	@Override
+	public Integer getCountOfPerifDForGatwayWithId(long gatewayId) {
+		return periferialDeviceRepository.countPerifDForGatewayWithId(gatewayId);
+	}
+	
 	@Override
 	public List<PeriferialDevice> getAllPeriferialDevices() {
 		
@@ -47,14 +51,22 @@ public class PeriferialDeviceServiceImpl implements PeriferialDeviceServiceI {
 	    if(periferialDevice.isPresent()) {
             return periferialDevice.get();
         } else {
-            throw new RecordNotFoundException("No periferialDevice record exist for given id");
+            throw new RecordNotFoundException("No periferial device record exists for the given id !");
         }
 	}
 	
 	@Override
 	public PeriferialDevice createPeriferialDevice( PeriferialDevice newPeriferialDevice) 
-							throws RecordNotFoundException {
-	         return periferialDeviceRepository.save(newPeriferialDevice);
+							throws ToManyPerifDevicesException {
+			 
+		if(getCountOfPerifDForGatwayWithId(newPeriferialDevice.getGateway().getId()) < 10 ) {
+			return periferialDeviceRepository.save(newPeriferialDevice);
+		}
+		else {
+			throw new ToManyPerifDevicesException("No more than 10 periferial devices are allowed "
+					+ "for each gateway!");
+		}
+		
 	}
 
 	@Override
