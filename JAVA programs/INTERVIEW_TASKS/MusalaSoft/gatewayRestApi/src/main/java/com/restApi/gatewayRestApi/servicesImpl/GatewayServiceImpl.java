@@ -43,8 +43,7 @@ public class GatewayServiceImpl implements GatewayServiceI {
 	}
 
 	@Override
-	public Gateway createGateway( Gateway newGateway) 
-							throws RecordNotFoundException {
+	public Gateway createGateway( Gateway newGateway) {
 	     return gatewayRepository.save(newGateway);
 	}
 
@@ -53,8 +52,6 @@ public class GatewayServiceImpl implements GatewayServiceI {
 	
 		Optional<Object> updatedGateway = gatewayRepository.findById(id)
 														.map(gatewayUpdated -> {
-
-			gatewayUpdated.setId(newGateway.getId());
 			gatewayUpdated.setIPv4(newGateway.getIPv4());
 			gatewayUpdated.setName(newGateway.getName());
 			gatewayUpdated.setPeriferialDevices(newGateway.getPeriferialDevices());
@@ -64,20 +61,6 @@ public class GatewayServiceImpl implements GatewayServiceI {
 		});
 
 		return (Gateway) updatedGateway.get();
-	}
-
-	@Override
-	public void deleteGatewayById(Long gatewayId) throws RecordNotFoundException {
-			
-		Optional<Gateway> gateway = gatewayRepository.findById(gatewayId);
-		
-		if(gateway.isPresent()) {
-			gatewayRepository.deleteById(gatewayId);
-		} else {
-	        throw new RecordNotFoundException(
-	            "No gateway record exist for given id:: " + gatewayId
-	        );
-	    }
 	}
 
 }

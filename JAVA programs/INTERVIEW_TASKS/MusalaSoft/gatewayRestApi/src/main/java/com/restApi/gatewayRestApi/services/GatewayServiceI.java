@@ -16,7 +16,4 @@ public interface GatewayServiceI {
 	public Gateway updateGateway(Gateway newGateway, Long id ) throws RecordNotFoundException;
 		
 	public Gateway createGateway(Gateway newGateway) throws RecordNotFoundException;
-
-	public void deleteGatewayById(Long gatewayId) throws RecordNotFoundException;
-	  
 }
