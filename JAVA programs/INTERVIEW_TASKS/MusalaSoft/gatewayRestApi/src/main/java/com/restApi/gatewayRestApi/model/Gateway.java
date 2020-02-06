@@ -23,31 +23,39 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Table(name = "tb_gateway")
 @EntityListeners(AuditingEntityListener.class)
 public class Gateway implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
+	public Gateway(long id, @NotBlank String serialNumber,
+			@NotBlank String name, @NotBlank String iPv4) {
+		super();
+		this.id = id;
+		this.serialNumber = serialNumber;
+		this.name = name;
+		IPv4 = iPv4;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@NotBlank
 	@Column(name = "serial_number")
 	private String serialNumber;
-	
+
 	@NotBlank
 	@Column(name = "name")
 	private String name;
-	
+
 	@NotBlank
 	@Column(name = "IPv4")
 	private String IPv4;
-	 
-	@Fetch(FetchMode.JOIN) 
-	@OneToMany(mappedBy="gateway",
-				targetEntity=PeriferialDevice.class, 
+
+	@Fetch(FetchMode.JOIN)
+	@OneToMany(mappedBy = "gateway", targetEntity = PeriferialDevice.class,
 				cascade = CascadeType.DETACH)
 	Set<PeriferialDevice> periferialDevices = new HashSet<>();
-	
+
 	public long getId() {
 		return id;
 	}

@@ -15,8 +15,14 @@ import com.restApi.gatewayRestApi.services.GatewayServiceI;
 @Service
 public class GatewayServiceImpl implements GatewayServiceI {
 	
-	@Autowired
+	
 	GatewayRepository gatewayRepository;
+	
+	@Autowired
+	public GatewayServiceImpl(GatewayRepository gatewayRepository) {
+		super();
+		this.gatewayRepository = gatewayRepository;
+	}
 
 	@Override
 	public List<Gateway> getAllGateways() {
