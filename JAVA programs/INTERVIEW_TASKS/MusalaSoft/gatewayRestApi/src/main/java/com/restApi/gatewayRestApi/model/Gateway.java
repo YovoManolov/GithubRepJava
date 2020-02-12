@@ -25,6 +25,10 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public class Gateway implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	public Gateway() {
+		super();
+	}
 
 	public Gateway(long id, @NotBlank String serialNumber,
 			@NotBlank String name, @NotBlank String iPv4) {

@@ -25,6 +25,19 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @EntityListeners(AuditingEntityListener.class)
 public class PeriferialDevice implements Serializable {
 	
+	public PeriferialDevice() {
+		super();
+	}
+
+	public PeriferialDevice(long id, @NotBlank String vendor, 
+							@NotNull Date dateCreated, Boolean status) {
+		super();
+		this.id = id;
+		this.vendor = vendor;
+		this.dateCreated = dateCreated;
+		this.status = status;
+	}
+
 	private static final long serialVersionUID = 1L;
 	
 	@Id

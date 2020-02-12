@@ -15,15 +15,9 @@ import com.restApi.gatewayRestApi.services.GatewayServiceI;
 @Service
 public class GatewayServiceImpl implements GatewayServiceI {
 	
-	
+	@Autowired
 	GatewayRepository gatewayRepository;
 	
-	@Autowired
-	public GatewayServiceImpl(GatewayRepository gatewayRepository) {
-		super();
-		this.gatewayRepository = gatewayRepository;
-	}
-
 	@Override
 	public List<Gateway> getAllGateways() {
 		
@@ -54,7 +48,7 @@ public class GatewayServiceImpl implements GatewayServiceI {
 	}
 
 	@Override
-	public Gateway updateGateway(Gateway newGateway, Long id ) throws RecordNotFoundException {
+	public Gateway updateGateway(Gateway newGateway, Long id ) {
 	
 		Optional<Object> updatedGateway = gatewayRepository.findById(id)
 														.map(gatewayUpdated -> {

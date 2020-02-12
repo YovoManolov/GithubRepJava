@@ -62,6 +62,5 @@ public class GatewayController {
 		Gateway updatedGateway = gatewayServiceImpl.updateGateway(newGateway,id);
 		return new ResponseEntity<Gateway>(updatedGateway, HttpStatus.OK);
 	}
- 
   
 }
