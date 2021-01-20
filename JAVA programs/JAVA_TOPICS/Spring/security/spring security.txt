@@ -1,0 +1,49 @@
+sors - same origin request sharing 
+cors - cros origin request sharing
+
+XHR- XMLHttpRequest 
+XHR- XMLHttpRequest
+XHR- XMLHttpRequest 
+
+Spring security BASICS 
+
+WebSecurityConfigurerAdapter 
+
+	The crux of our security implementation. It provides HTTP security configurations to congigure CORS, CSRF, session management, rules for protected resources. We can also 
+	extend and customize the default configuration that contains the element below. 
+
+
+UserDetailsService 
+
+	Interfacce has a method to load User by username 
+and returns a UserDetails object that Spring Security can use for authenitcation and validation.
+
+UserDetails 
+	contains necessary information (username, password) from login 
+Request, AuthenticationManager will use it to authenticate a login account. 
+
+
+AuthenticationManager - 
+	has  a DaoAuthenticationProvider (with help of UserDetailsService
+	and PasswordEncoder ) to validates UsernamePasswordAuthenticationToken object 
+
+OncePerRequestFilter -
+
+	makes a single execution for each request to our API.
+	It provides a doFilterInternal() method that we will 
+		- implement parsing and validating JWT, 
+		- loading UserDetails( using UserDetailsService) 
+		- checking Authorization (using UsernamePasswordAuthenticationToken)
+
+AuthenticaionEntryPoint 
+
+	will catch unauthorized error and return a 401 when Clients 
+access protected resources without authentication 
+
+Controller recieves and handles requests after it was filtered by 
+OncePerRequestFilter. 
+
+AuthController handles signup/login requests 
+
+TestController has accessing protected resource methods with role 
+based validations 
