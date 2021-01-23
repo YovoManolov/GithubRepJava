@@ -4866,10 +4866,10 @@ img {
 
 .profile-image a:before {
   content: "";
-  border: 20px solid rgba(33, 143, 211, 0.6);
+  border: 15px solid rgba(55, 140, 63, 0.6);
   border-radius: 50%;
   height: 250px;
-  width: 200px;
+  width: 250px;
   position: absolute;
   left: 0;
   -webkit-animation: pulsate 1.6s ease-out;

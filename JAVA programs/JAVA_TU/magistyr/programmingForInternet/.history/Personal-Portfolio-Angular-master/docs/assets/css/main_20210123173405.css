@@ -4866,7 +4866,7 @@ img {
 
 .profile-image a:before {
   content: "";
-  border: 15px solid rgba(55, 140, 63, 0.6);
+  border: 15px solid rgba(106, 209, 238, 0.918);
   border-radius: 50%;
   height: 250px;
   width: 200px;
@@ -4883,7 +4883,7 @@ img {
 .profile-image img {
   position: relative;
   border-radius: 50%;
-  height: 220px;
+  height: 250px;
   width: 200px;
   padding: 0;
   margin: 0;
