@@ -24,12 +24,14 @@ class MatchTemplateDemoRun implements ChangeListener {
     int match_method;
     JLabel imgDisplay = new JLabel(), resultDisplay = new JLabel();
     public void run(String[] args) {
-    	img = Imgcodecs.imread("resources\\sourceImage.jpg");
-        templ = Imgcodecs.imread("resources\\template.jpg");
+    	img = Imgcodecs.imread("resources\\txt.jpg");
+        templ = Imgcodecs.imread("resources\\txt_tmplt.jpg");
+        
         if (args.length > 2) {
             use_mask = true;
             mask = Imgcodecs.imread(args[2], Imgcodecs.IMREAD_COLOR);
         }
+        
         if (img.empty() || templ.empty() || (use_mask && mask.empty())) {
             System.out.println("Can't read one of the images");
             System.exit(-1);
@@ -47,9 +49,9 @@ class MatchTemplateDemoRun implements ChangeListener {
         int result_rows = img.rows() - templ.rows() + 1;
         result.create(result_rows, result_cols, CvType.CV_32FC1);
         
-        Boolean method_accepts_mask = (Imgproc.TM_SQDIFF == match_method || match_method == Imgproc.TM_CCORR_NORMED);
+        Boolean method_accepts_mask = (Imgproc.TM_CCOEFF == match_method || match_method == Imgproc.TM_CCOEFF);
        
-        Imgproc.threshold(result, maskTest, 250, 255, Imgproc.THRESH_BINARY);
+        Imgproc.threshold(result, maskTest, 250, 255, Imgproc.TM_CCOEFF);
         
         if (use_mask && method_accepts_mask) {
             Imgproc.matchTemplate(img, templ, result, match_method, mask);
@@ -65,12 +67,12 @@ class MatchTemplateDemoRun implements ChangeListener {
         		final double[] rcArray = result.get(r, c);
         		if(rcArray != null) {
         			final double element = rcArray[0];
-        			if(element >= 0.9) {
+        			if(element >= 0.96) {
         				count++;
         				Imgproc.rectangle(
         						img_display, new Point(c,r), 
         						new Point(c + templ.cols(),r + templ.rows()),
-        						new Scalar(0, 0, 0), 2, 8, 0);
+        						new Scalar(0, 0, 255), 2, 7, 0);
         			}
         		}
         	}
@@ -86,9 +88,9 @@ class MatchTemplateDemoRun implements ChangeListener {
             matchLoc = mmr.maxLoc;
         }
         Imgproc.rectangle(img_display, matchLoc, new Point(matchLoc.x + templ.cols(), matchLoc.y + templ.rows()),
-                new Scalar(0, 0, 0), 2, 8, 0);
+                new Scalar(0, 0, 255), 2, 8, 0);
         Imgproc.rectangle(result, matchLoc, new Point(matchLoc.x + templ.cols(), matchLoc.y + templ.rows()),
-                new Scalar(0, 0, 0), 2, 8, 0);
+                new Scalar(0, 0, 255), 2, 8, 0);
         Image tmpImg = HighGui.toBufferedImage(img_display);
         ImageIcon icon = new ImageIcon(tmpImg);
         imgDisplay.setIcon(icon);
@@ -118,12 +120,12 @@ class MatchTemplateDemoRun implements ChangeListener {
         slider.setMinorTickSpacing(1);
         // Customizing the labels
         Hashtable<Integer, JLabel> labelTable = new Hashtable<>();
-        labelTable.put(new Integer(0), new JLabel("0 - SQDIFF"));
-        labelTable.put(new Integer(1), new JLabel("1 - SQDIFF NORMED"));
-        labelTable.put(new Integer(2), new JLabel("2 - TM CCORR"));
-        labelTable.put(new Integer(3), new JLabel("3 - TM CCORR NORMED"));
-        labelTable.put(new Integer(4), new JLabel("4 - TM COEFF"));
-        labelTable.put(new Integer(5), new JLabel("5 - TM COEFF NORMED : (Method)"));
+        labelTable.put(0, new JLabel("0 - SQDIFF"));
+        labelTable.put(1, new JLabel("1 - SQDIFF NORMED"));
+        labelTable.put(2, new JLabel("2 - TM CCORR"));
+        labelTable.put(3, new JLabel("3 - TM CCORR NORMED"));
+        labelTable.put(4, new JLabel("4 - TM COEFF"));
+        labelTable.put(5, new JLabel("5 - TM COEFF NORMED : (Method)"));
         slider.setLabelTable(labelTable);
         slider.addChangeListener(this);
         frame.add(slider);
